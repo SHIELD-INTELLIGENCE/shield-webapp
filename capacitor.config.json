@@ -1,0 +1,6 @@
+{
+  "appId": "com.shield.intelligence",
+  "appName": "SHIELD",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}

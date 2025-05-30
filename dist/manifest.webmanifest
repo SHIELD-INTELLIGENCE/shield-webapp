@@ -1,0 +1,27 @@
+{
+    "name": "SHIELD Web App",
+    "short_name": "SHIELD",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#000000",
+    "theme_color": "#ffffff",
+    "description": "Securing Tomorrow with Strategic Intelligence",
+    "orientation": "portrait",
+    "id": "/",
+    "icons": [
+      {
+        "src": "/icon-192x192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "/icon-512x512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "launch_handler": {
+      "client_mode": "navigate-existing"
+    }
+  }
+  
