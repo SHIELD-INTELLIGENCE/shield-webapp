@@ -19,7 +19,7 @@ function Home() {
 
       <div className="contact-section">
         <h2>Contact Us</h2>
-        <p>Email: queriesshield@gmail.com</p>
+        <p>Email: shield@shieldintelligence.in</p>
         <p>X: 0_SHIELD_0</p>
         <p>Instagram: shield_private</p>
         <p>Facebook: SHIELD Intelligence</p>
