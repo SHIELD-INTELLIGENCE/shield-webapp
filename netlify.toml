@@ -3,3 +3,14 @@
   from = "/*"
   to = "/index.html"
   status = 200
+[[redirects]]
+  from = "http://shieldintelligence.in/*"
+  to = "https://www.shieldintelligence.in/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://shieldintelligence.in/*"
+  to = "https://www.shieldintelligence.in/:splat"
+  status = 301
+  force = true
