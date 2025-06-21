@@ -162,18 +162,22 @@ body {
 }
 /* Generic Section Styling: full page width */
 .page-container,
-.contact-section,
-footer {
-  width: 100vw;             /* full viewport width */
-  margin: 0;                /* no margins */
-  padding: 2rem;            /* internal padding so content isn't glued to edges */
+.contact-section {
+  width: 100vw;              /* full viewport width */
+  margin: 0;                 /* reset margins */
+  padding: 2rem;             /* your padding */
   background: var(--shield-black);
   color: var(--shield-white);
-  box-sizing: border-box;   /* include padding in width calc */
+  border-top: 2px solid var(--shield-accent);
+  border-bottom: 2px solid var(--shield-accent);
+  box-shadow: 0 -2px 16px var(--shield-glow), 0 2px 16px var(--shield-glow);
+  box-sizing: border-box;
   position: relative;
-  left: 50%;                /* reset positioning */
-  transform: translateX(-50%); /* center the full-width block */
+  left: 50%;
+  transform: translateX(-50%); /* center the full-width container */
+  text-align: center;
 }
+
 
 /* Remove any inner width restrictions */
 .page-container > *,
