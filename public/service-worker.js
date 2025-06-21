@@ -1,4 +1,5 @@
-const CACHE_NAME = 'shield-pwa-cache-v2'; // Change version on updates
+// public/service-worker.js
+const CACHE_NAME = `shield-pwa-cache-${__BUILD_TIMESTAMP__}`;
 const PRECACHE_URLS = ['/', '/index.html'];
 
 self.addEventListener('install', event => {
@@ -15,7 +16,7 @@ self.addEventListener('activate', event => {
     caches.keys().then(keys => {
       return Promise.all(
         keys
-          .filter(name => name !== CACHE_NAME) // delete old caches
+          .filter(name => name !== CACHE_NAME) // Delete old caches
           .map(name => caches.delete(name))
       );
     })
@@ -26,20 +27,19 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   const { pathname } = new URL(event.request.url);
 
-  // Don't intercept assets or manifest or favicon
+  // Bypass assets and core files
   if (
     pathname.startsWith('/assets/') ||
     pathname === '/manifest.json' ||
     pathname === '/favicon.ico' ||
     pathname === '/service-worker.js'
   ) {
-    return; // let browser do its thing
+    return;
   }
 
   event.respondWith(
     caches.match(event.request).then(cached => {
       if (cached) {
-        console.log('[ServiceWorker] Serving cached:', event.request.url);
         return cached;
       }
       return fetch(event.request).catch(() => {
