@@ -1,4 +1,4 @@
-package com.shield.intelligence;
+package com.shieldintelligence.in;
 
 import com.getcapacitor.BridgeActivity;
 
