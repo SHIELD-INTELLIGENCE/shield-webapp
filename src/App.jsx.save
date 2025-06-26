@@ -17,51 +17,48 @@ function Navbar({ user, onLogout }) {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <nav className="navbar">
-      <div className="logo">SHIELD</div>
+    <nav className="navbar bg-gray-800 p-2 flex items-center justify-between text-white">
+      {/* Main links */}
+      <div className="flex space-x-4">
+        <Link to="/" className="nav-btn">Home</Link>
+        <Link to="/about" className="nav-btn">About</Link>
+        <Link to="/join-us" className="nav-btn">Join Us</Link>
+        <Link to="/hire-agent" className="nav-btn">Hire an Agent</Link>
+        {user && <Link to="/feeds" className="nav-btn">Feeds</Link>}
+      </div>
 
-      {/* Hamburger Button */}
-      <button
-        className="hamburger"
-        onClick={() => setShowMenu((prev) => !prev)}
-      >
-        ☰
-      </button>
-
-      {/* Nav links */}
-      <div className={`nav-links ${showMenu ? "show" : ""}`}>
-        <Link to="/" className="nav-btn" onClick={() => setShowMenu(false)}>
-          Home
-        </Link>
-        <Link to="/about" className="nav-btn" onClick={() => setShowMenu(false)}>
-          About
-        </Link>
-        <Link to="/join-us" className="nav-btn" onClick={() => setShowMenu(false)}>
-          Join Us
-        </Link>
-        <Link to="/hire-agent" className="nav-btn" onClick={() => setShowMenu(false)}>
-          Hire an Agent
-        </Link>
-
-        {user && (
-          <Link to="/feeds" className="nav-btn" onClick={() => setShowMenu(false)}>
-            My Feeds
-          </Link>
-        )}
-
-        {user ? (
-          <button className="nav-btn" onClick={onLogout}>Logout</button>
-        ) : (
-          <Link to="/login" className="nav-btn" onClick={() => setShowMenu(false)}>
-            Login
-          </Link>
+      {/* Hamburger for login/logout */}
+      <div className="relative">
+        <button
+          className="hamburger text-2xl p-2"
+          onClick={() => setShowMenu(!showMenu)}
+        >
+          ☰
+        </button>
+        {showMenu && (
+          <div className="absolute right-0 mt-2 bg-white text-black rounded shadow p-2 space-y-2">
+            {user ? (
+              <button
+                onClick={onLogout}
+                className="block w-full text-left p-2 hover:bg-gray-100"
+              >
+                Logout
+              </button>
+            ) : (
+              <Link
+                to="/login"
+                className="block w-full text-left p-2 hover:bg-gray-100"
+                onClick={() => setShowMenu(false)}
+              >
+                Login
+              </Link>
+            )}
+          </div>
         )}
       </div>
     </nav>
   );
 }
-
-
 
 function AppContent() {
   const [user, setUser] = useState(null);
@@ -69,7 +66,7 @@ function AppContent() {
 
   useEffect(() => {
     const unsub = auth.onAuthStateChanged((u) => {
-      setUser(u); // track auth status
+      setUser(u);
     });
     return () => unsub();
   }, []);

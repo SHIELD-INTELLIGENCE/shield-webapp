@@ -15,7 +15,11 @@
 }
 
 body {
-  background: radial-gradient(circle at top, var(--shield-grey) 0%, var(--shield-black) 100%);
+  background: radial-gradient(
+    circle at top,
+    var(--shield-grey) 0%,
+    var(--shield-black) 100%
+  );
   color: var(--shield-white);
   font-family: var(--shield-font-sans);
   margin: 0;
@@ -26,7 +30,9 @@ body {
 }
 
 @keyframes fadeInBody {
-  to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Navigation */
@@ -34,52 +40,89 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  padding: 1rem 2rem;
+  padding: 0.5rem 1rem;
   background: rgba(26, 26, 26, 0.9);
   border-bottom: 2px solid var(--shield-accent);
-  backdrop-filter: blur(8px);
   box-shadow: 0 2px 20px var(--shield-glow);
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
+  justify-content: space-between;
 }
 
 .logo {
-  font-size: 1.4rem;
-  font-weight: bold;
-  letter-spacing: 1.5px;
   color: var(--shield-accent);
+  font-size: 1.2rem;
+  font-weight: bold;
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.nav-links,
-.nav-auth {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-}
-
-.nav-links a,
-.nav-auth a {
-  padding: 0.5rem 1rem;
+.hamburger {
+  padding: 0.3rem 0.5rem;
+  background: none;
   border: 1px solid var(--shield-accent);
-  border-radius: 8px;
+  border-radius: 4px;
+  color: var(--shield-white);
+  cursor: pointer;
+  font-size: 1.2rem;
+  z-index: 1001;
+}
+
+.nav-links {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--shield-black);
+  border-bottom: 2px solid var(--shield-accent);
+  box-shadow: 0 2px 8px var(--shield-glow);
+  padding: 0.5rem;
+  flex-direction: column;
+  gap: 0.5rem;
+  display: none;
+}
+
+.nav-links.show {
+  display: flex;
+}
+
+.nav-links .nav-btn {
+  padding: 0.5rem;
+  text-align: center;
+  border: 1px solid var(--shield-accent);
+  border-radius: 4px;
   background: transparent;
   color: var(--shield-white);
-  font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1px;
   transition: all 0.3s ease;
 }
 
-.nav-links a:hover,
-.nav-auth a:hover {
+.nav-links .nav-btn:hover {
   background: var(--shield-accent);
   color: var(--shield-black);
   box-shadow: 0 0 12px var(--shield-glow);
+}
+
+@media (min-width: 768px) {
+  .hamburger {
+    display: none;
+  }
+
+  .nav-links {
+    position: static;
+    background: transparent;
+    flex-direction: row;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    display: flex !important;
+    gap: 1rem;
+  }
+
+  .nav-links .nav-btn {
+    padding: 0.5rem 1rem;
+  }
 }
 
 /* Home Hero */
@@ -197,58 +240,61 @@ body {
   color: #e5c76a;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 0.5rem 1rem;
-  }
+/* Feeds list container and cards */
+.feeds-list {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 
-  .nav-links {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 0.5rem;
-  }
+.feed-card {
+  background: var(--shield-grey);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--shield-accent);
+  box-shadow: 0 0 10px var(--shield-glow);
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.4s forwards;
+}
 
-  .nav-links a {
-    padding: 0.35rem 0.7rem;
-    font-size: 0.85rem;
-    white-space: nowrap;
-  }
+.feed-card h3 {
+  color: var(--shield-accent);
+  margin: 0 0 0.25rem 0;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px var(--shield-glow);
+}
 
-  .nav-auth {
-    margin-left: auto;
-    flex-direction: row;
-    gap: 0.5rem;
-  }
+.feed-card p {
+  color: var(--shield-white);
+  margin-bottom: 0.5rem;
+}
 
-  .nav-auth a {
-    padding: 0.3rem 0.6rem;
-    font-size: 0.8rem;
-  }
+.feed-card small {
+  color: #aaa;
+  font-size: 0.8rem;
+}
 
-  .home-hero-content-bw {
-    padding: 1.5rem;
+/* Fade-in animation */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
 
-  .home-hero-content-bw h1 {
-    font-size: 2rem;
-  }
+.hidden {
+  display: none;
+}
 
-  .home-hero-content-bw p {
-    font-size: 1rem;
-  }
-
-  .bw-btn {
-    width: 80%;
-    text-align: center;
-  }
-
-  iframe {
-    width: 100%;
-    height: 1000px;
-  }
+.nav-btn {
+  padding: 8px;
+  color: white;
+  background: #333;
+  text-decoration: none;
+  border-radius: 4px;
+}
+.nav-btn:hover {
+  background: #555;
 }
