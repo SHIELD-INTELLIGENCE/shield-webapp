@@ -1,5 +1,5 @@
 // public/service-worker.js
-const CACHE_NAME = `shield-pwa-cache-${__BUILD_TIMESTAMP__}`;
+const CACHE_NAME = `shield-pwa-cache`;
 const PRECACHE_URLS = ['/', '/index.html'];
 
 self.addEventListener('install', event => {
