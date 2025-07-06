@@ -1,16 +1,30 @@
-import { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { useState, useEffect } from "react";
+import {
+  signInWithEmailAndPassword,
+  setPersistence,
+  browserLocalPersistence,
+  onAuthStateChanged,
+} from "firebase/auth";
 import { auth, db } from "../firebase";
 import { doc, getDoc, setDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) navigate("/");
+    });
+  }, []);
 
   const login = async () => {
     setError("");
     try {
+      await setPersistence(auth, browserLocalPersistence);
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
@@ -20,46 +34,47 @@ export default function Login() {
         await setDoc(userRef, { email: user.email });
       }
 
-      window.location.href = "/";
+      navigate("/");
     } catch (e) {
-      setError("Access denied. Verify credentials or contact SHIELD Admin.");
+      setError("Login failed. Invalid credentials.");
     }
   };
 
   return (
-    <div className="p-6 max-w-md mx-auto mt-20 bg-[#2a2a2a] rounded-xl border border-yellow-600 shadow-xl space-y-4">
-      <h2 className="text-2xl font-bold text-center text-yellow-500 tracking-wider">
-        AGENT LOGIN
-      </h2>
+    <div className="min-h-screen flex items-center justify-center bg-[#0f0f0f] px-4">
+      <div className="w-full max-w-sm space-y-4">
+        <h2 className="text-2xl text-center font-semibold text-yellow-500">SHIELD Login</h2>
 
-      <input
-        className="w-full p-2 bg-[#1a1a1a] text-white border border-yellow-600 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"
-        placeholder="Email"
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+        <form onSubmit={(e) => { e.preventDefault(); login(); }} autoComplete="off" className="space-y-3">
+          <input
+            className="shield-clean-input"
+            placeholder="Email"
+            type="email"
+            name="email"
+            autoComplete="off"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            className="shield-clean-input"
+            placeholder="Password"
+            type="password"
+            name="password"
+            autoComplete="new-password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-      <input
-        className="w-full p-2 bg-[#1a1a1a] text-white border border-yellow-600 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"
-        placeholder="Password"
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+          {error && <p className="text-sm text-red-400 text-center">{error}</p>}
 
-      {error && (
-        <div className="text-sm text-red-400 bg-[#1a1a1a] p-2 rounded border border-red-500">
-          {error}
-        </div>
-      )}
-
-      <button
-        className="w-full bw-btn"
-        onClick={login}
-      >
-        Authenticate
-      </button>
+          <button
+            type="submit"
+            className="bw-btn"
+          >
+            Login
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

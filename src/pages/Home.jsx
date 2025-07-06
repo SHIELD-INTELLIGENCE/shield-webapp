@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../firebase';
 
 function Home() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
   return (
     <div className="home-hero-bw">
       <div className="home-hero-content-bw">
@@ -17,29 +29,62 @@ function Home() {
         </div>
       </div>
 
-      {/* Private Access Banner */}
-      <section className="private-access-section" style={{
-        marginTop: '3rem',
-        padding: '2rem',
-        backgroundColor: 'rgba(0,0,0,0.7)',
-        border: '2px dashed rgba(252, 211, 77, 0.6)',
-        borderRadius: '1rem',
-        boxShadow: '0 0 16px rgba(252, 211, 77, 0.3)',
-        textAlign: 'center',
-        maxWidth: '900px',
-      }}>
-        <h2 style={{ color: 'rgba(252, 211, 77, 1)', textTransform: 'uppercase', letterSpacing: '1px' }}>
-          Restricted Tools
-        </h2>
-        <p style={{ color: '#ccc', fontSize: '1rem', marginTop: '0.5rem' }}>
-          Some of our most advanced resources — including encrypted communication, agent-only portals, and our <span style={{color:'#fcd34d'}}>morse & encoder tools</span> — are secured and accessible only to authorized SHIELD personnel.
-        </p>
-        <p style={{ color: '#999', fontSize: '0.9rem', marginTop: '0.5rem' }}>
-          Please contact HQ for credentials if you are part of our operations.
-        </p>
-      </section>
-      
-            {/* Public Resources */}
+      {/* ❌ Show warning if NOT logged in */}
+      {!user && (
+        <section className="private-access-section" style={{
+          marginTop: '3rem',
+          padding: '2rem',
+          backgroundColor: 'rgba(0,0,0,0.7)',
+          border: '2px dashed rgba(252, 211, 77, 0.6)',
+          borderRadius: '1rem',
+          boxShadow: '0 0 16px rgba(252, 211, 77, 0.3)',
+          textAlign: 'center',
+          maxWidth: '900px',
+        }}>
+          <h2 style={{ color: 'rgba(252, 211, 77, 1)', textTransform: 'uppercase', letterSpacing: '1px' }}>
+            Restricted Tools
+          </h2>
+          <p style={{ color: '#ccc', fontSize: '1rem', marginTop: '0.5rem' }}>
+            Some of our most advanced resources — including encrypted communication, agent-only portals, and our <span style={{ color: '#fcd34d' }}>morse & encoder tools</span> — are secured and accessible only to authorized SHIELD personnel.
+          </p>
+          <p style={{ color: '#999', fontSize: '0.9rem', marginTop: '0.5rem' }}>
+            Please contact HQ for credentials if you are part of our operations.
+          </p>
+        </section>
+      )}
+
+      {/* ✅ Show actual tools if logged in */}
+      {user && (
+        <section className="private-access-section" style={{
+          marginTop: '3rem',
+          padding: '2rem',
+          backgroundColor: 'rgba(0,0,0,0.7)',
+          border: '2px dashed rgba(252, 211, 77, 0.6)',
+          borderRadius: '1rem',
+          boxShadow: '0 0 16px rgba(252, 211, 77, 0.3)',
+          textAlign: 'center',
+          maxWidth: '900px',
+        }}>
+          <h2 style={{
+            color: 'rgba(252, 211, 77, 1)',
+            textTransform: 'uppercase',
+            letterSpacing: '1px',
+            marginBottom: '1rem'
+          }}>
+            Agent-Only Tools
+          </h2>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <a href="https://sm.shieldintelligence.in" target="_blank" rel="noopener noreferrer" className="bw-btn">
+              Strategic Messaging Terminal
+            </a>
+            <a href="https://morse.shieldintelligence.in" target="_blank" rel="noopener noreferrer" className="bw-btn outline">
+              Morse Encoder Access
+            </a>
+          </div>
+        </section>
+      )}
+
+      {/* Public Resources */}
       <section className="public-links-section" style={{
         marginTop: '3rem',
         padding: '2rem',
@@ -60,7 +105,7 @@ function Home() {
         </ul>
       </section>
 
-
+      {/* Contact Section */}
       <div className="contact-section">
         <h2>Contact Us</h2>
         <p>Email: shield@shieldintelligence.in</p>

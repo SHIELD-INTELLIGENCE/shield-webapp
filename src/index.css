@@ -298,3 +298,27 @@ body {
 .nav-btn:hover {
   background: #555;
 }
+/* SHIELD Terminal Input Style */
+/* Clean SHIELD Login Input Fields */
+.shield-clean-input {
+  width: 100%;
+  padding: 12px 14px;
+  background: #121212;
+  color: var(--shield-white);
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  outline: none;
+  transition: background 0.3s ease;
+}
+
+.shield-clean-input::placeholder {
+  color: #aaa;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.shield-clean-input:focus {
+  background: #1c1c1c;
+}
