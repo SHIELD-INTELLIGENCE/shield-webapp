@@ -67,12 +67,12 @@ export default function Login() {
 
           {error && <p className="text-sm text-red-400 text-center">{error}</p>}
 
-          <button
-            type="submit"
-            className="bw-btn"
-          >
+        <div style="display: flex; justify-content: center;">
+           <button type="submit" className="bw-btn">
             Login
-          </button>
+           </button>
+        </div>
+
         </form>
       </div>
     </div>
