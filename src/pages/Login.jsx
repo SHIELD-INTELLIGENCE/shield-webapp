@@ -66,15 +66,12 @@ export default function Login() {
           />
 
           {error && <p className="text-sm text-red-400 text-center">{error}</p>}
-
-        <div style="display: flex; justify-content: center;">
            <button type="submit" className="bw-btn">
             Login
            </button>
         </div>
 
         </form>
-      </div>
     </div>
   );
 }
