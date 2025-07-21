@@ -19,17 +19,17 @@ export default function Login() {
     onAuthStateChanged(auth, (user) => {
       if (user) navigate("/");
     });
-  }, []);
+  }, [navigate]);
 
   const login = async () => {
     setError("");
     try {
       await setPersistence(auth, browserLocalPersistence);
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
+      const { user } = await signInWithEmailAndPassword(auth, email, password);
 
       const userRef = doc(db, "users", user.email);
       const userSnap = await getDoc(userRef);
+
       if (!userSnap.exists()) {
         await setDoc(userRef, { email: user.email });
       }
@@ -45,7 +45,14 @@ export default function Login() {
       <div className="w-full max-w-sm space-y-4">
         <h2 className="text-2xl text-center font-semibold text-yellow-500">SHIELD Login</h2>
 
-        <form onSubmit={(e) => { e.preventDefault(); login(); }} autoComplete="off" className="space-y-3">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            login();
+          }}
+          autoComplete="off"
+          className="space-y-3"
+        >
           <input
             className="shield-clean-input"
             placeholder="Email"
@@ -55,6 +62,7 @@ export default function Login() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+
           <input
             className="shield-clean-input"
             placeholder="Password"
@@ -66,15 +74,12 @@ export default function Login() {
           />
 
           {error && <p className="text-sm text-red-400 text-center">{error}</p>}
-          <button
-            type="submit"
-            className="bw-btn"
-          >
-            Login
-           </button>
-        </div>
 
+          <button type="submit" className="bw-btn w-full">
+            Login
+          </button>
         </form>
+      </div>
     </div>
   );
 }
