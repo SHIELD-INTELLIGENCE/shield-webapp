@@ -5,7 +5,7 @@
   --shield-grey: #2a2a2a;
   --shield-accent: #caa94c;
   --shield-glow: rgba(202, 169, 76, 0.35);
-  --shield-font-sans: 'Roboto', Arial, sans-serif;
+  --shield-font-sans: 'Elixia', Arial, sans-serif;
 }
 
 /* Base Styling */
@@ -298,8 +298,8 @@ body {
 .nav-btn:hover {
   background: #555;
 }
+
 /* SHIELD Terminal Input Style */
-/* Clean SHIELD Login Input Fields */
 .shield-clean-input {
   width: 100%;
   padding: 12px 14px;
