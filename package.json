@@ -8,6 +8,7 @@
     "@capacitor/android": "^7.2.0",
     "@capacitor/cli": "^7.2.0",
     "@capacitor/core": "^7.2.0",
+    "android": "^0.0.8",
     "firebase": "^10.x",
     "react": "^18.x",
     "react-dom": "^18.x",
