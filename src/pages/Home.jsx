@@ -29,7 +29,6 @@ function Home() {
         </div>
       </div>
 
-      {/* ❌ Show warning if NOT logged in */}
       {!user && (
         <section className="private-access-section" style={{
           marginTop: '3rem',
