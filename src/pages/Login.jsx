@@ -41,9 +41,9 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0f0f0f] px-4">
-      <div className="w-full max-w-sm space-y-4">
-        <h2 className="text-2xl text-center font-semibold text-yellow-500">SHIELD Login</h2>
+    <div className="shield-login-wrapper">
+      <div className="shield-login-container">
+        <h2>SHIELD Login</h2>
 
         <form
           onSubmit={(e) => {
@@ -51,7 +51,7 @@ export default function Login() {
             login();
           }}
           autoComplete="off"
-          className="space-y-3"
+          className="shield-login-form"
         >
           <input
             className="shield-clean-input"
@@ -73,9 +73,9 @@ export default function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          {error && <p className="text-sm text-red-400 text-center">{error}</p>}
+          {error && <p className="shield-login-error">{error}</p>}
 
-          <button type="submit" className="bw-btn w-full">
+          <button type="submit" className="bw-btn">
             Login
           </button>
         </form>
