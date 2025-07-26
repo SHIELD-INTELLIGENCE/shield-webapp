@@ -1,15 +1,5 @@
 {
   "appId": "com.shieldintelligence.in",
   "appName": "SHIELD",
-  "webDir": "dist",
-  "plugins": {
-    "SplashScreen": {
-      "launchShowDuration": 2000,
-      "launchAutoHide": true,
-      "backgroundColor": "#ffffffff",
-      "androidScaleType": "CENTER_CROP",
-      "splashImmersive": true,
-      "androidSplashResourceName": "splash"
-    }
-  }
+  "webDir": "dist"
 }
