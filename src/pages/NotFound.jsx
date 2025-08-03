@@ -23,6 +23,3 @@ export default function NotFound() {
     </div>
   );
 }
-
-// This component serves as a custom 404 Not Found page for the application.
-// It provides a user-friendly message and a link to return to the main console.
