@@ -1,17 +1,24 @@
 // src/App.jsx
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
-import { auth } from './firebase';
-import { signOut } from 'firebase/auth';
+import React, { useState, useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  useNavigate,
+} from "react-router-dom";
+import { auth } from "./firebase";
+import { signOut } from "firebase/auth";
 
-import Home from './pages/Home';
-import About from './pages/About';
-import JoinUs from './pages/JoinUs';
-import HireAgent from './pages/HireAgent';
-import Terms from './pages/Terms';
-import JoinUsTerms from './pages/JoinUsTerms';
-import Feeds from './pages/Feeds';
-import Login from './pages/Login';
+import Home from "./pages/Home";
+import About from "./pages/About";
+import JoinUs from "./pages/JoinUs";
+import HireAgent from "./pages/HireAgent";
+import Terms from "./pages/Terms";
+import JoinUsTerms from "./pages/JoinUsTerms";
+import Feeds from "./pages/Feeds";
+import Login from "./pages/Login";
+import NotFound from "./pages/NotFound";
 
 function Navbar({ user, onLogout }) {
   const [showMenu, setShowMenu] = useState(false);
@@ -33,26 +40,48 @@ function Navbar({ user, onLogout }) {
         <Link to="/" className="nav-btn" onClick={() => setShowMenu(false)}>
           Home
         </Link>
-        <Link to="/about" className="nav-btn" onClick={() => setShowMenu(false)}>
+        <Link
+          to="/about"
+          className="nav-btn"
+          onClick={() => setShowMenu(false)}
+        >
           About
         </Link>
-        <Link to="/join-us" className="nav-btn" onClick={() => setShowMenu(false)}>
+        <Link
+          to="/join-us"
+          className="nav-btn"
+          onClick={() => setShowMenu(false)}
+        >
           Join Us
         </Link>
-        <Link to="/hire-agent" className="nav-btn" onClick={() => setShowMenu(false)}>
+        <Link
+          to="/hire-agent"
+          className="nav-btn"
+          onClick={() => setShowMenu(false)}
+        >
           Hire an Agent
         </Link>
 
         {user && (
-          <Link to="/feeds" className="nav-btn" onClick={() => setShowMenu(false)}>
+          <Link
+            to="/feeds"
+            className="nav-btn"
+            onClick={() => setShowMenu(false)}
+          >
             My Feeds
           </Link>
         )}
 
         {user ? (
-          <button className="nav-btn" onClick={onLogout}>Logout</button>
+          <button className="nav-btn" onClick={onLogout}>
+            Logout
+          </button>
         ) : (
-          <Link to="/login" className="nav-btn" onClick={() => setShowMenu(false)}>
+          <Link
+            to="/login"
+            className="nav-btn"
+            onClick={() => setShowMenu(false)}
+          >
             Login
           </Link>
         )}
@@ -60,8 +89,6 @@ function Navbar({ user, onLogout }) {
     </nav>
   );
 }
-
-
 
 function AppContent() {
   const [user, setUser] = useState(null);
@@ -76,7 +103,7 @@ function AppContent() {
 
   const handleLogout = async () => {
     await signOut(auth);
-    navigate('/'); // go home after logout
+    navigate("/"); // go home after logout
   };
 
   return (
@@ -91,6 +118,7 @@ function AppContent() {
         <Route path="/join-us-terms" element={<JoinUsTerms />} />
         <Route path="/feeds" element={user ? <Feeds /> : <Login />} />
         <Route path="/login" element={<Login />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
