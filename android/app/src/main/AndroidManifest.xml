@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.shield.intelligence"> <!-- 🔱 Branded Package Name -->
+
+    <!-- 🌐 Permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Add more here as SHIELD modules expand -->
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:label="SHIELD Intelligence"> <!-- 💼 Branded App Name -->
+        android:icon="@mipmap/ic_shield_launcher" <!-- 🎯 Custom Icon -->
+        android:roundIcon="@mipmap/ic_shield_launcher_round"
+        android:theme="@style/SHIELDTheme" <!-- 🎨 Custom SHIELD Theme -->
+        android:supportsRtl="true">
 
+        <!-- 🚀 Main Entry Point -->
         <activity
-            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode|navigation"
             android:name=".MainActivity"
-            android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBarLaunch"
+            android:label="SHIELD Command Console"
+            android:theme="@style/SHIELDTheme.NoActionBar"
             android:launchMode="singleTask"
-            android:exported="true">
+            android:exported="true"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode|navigation">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,18 +30,16 @@
 
         </activity>
 
+        <!-- 🔐 Secure FileProvider -->
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="${applicationId}.fileprovider"
+            android:authorities="com.shield.intelligence.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"></meta-data>
+                android:resource="@xml/file_paths" />
         </provider>
+
     </application>
-
-    <!-- Permissions -->
-
-    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
