@@ -96,7 +96,7 @@ function Home() {
       }}>
         <h2 style={{ color: 'var(--shield-accent)', marginBottom: '1rem' }}>Public Resources</h2>
         <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 1.8, color: '#ccc' }}>
-          <li><a href="https://aidiaryapp.netlify.app" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--shield-accent)' }}>AIDIARY App</a></li>
+          <li><a href="https://aidiary.shieldintelligence.in" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--shield-accent)' }}>AIDIARY</a></li>
           <li><a href="https://shieldintelligence.in" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--shield-accent)' }}>Main Website</a></li>
           <li><a href="https://employees.shieldintelligence.in" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--shield-accent)' }}>Employee Directory</a></li>
           <li><a href="https://download.shieldintelligence.in" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--shield-accent)' }}>Download App (APK)</a></li>
