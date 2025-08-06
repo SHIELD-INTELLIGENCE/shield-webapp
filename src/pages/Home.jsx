@@ -101,6 +101,9 @@ function Home() {
           <li><a href="https://employees.shieldintelligence.in" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--shield-accent)' }}>Employee Directory</a></li>
           <li><a href="https://download.shieldintelligence.in" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--shield-accent)' }}>Download App (APK)</a></li>
           <li><a href="https://wanted.shieldintelligence.in" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--shield-accent)' }}>Wanted List</a></li>
+          <li><a href="https://nv.shieldintelligence.in" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--shield-accent)' }}>NotesVault</a></li>
+          <li><a href="https://bookmarky.shieldintelligence.in" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--shield-accent)' }}>Bookmarky</a></li>
+          <li><a href="https://jyotilite.shieldintelligence.in" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--shield-accent)' }}>Jyotilite</a></li>          
         </ul>
       </section>
 
