@@ -392,3 +392,88 @@ body::before {
   margin-bottom: 0.5rem;
   text-shadow: 0 0 5px rgba(255, 0, 0, 0.2);
 }
+
+/* Public Resources Section */
+.public-resources {
+  width: 100%;
+  padding: 2rem;
+  background: var(--shield-black);
+  color: var(--shield-white);
+  border-top: 2px solid var(--shield-accent);
+  border-bottom: 2px solid var(--shield-accent);
+  box-shadow: 0 -2px 16px var(--shield-glow), 0 2px 16px var(--shield-glow);
+  text-align: center;
+}
+
+.public-resources h2 {
+  color: var(--shield-accent);
+  text-shadow: 0 0 8px var(--shield-glow);
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+}
+
+/* Make the list look like intel cards */
+.public-resources ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  max-width: 900px;
+}
+
+.public-resources li {
+  background: var(--shield-grey);
+  border: 1px solid var(--shield-accent);
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(202, 169, 76, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.public-resources li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 18px var(--shield-glow);
+}
+
+.public-resources a {
+  display: block;
+  padding: 0.8rem 1rem;
+  color: var(--shield-accent);
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.public-resources a:hover {
+  color: #e5c76a;
+  text-shadow: 0 0 6px var(--shield-glow);
+}
+
+
+/* Private Access Section */
+.private-access-section {
+  margin: 3rem auto;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px dashed rgba(252, 211, 77, 0.6); /* SHIELD gold accent dashed */
+  border-radius: 1rem;
+  box-shadow: 0 0 16px rgba(252, 211, 77, 0.3);
+  text-align: center;
+  max-width: 900px;
+}
+
+.private-access-section h2 {
+  color: rgba(252, 211, 77, 1);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 8px var(--shield-glow);
+}
+
+.private-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
