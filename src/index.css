@@ -5,7 +5,7 @@
   --shield-grey: #2a2a2a;
   --shield-accent: #caa94c;
   --shield-glow: rgba(202, 169, 76, 0.35);
-  --shield-font-sans: 'Elixia', Arial, sans-serif;
+  --shield-font-sans: 'Inter', 'Elixia', Arial, sans-serif;
 }
 
 /* Base Styling */
@@ -20,14 +20,32 @@ body {
     var(--shield-grey) 0%,
     var(--shield-black) 100%
   );
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: linear-gradient(135deg,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(32, 32, 32, 0.3) 30%,
+    rgba(202, 169, 76, 0.25) 100%
+  );
+  box-shadow:
+    -80px -80px 160px 0 rgba(0, 0, 0, 0.5),
+    80px 80px 160px 0 rgba(202, 169, 76, 0.3);
+  opacity: 0;
   color: var(--shield-white);
   font-family: var(--shield-font-sans);
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  opacity: 0;
   animation: fadeInBody 0.5s forwards;
 }
+
 
 @keyframes fadeInBody {
   to {
@@ -130,7 +148,11 @@ body {
   min-height: 100vh;
   padding: 2rem;
   text-align: center;
-  background: var(--shield-black);
+    background: var(--shield-black);
+    box-shadow:
+      -20px 0 60px 0 rgba(255,255,255,0.25),   /* left white glow */
+      20px 0 60px 0 rgba(202,169,76,0.35),     /* right golden glow */
+      0 0 40px var(--shield-glow);             /* existing glow */
   display: flex;
   flex-direction: column;
   align-items: center;
