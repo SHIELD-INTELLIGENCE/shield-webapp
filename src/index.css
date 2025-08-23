@@ -151,9 +151,9 @@ body::before {
 
 /* Home Hero */
 .home-hero-bw {
-  width: 100%; /* full width */
+  width: 100%;
   min-height: 100vh;
-  padding: 3rem 2rem; /* more vertical padding for prominence */
+  padding: 3rem 2rem;
   text-align: center;
   background: linear-gradient(
     135deg,
@@ -172,22 +172,20 @@ body::before {
 }
 
 .home-hero-bw {
-  width: 100vw; /* full viewport width */
+  width: 100vw;
   min-height: 100vh;
   padding: 3rem 2rem;
   text-align: center;
   background: linear-gradient(
     135deg,
-    rgba(26,26,26,0.95) 0%,
-    rgba(40,40,40,0.9) 100%
+    rgba(26, 26, 26, 0.95) 0%,
+    rgba(40, 40, 40, 0.9) 100%
   );
-  border-top: 2px solid rgba(202,169,76,0.7);
-  border-bottom: 2px solid rgba(202,169,76,0.7);
-  box-shadow: 0 -2px 20px rgba(202,169,76,0.4),
-              0 2px 20px rgba(202,169,76,0.4),
-              -20px 0 60px 0 rgba(255,255,255,0.25),
-              20px 0 60px 0 rgba(202,169,76,0.35),
-              0 0 40px var(--shield-glow);
+  border-top: 2px solid rgba(202, 169, 76, 0.7);
+  border-bottom: 2px solid rgba(202, 169, 76, 0.7);
+  box-shadow: 0 -2px 20px rgba(202, 169, 76, 0.4),
+    0 2px 20px rgba(202, 169, 76, 0.4), -20px 0 60px 0 rgba(255, 255, 255, 0.25),
+    20px 0 60px 0 rgba(202, 169, 76, 0.35), 0 0 40px var(--shield-glow);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -195,8 +193,8 @@ body::before {
 }
 
 .home-hero-content-bw {
-  width: 90%; /* allow it to stretch more on laptops */
-  max-width: 1200px; /* bigger max width for larger screens */
+  width: 90%;
+  max-width: 1200px;
   padding: 2.5rem;
   background: rgba(42, 42, 42, 0.85);
   border: 2px solid var(--shield-accent);
@@ -231,7 +229,42 @@ body::before {
   color: var(--shield-accent);
   text-shadow: 0 0 12px var(--shield-glow);
 }
+/* Responsive: Home Hero Section */
+@media (max-width: 600px) {
+  .home-hero-bw {
+    padding: 1.2rem 0.5rem;
+    min-height: 90vh;
+    width: 100vw;
+    box-shadow: 0 -2px 10px rgba(202, 169, 76, 0.5),
+      0 2px 10px rgba(202, 169, 76, 0.5),
+      -8px 0 30px 0 rgba(255, 255, 255, 0.35),
+      8px 0 30px 0 rgba(202, 169, 76, 0.45), 0 0 20px var(--shield-glow);
+    border-radius: 0;
+  }
 
+  .home-hero-content-bw {
+    width: 98%;
+    max-width: 99vw;
+    padding: 1rem 0.5rem;
+    border-radius: 1rem;
+    font-size: 1rem;
+  }
+
+  .home-hero-content-bw h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .home-hero-content-bw p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .home-hero-content-bw img {
+    max-width: 80px;
+    margin-bottom: 0.5rem;
+  }
+}
 /* Buttons */
 .bw-btn {
   padding: 0.8rem 1.6rem;
@@ -485,20 +518,20 @@ body::before {
 
 /* Private Access Section */
 .private-access-section {
-  width: 100%; /* full width */
-  padding: 2rem; /* match page-container */
+  width: 100%;
+  padding: 2rem;
   background: linear-gradient(
     145deg,
     rgba(40, 40, 40, 0.95) 0%,
     rgba(20, 20, 20, 0.9) 100%
   );
-  border-top: 2px solid rgba(252, 211, 77, 0.8); /* brighter gold */
+  border-top: 2px solid rgba(252, 211, 77, 0.8);
   border-bottom: 2px solid rgba(252, 211, 77, 0.8);
   border-radius: 1rem;
   box-shadow: 0 -2px 16px rgba(252, 211, 77, 0.35),
     0 2px 16px rgba(252, 211, 77, 0.35);
   text-align: center;
-  margin: 3rem 0; /* top & bottom spacing */
+  margin: 3rem 0;
   backdrop-filter: blur(6px);
   animation: fadeInUp 1s ease-out;
 }
@@ -513,8 +546,8 @@ body::before {
 }
 
 .private-access-section a {
-  display: inline-block; /* optional, looks better for full-width layout */
-  margin: 0.5rem; /* spacing between buttons */
+  display: inline-block;
+  margin: 0.5rem; 
   padding: 1rem 1.6rem;
   background: rgba(252, 211, 77, 0.2);
   border: 1px solid rgba(252, 211, 77, 0.6);
