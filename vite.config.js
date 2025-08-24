@@ -5,6 +5,17 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: 'dist',
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+      format: {
+        comments: false,
+      },
+    },
+    brotliSize: true,
   },
   server: {
     historyApiFallback: true,

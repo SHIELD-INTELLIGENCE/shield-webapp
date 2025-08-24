@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -8,7 +8,6 @@
     "@capacitor/android": "^7.4.2",
     "@capacitor/cli": "^7.4.2",
     "@capacitor/core": "^7.4.2",
-    "android": "^0.0.8",
     "firebase": "^10.x",
     "react": "^18.x",
     "react-dom": "^18.x",
@@ -16,6 +15,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.x",
+    "terser": "^5.43.1",
     "vite": "^4.5.14"
   }
 }

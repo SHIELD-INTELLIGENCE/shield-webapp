@@ -206,6 +206,7 @@ body::before {
 
 .home-hero-content-bw img {
   max-width: 120px;
+  height: auto;
   margin-bottom: 1rem;
   filter: drop-shadow(0 0 10px var(--shield-accent));
 }
@@ -261,8 +262,9 @@ body::before {
   }
 
   .home-hero-content-bw img {
-    max-width: 80px;
-    margin-bottom: 0.5rem;
+  max-width: 80px;
+  height: auto;
+  margin-bottom: 0.5rem;
   }
 }
 /* Buttons */
