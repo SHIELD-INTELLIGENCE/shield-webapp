@@ -70,7 +70,7 @@ function Home() {
         </section>
       )}
 
-      {/* ✅ Show actual tools if logged in */}
+      {/* Show Agent tools if logged in */}
       {user && (
         <section className="private-access-section">
           <h2>Agent-Only Tools</h2>
