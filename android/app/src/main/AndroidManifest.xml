@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.shield.intelligence"> <!-- 🔱 Branded Package Name -->
-
-    <!-- 🌐 Permissions -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- Add more here as SHIELD modules expand -->
 
     <application
         android:allowBackup="true"
-        android:label="SHIELD Intelligence"> <!-- 💼 Branded App Name -->
-        android:icon="@mipmap/ic_shield_launcher" <!-- 🎯 Custom Icon -->
-        android:roundIcon="@mipmap/ic_shield_launcher_round"
-        android:theme="@style/SHIELDTheme" <!-- 🎨 Custom SHIELD Theme -->
+        android:label="SHIELD Intelligence"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:theme="@style/SHIELDTheme"
         android:supportsRtl="true">
-
-        <!-- 🚀 Main Entry Point -->
         <activity
             android:name=".MainActivity"
             android:label="SHIELD Command Console"
@@ -29,8 +25,6 @@
             </intent-filter>
 
         </activity>
-
-        <!-- 🔐 Secure FileProvider -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.shield.intelligence.fileprovider"
