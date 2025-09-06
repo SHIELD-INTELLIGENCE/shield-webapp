@@ -3,26 +3,50 @@ apply plugin: 'com.android.application'
 android {
     namespace "com.shieldintelligence.in"
     compileSdk rootProject.ext.compileSdkVersion
+
     defaultConfig {
         applicationId "com.shieldintelligence.in"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.5"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
         aaptOptions {
-             // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
-             // Default: https://android.googlesource.com/platform/frameworks/base/+/282e181b58cf72b6ca770dc7ca5f91f135444502/tools/aapt/AaptAssets.cpp#61
+            // Ignore unnecessary assets
             ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
-    buildTypes {
+
+    signingConfigs {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // Path to your keystore file (relative to app/ dir)
+            storeFile file("shield-release-key.jks")
+            storePassword System.getenv("SHIELD_KEYSTORE_PASSWORD") ?: project.properties["SHIELD_KEYSTORE_PASSWORD"]
+            keyAlias System.getenv("SHIELD_KEY_ALIAS") ?: project.properties["SHIELD_KEY_ALIAS"]
+            keyPassword System.getenv("SHIELD_KEY_PASSWORD") ?: project.properties["SHIELD_KEY_PASSWORD"]
         }
     }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            // Debug builds stay unsigned, no shrink/minify
+            minifyEnabled false
+        }
+    }
+
+    // Optional: enable modern build features
+    buildFeatures {
+        viewBinding true
+    }
 }
+
 
 repositories {
     flatDir{
