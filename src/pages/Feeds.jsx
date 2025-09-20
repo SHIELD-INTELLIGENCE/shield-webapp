@@ -40,7 +40,13 @@ export default function Feeds() {
     <div className="p-4">
       <h2 className="text-2xl mb-4">Your Feeds</h2>
       {loading ? (
-        <p>Loading feeds...</p>
+        <div className="shield-loading-screen">
+          <div className="shield-loading-title">
+            <span className="desktop-text">Loading</span>
+            <span className="mobile-text">Loading</span>
+          </div>
+          <div className="shield-spinner"></div>
+        </div>
       ) : feeds.length === 0 ? (
         <p>No messages assigned to you.</p>
       ) : (

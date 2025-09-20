@@ -478,8 +478,6 @@ body::before {
   letter-spacing: 1px;
   margin-bottom: 1.5rem;
 }
-
-/* Make the list look like intel cards */
 .public-resources ul {
   list-style: none;
   padding: 0;
@@ -565,4 +563,134 @@ body::before {
   background: rgba(252, 211, 77, 0.35);
   box-shadow: 0 0 28px #fce34d, 0 0 12px rgba(252, 211, 77, 0.5);
   transform: translateY(-3px) scale(1.02);
+}
+/* Headings and Paragraphs */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--shield-accent);
+  text-shadow: 0 0 10px var(--shield-glow);
+  margin-bottom: 1rem;
+}
+p {
+  color: var(--shield-accent);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  font-size: 1.3rem;
+}
+
+/* Loading Screen Styles */
+.shield-loading-screen {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at top, var(--shield-grey) 0%, var(--shield-black) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 3001;
+}
+
+.shield-loading-title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--shield-accent);
+  text-shadow: 0 0 20px var(--shield-glow);
+  margin-bottom: 2rem;
+  letter-spacing: 2px;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.shield-loading-title .mobile-text {
+  display: none;
+}
+
+.shield-loading-title .desktop-text {
+  display: inline;
+}
+
+/* Mobile responsive text layout */
+@media (max-width: 768px) {
+  .shield-loading-title {
+    font-size: 2.5rem;
+    letter-spacing: 1.5px;
+    line-height: 1.3;
+  }
+  
+  .shield-loading-title .desktop-text {
+    display: none;
+  }
+  
+  .shield-loading-title .mobile-text {
+    display: inline;
+  }
+}
+
+@media (max-width: 600px) {
+  .shield-loading-title {
+    font-size: 2rem;
+    letter-spacing: 1px;
+    line-height: 1.4;
+    word-break: break-word;
+    hyphens: auto;
+  }
+}
+
+@media (max-width: 400px) {
+  .shield-loading-title {
+    font-size: 1.8rem;
+    letter-spacing: 0.5px;
+    line-height: 1.5;
+    word-break: break-word;
+    hyphens: auto;
+  }
+}
+
+.shield-spinner {
+  margin-left: 1rem;
+  width: 2.2em;
+  height: 2.2em;
+  border: 0.25em solid var(--shield-accent);
+  border-top: 0.25em solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+}
+
+.shield-spinner-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+
+  /* Fake the light edge created by body padding */
+  background:
+    radial-gradient(circle at top,
+      rgba(42, 42, 42, 0.9) 0%,
+      rgba(26, 26, 26, 0.9) 100%),
+    linear-gradient(0deg, transparent 6px, rgba(255,255,255,0.05) 6px); /* subtle rim */
+  background-clip: content-box, border-box;
+  backdrop-filter: blur(5px);
+
+  padding: 0 6px; /* matches your body padding to create the illusion */
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000; 
+}
+
+.shield-spinner-overlay .shield-spinner {
+  margin: 0;
+  width: 3.5em;
+  height: 3.5em;
+  border: 0.3em solid var(--shield-accent);
+  border-top: 0.3em solid transparent;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

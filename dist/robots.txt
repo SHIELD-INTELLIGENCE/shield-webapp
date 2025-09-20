@@ -1,0 +1,10 @@
+# robots.txt for shield-webapp
+User-agent: *
+Allow: /
+
+# Disallow crawling of sensitive or unnecessary directories
+Disallow: /android/
+Disallow: /test/
+
+# Sitemap (add your sitemap URL if available)
+Sitemap: https://shieldintelligence.in/sitemap.xml

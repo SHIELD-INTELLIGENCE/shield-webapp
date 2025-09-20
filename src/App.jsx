@@ -92,11 +92,13 @@ function Navbar({ user, onLogout }) {
 
 function AppContent() {
   const [user, setUser] = useState(null);
+  const [authLoading, setAuthLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     const unsub = auth.onAuthStateChanged((u) => {
       setUser(u); // track auth status
+      setAuthLoading(false); // auth check complete
     });
     return () => unsub();
   }, []);
@@ -105,6 +107,19 @@ function AppContent() {
     await signOut(auth);
     navigate("/"); // go home after logout
   };
+
+  // Show loading screen while checking authentication
+  if (authLoading) {
+    return (
+      <div className="shield-loading-screen">
+        <div className="shield-loading-title">
+          <span className="desktop-text">Loading</span>
+          <span className="mobile-text">Loading</span>
+        </div>
+        <div className="shield-spinner"></div>
+      </div>
+    );
+  }
 
   return (
     <>
