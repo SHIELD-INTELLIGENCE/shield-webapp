@@ -87,7 +87,7 @@ function Home() {
               href="https://morse.shieldintelligence.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="bw-btn outline"
+              className="bw-btn"
             >
               Morse Encoder Access
             </a>
@@ -184,7 +184,7 @@ function Home() {
       </section>
 
       {/* Contact Section */}
-      <div className="contact-section">
+      <div className="contact-section" id="contact-section">
         <h2>Contact Us</h2>
         <p>Email: shield@shieldintelligence.in</p>
         <p>X: 0_SHIELD_0</p>

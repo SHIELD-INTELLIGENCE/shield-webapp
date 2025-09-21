@@ -309,6 +309,7 @@ body::before {
   border-bottom: 2px solid var(--shield-accent);
   box-shadow: 0 -2px 16px var(--shield-glow), 0 2px 16px var(--shield-glow);
   text-align: center;
+  margin-top: 3rem;
 }
 
 .page-container h1,
@@ -473,8 +474,8 @@ body::before {
 }
 
 .public-resources h2 {
-  color: var(--shield-accent);
-  text-shadow: 0 0 8px var(--shield-glow);
+  color: #fce34d;
+  text-shadow: 0 0 8px rgba(252, 211, 77, 0.6);
   letter-spacing: 1px;
   margin-bottom: 1.5rem;
 }
@@ -490,21 +491,21 @@ body::before {
 
 .public-resources li {
   background: var(--shield-grey);
-  border: 1px solid var(--shield-accent);
+  border: 1px solid rgba(252, 211, 77, 0.6);
   border-radius: 8px;
-  box-shadow: 0 0 12px rgba(202, 169, 76, 0.15);
+  box-shadow: 0 0 12px rgba(252, 211, 77, 0.15);
   transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .public-resources li:hover {
   transform: translateY(-4px);
-  box-shadow: 0 0 18px var(--shield-glow);
+  box-shadow: 0 0 18px rgba(252, 211, 77, 0.35);
 }
 
 .public-resources a {
   display: block;
   padding: 0.8rem 1rem;
-  color: var(--shield-accent);
+  color: #fce34d;
   font-weight: bold;
   letter-spacing: 0.5px;
   text-decoration: none;
@@ -513,7 +514,7 @@ body::before {
 
 .public-resources a:hover {
   color: #e5c76a;
-  text-shadow: 0 0 6px var(--shield-glow);
+  text-shadow: 0 0 6px rgba(252, 211, 77, 0.6);
 }
 
 /* Private Access Section */
@@ -546,7 +547,9 @@ body::before {
 }
 
 .private-access-section a {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 0.5rem; 
   padding: 1rem 1.6rem;
   background: rgba(252, 211, 77, 0.2);
@@ -557,6 +560,9 @@ body::before {
   letter-spacing: 1.5px;
   transition: all 0.3s ease;
   text-decoration: none;
+  width: 280px;
+  height: 60px;
+  text-align: center;
 }
 
 .private-access-section a:hover {
@@ -564,6 +570,14 @@ body::before {
   box-shadow: 0 0 28px #fce34d, 0 0 12px rgba(252, 211, 77, 0.5);
   transform: translateY(-3px) scale(1.02);
 }
+
+.private-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
 /* Headings and Paragraphs */
 h1, h2, h3, h4, h5, h6 {
   color: var(--shield-accent);
@@ -693,4 +707,24 @@ p {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+.about-section {
+  padding: 2rem;
+  max-width: 900px;
+  margin: 2rem auto; /* gives space from top/bottom */
+  background: rgba(20, 20, 20, 0.9); /* dark semi-transparent bg for contrast */
+  border-radius: 12px; /* soft rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* subtle shadow for depth */
+}
+.about-section h1, .about-section h2 {
+  color: var(--shield-accent);
+  text-shadow: 0 0 8px var(--shield-glow);
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+.about-section p {
+  color: #ccc;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  font-size: 1.3rem;
 }
