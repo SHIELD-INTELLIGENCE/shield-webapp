@@ -59,21 +59,13 @@ function About() {
 
       <h2 style={{ color: "var(--shield-accent)", marginTop: "2.5rem", fontSize: "1.5rem" }}>Your Next Step</h2>
       <p style={{ ...paragraphStyle, marginBottom: "2rem" }}>
-        Ready to work with us? Reach out by{" "}
+        Ready to work with us? Reach out by
         <Link 
-          to="/" 
-          onClick={() => {
-            setTimeout(() => {
-              const element = document.getElementById('contact-section');
-              if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-              }
-            }, 100);
-          }}
-          style={{ color: "var(--shield-accent)", textDecoration: "underline" }}
+          to="/#contact-section"
+          style={{ color: "var(--shield-accent)", textDecoration: "underline", marginLeft: 4 }}
         >
-          scrolling down to the contact section on our home page
-        </Link>{" "}
+          visiting the contact section on our home page
+        </Link>
         — our team is always ready to listen.
       </p>
     </div>

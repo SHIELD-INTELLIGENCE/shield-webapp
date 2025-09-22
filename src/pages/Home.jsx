@@ -21,10 +21,7 @@ const staggerContainer = {
   visible: { transition: { staggerChildren: 0.15, delayChildren: 0.2 } }
 };
 
-const sectionFadeIn = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
-};
+// Note: Scroll-triggered animations have been removed.
 
 function Home() {
   const [user, setUser] = useState(null);
@@ -69,12 +66,8 @@ function Home() {
 
       {/* Restricted Tools */}
       {!user && (
-        <motion.section
+        <section
           className="private-access-section"
-          variants={sectionFadeIn}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.2 }}
           style={{
             marginTop: "3rem",
             padding: "2rem",
@@ -96,18 +89,12 @@ function Home() {
           <p style={{ color: "#999", fontSize: "0.9rem", marginTop: "0.5rem" }}>
             Please contact HQ for credentials if you are part of our operations.
           </p>
-        </motion.section>
+        </section>
       )}
 
       {/* Agent Tools */}
       {user && (
-        <motion.section
-          className="private-access-section"
-          variants={sectionFadeIn}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.2 }}
-        >
+        <section className="private-access-section">
           <h2>Agent-Only Tools</h2>
           <div className="private-links">
             <a href="https://sm.shieldintelligence.in" target="_blank" rel="noopener noreferrer" className="bw-btn">
@@ -117,17 +104,11 @@ function Home() {
               Morse Encoder Access
             </a>
           </div>
-        </motion.section>
+        </section>
       )}
 
       {/* Public Resources */}
-      <motion.section
-        className="public-resources"
-        variants={sectionFadeIn}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.2 }}
-      >
+      <section className="public-resources">
         <h2>Public Resources</h2>
         <ul>
           <li><a href="https://aidiary.shieldintelligence.in" target="_blank" rel="noopener noreferrer">AIDIARY</a></li>
@@ -140,26 +121,22 @@ function Home() {
           <li><a href="https://jyotilite.shieldintelligence.in" target="_blank" rel="noopener noreferrer">Jyotilite</a></li>
           <li><a href="https://shield-auth.shieldintelligence.in" target="_blank" rel="noopener noreferrer">SHIELD-Authenticator</a></li>
         </ul>
-      </motion.section>
+      </section>
 
       {/* Contact */}
-      <motion.div
+      <div
         className="contact-section"
         id="contact-section"
-        variants={sectionFadeIn}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.2 }}
       >
         <h2>Contact Us</h2>
         <p>Email: shield@shieldintelligence.in</p>
         <p>X: 0_SHIELD_0</p>
         <p>Instagram: shield_private</p>
         <p>Facebook: SHIELD Intelligence</p>
-      </motion.div>
+      </div>
 
       {/* Footer */}
-      <motion.div
+      <div
         style={{
           borderTop: "1px solid #ccc",
           marginTop: "40px",
@@ -168,17 +145,13 @@ function Home() {
           fontSize: "0.9rem",
           color: "#666",
         }}
-        variants={sectionFadeIn}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.05 }}
       >
         &copy; 2025 SHIELD — All rights reserved.
         <br />
         <Link to="/terms" style={{ color: "#333", textDecoration: "underline", marginTop: "10px", display: "inline-block" }}>
           Terms & Conditions
         </Link>
-      </motion.div>
+      </div>
     </div>
   );
 }
