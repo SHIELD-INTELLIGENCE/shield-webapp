@@ -118,7 +118,16 @@ export default function Feeds() {
             <div key={feed.id} className="feed-card">
               <h3>{feed.title}</h3>
               <p>{feed.body}</p>
-              <small>Status: {feed.status}</small>
+              {(() => {
+                const s = (feed.status || '').toString().toLowerCase();
+                let statusClass = 'feed-status';
+                if (['new', 'pending'].includes(s)) statusClass += ' feed-status--pending';
+                else if (['in-progress', 'progress', 'working'].includes(s)) statusClass += ' feed-status--in-progress';
+                else if (['done', 'completed', 'resolved'].includes(s)) statusClass += ' feed-status--done';
+                else if (['failed', 'error', 'blocked'].includes(s)) statusClass += ' feed-status--failed';
+                else statusClass += ' feed-status--pending';
+                return <div className={statusClass}>Status: {feed.status}</div>;
+              })()}
               {feed.status !== "done" && (
                 <button 
                   className="bw-btn mt-2" 
