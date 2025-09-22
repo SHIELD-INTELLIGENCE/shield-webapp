@@ -13,6 +13,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,22 +22,82 @@ export default function Login() {
     });
   }, [navigate]);
 
+  const validateInputs = () => {
+    if (!email.trim()) {
+      setError("Email is required");
+      return false;
+    }
+    
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError("Please enter a valid email address");
+      return false;
+    }
+    
+    if (!password) {
+      setError("Password is required");
+      return false;
+    }
+    
+    return true;
+  };
+
   const login = async () => {
     setError("");
+    
+    // Validate inputs before attempting login
+    if (!validateInputs()) {
+      return;
+    }
+    
+    setIsLoading(true);
+    
     try {
       await setPersistence(auth, browserLocalPersistence);
       const { user } = await signInWithEmailAndPassword(auth, email, password);
 
-      const userRef = doc(db, "users", user.email);
-      const userSnap = await getDoc(userRef);
+      // Try-catch for Firestore operations
+      try {
+        const userRef = doc(db, "users", user.email);
+        const userSnap = await getDoc(userRef);
 
-      if (!userSnap.exists()) {
-        await setDoc(userRef, { email: user.email });
+        if (!userSnap.exists()) {
+          await setDoc(userRef, { email: user.email });
+        }
+      } catch (firestoreError) {
+        console.error("Firestore error:", firestoreError);
+        // Continue despite Firestore error - user is still logged in
       }
 
       navigate("/");
     } catch (e) {
-      setError("Login failed. Invalid credentials.");
+      console.error("Login error:", e);
+      
+      // Provide more specific error messages based on Firebase error codes
+      const errorCode = e.code;
+      switch (errorCode) {
+        case 'auth/user-not-found':
+        case 'auth/wrong-password':
+          setError("Invalid email or password");
+          break;
+        case 'auth/too-many-requests':
+          setError("Too many failed login attempts. Please try again later");
+          break;
+        case 'auth/user-disabled':
+          setError("This account has been disabled");
+          break;
+        case 'auth/invalid-credential':
+          setError("Invalid login credentials");
+          break;
+        case 'auth/network-request-failed':
+          setError("Network error. Please check your connection");
+          break;
+        default:
+          setError("Login failed. Please try again");
+      }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -50,7 +111,7 @@ export default function Login() {
             e.preventDefault();
             login();
           }}
-          autoComplete="off"
+          autoComplete="on"
           className="shield-login-form"
         >
           <input
@@ -58,9 +119,13 @@ export default function Login() {
             placeholder="Email"
             type="email"
             name="email"
-            autoComplete="off"
+            autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            disabled={isLoading}
+            required
+            aria-label="Email"
+            aria-required="true"
           />
 
           <input
@@ -68,15 +133,44 @@ export default function Login() {
             placeholder="Password"
             type="password"
             name="password"
-            autoComplete="new-password"
+            autoComplete="current-password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            disabled={isLoading}
+            required
+            aria-label="Password"
+            aria-required="true"
+            minLength="6"
           />
 
-          {error && <p className="shield-login-error">{error}</p>}
+          {error && <p className="shield-login-error" role="alert">{error}</p>}
 
-          <button type="submit" className="bw-btn">
-            Login
+          <button 
+            type="submit" 
+            className="bw-btn"
+            disabled={isLoading}
+            style={{
+              opacity: isLoading ? 0.7 : 1,
+              cursor: isLoading ? 'not-allowed' : 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '0.5rem'
+            }}
+          >
+            {isLoading && (
+              <div 
+                className="shield-spinner" 
+                style={{
+                  width: '1em',
+                  height: '1em',
+                  border: '0.15em solid var(--shield-black)',
+                  borderTop: '0.15em solid transparent',
+                  margin: 0
+                }}
+              />
+            )}
+            {isLoading ? 'Authenticating...' : 'Login'}
           </button>
         </form>
       </div>

@@ -1,8 +1,31 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
+
+// Simplified animation variants
+const fadeInUp = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.4, ease: "easeOut" }
+};
+
+const staggerContainer = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+};
+
+const scaleIn = {
+  initial: { opacity: 0, scale: 0.95 },
+  animate: { opacity: 1, scale: 1 },
+  transition: { duration: 0.3, ease: "easeOut" }
+};
 
 function Home() {
   const [user, setUser] = useState(null);
@@ -17,26 +40,36 @@ function Home() {
 
   return (
     <div className="home-hero-bw">
-      <div className="home-hero-content-bw">
-        <div className="logo-container">
+      <motion.div 
+        className="home-hero-content-bw"
+        variants={staggerContainer}
+        initial="initial"
+        animate="animate"
+      >
+        <motion.div className="logo-container" {...scaleIn}>
           <img src={logo} alt="SHIELD Logo" className="logo" />
-        </div>
-        <h1>
+        </motion.div>
+        
+        <motion.h1 {...fadeInUp}>
           WELCOME TO <span className="bw-highlight">SHIELD</span>
-        </h1>
-        <p>Your premier private intelligence & security organization</p>
-        <div className="home-buttons">
+        </motion.h1>
+        
+        <motion.p {...fadeInUp}>
+          Your premier private intelligence & security organization
+        </motion.p>
+        
+        <motion.div className="home-buttons" {...fadeInUp}>
           <Link to="/hire-agent" className="bw-btn">
             Hire an Agent
           </Link>
           <Link to="/join-us" className="bw-btn outline">
             Join Us
           </Link>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {!user && (
-        <section
+        <motion.section
           className="private-access-section"
           style={{
             marginTop: "3rem",
@@ -48,6 +81,10 @@ function Home() {
             textAlign: "center",
             maxWidth: "900px",
           }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          viewport={{ amount: 0.2 }}
         >
           <h2
             style={{
@@ -67,12 +104,18 @@ function Home() {
           <p style={{ color: "#999", fontSize: "0.9rem", marginTop: "0.5rem" }}>
             Please contact HQ for credentials if you are part of our operations.
           </p>
-        </section>
+        </motion.section>
       )}
 
       {/* Show Agent tools if logged in */}
       {user && (
-        <section className="private-access-section">
+        <motion.section 
+          className="private-access-section"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          viewport={{ amount: 0.2 }}
+        >
           <h2>Agent-Only Tools</h2>
           <div className="private-links">
             <a
@@ -92,11 +135,17 @@ function Home() {
               Morse Encoder Access
             </a>
           </div>
-        </section>
+        </motion.section>
       )}
 
       {/* Public Resources */}
-      <section className="public-resources">
+      <motion.section 
+        className="public-resources"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ amount: 0.2 }}
+      >
         <h2>Public Resources</h2>
         <ul>
           <li>
@@ -181,19 +230,26 @@ function Home() {
             </a>
           </li>
         </ul>
-      </section>
+      </motion.section>
 
       {/* Contact Section */}
-      <div className="contact-section" id="contact-section">
+      <motion.div 
+        className="contact-section" 
+        id="contact-section"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ amount: 0.2 }}
+      >
         <h2>Contact Us</h2>
         <p>Email: shield@shieldintelligence.in</p>
         <p>X: 0_SHIELD_0</p>
         <p>Instagram: shield_private</p>
         <p>Facebook: SHIELD Intelligence</p>
-      </div>
+      </motion.div>
 
       {/* Footer */}
-      <div
+      <motion.div
         style={{
           borderTop: "1px solid #ccc",
           marginTop: "40px",
@@ -202,6 +258,10 @@ function Home() {
           fontSize: "0.9rem",
           color: "#666",
         }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ amount: 0.3 }}
       >
         &copy; 2025 SHIELD — All rights reserved.
         <br />
@@ -216,7 +276,7 @@ function Home() {
         >
           Terms & Conditions
         </Link>
-      </div>
+      </motion.div>
     </div>
   );
 }
