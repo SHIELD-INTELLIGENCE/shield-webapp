@@ -59,7 +59,7 @@ Internal Use Only — External contributions are not accepted unless a signed SH
 
 ## Contact
 
-- Legal and Contributor Agreements: legal@shieldintelligence.in
-- Security: security@shieldintelligence.in
+- General and contributor agreements: shield@shieldintelligence.in
+- Alternate/general queries: queriesshield@gmail.com
 
 © 2025 SHIELD Intelligence · All rights reserved.

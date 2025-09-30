@@ -72,5 +72,7 @@ See also:
 
 ## Contact
 
-For inquiries about commercial licensing or authorized external use:
-**Email:** [legal@shieldintelligence.in](mailto:legal@shieldintelligence.in)
+For inquiries about commercial licensing, authorized external use, or general questions:
+
+- [shield@shieldintelligence.in](mailto:shield@shieldintelligence.in)
+- [queriesshield@gmail.com](mailto:queriesshield@gmail.com)

@@ -8,8 +8,8 @@ Internal Use Only — Do not distribute externally.
 
 If you believe you’ve found a security issue in this repository or any SHIELD Intelligence system:
 
-- Email: security@shieldintelligence.in
-- CC (if legal/contractual matters apply): legal@shieldintelligence.in
+- Email: shield@shieldintelligence.in
+- Alternate: queriesshield@gmail.com
 - Include as much detail as possible: affected component, version/commit, steps to reproduce, impact, and any logs or PoC.
 - Do not publicly disclose or share details outside approved SHIELD channels.
 
