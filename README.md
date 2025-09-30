@@ -64,6 +64,10 @@ If you are an internal collaborator:
 2. All changes are covered under the internal-use-only license.
 3. Submit pull requests for review by SHIELD Intelligence core maintainers.
 
+See also:
+- CONTRIBUTING.md — Internal contribution workflow and requirements
+- SECURITY.md — Reporting vulnerabilities and testing guidelines (internal only)
+
 ---
 
 ## Contact
