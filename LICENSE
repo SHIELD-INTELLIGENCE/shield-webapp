@@ -1,0 +1,79 @@
+SHIELD INTELLIGENCE INTERNAL-USE MPL 2.0
+========================================
+
+Copyright (c) 2025 SHIELD Intelligence
+All rights reserved.
+
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0 (MPL 2.0). If a copy of the MPL was not distributed
+with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+************************************************************************
+*                                                                      *
+*  INTERNAL USE ONLY:                                                  *
+*                                                                      *
+*  The public and any third party are granted permission to use the    *
+*  Covered Software solely for internal purposes within their own     *
+*  organization. Any distribution, sublicensing, public posting,      *
+*  resale, or sharing of the Covered Software, in whole or in part,   *
+*  with any external entity is strictly prohibited without prior      *
+*  written permission from SHIELD Intelligence.                       *
+*                                                                      *
+************************************************************************
+
+1. Definitions
+--------------
+[Use MPL 2.0 Sections 1.1 – 1.14 as-is, but reference SHIELD Intelligence as the “Initial Contributor”]
+
+2. License Grants and Conditions
+--------------------------------
+[Sections 2.1 – 2.7 from MPL 2.0 apply, with the added internal-use-only restriction from above overriding any default redistribution permissions]
+
+3. Responsibilities
+-------------------
+3.1. Distribution of Source Form
+    You may use the Covered Software internally only. External distribution, sharing, or posting of the Source Code Form is prohibited unless explicitly approved in writing by SHIELD Intelligence.
+
+3.2. Distribution of Executable Form
+    You may run and deploy Executable Form internally, but may not distribute it externally, sublicense, or post publicly without prior written permission from SHIELD Intelligence.
+
+3.3 – 3.5 [Apply MPL 2.0, adjusted to internal-use-only as above]
+
+4. Inability to Comply Due to Statute or Regulation
+---------------------------------------------------
+[Same as MPL 2.0]
+
+5. Termination
+--------------
+5.1 – 5.3 [Same as MPL 2.0, plus automatic termination for any breach of the internal-use-only restriction]
+
+6. Disclaimer of Warranty
+------------------------
+[Same as MPL 2.0]
+
+7. Limitation of Liability
+--------------------------
+[Same as MPL 2.0]
+
+8. Litigation
+-------------
+All litigation relating to this License must be brought only in the courts of a jurisdiction where SHIELD Intelligence maintains its principal place of business (Dubai, UAE, or India). Applicable laws of that jurisdiction govern, without reference to conflict-of-law provisions.
+
+9. Miscellaneous
+----------------
+[Same as MPL 2.0, with SHIELD Intelligence as the Initial Contributor]
+
+10. Versions of the License
+---------------------------
+[Same as MPL 2.0]
+
+Exhibit A – Source Code Form License Notice
+-------------------------------------------
+  This Source Code Form is subject to the terms of the SHIELD Intelligence Internal-Use MPL 2.0.
+  If a copy of this License was not distributed with this file, you can obtain one at https://shieldintelligence.in/license.
+
+Exhibit B – "Incompatible With Secondary Licenses" Notice
+---------------------------------------------------------
+  This Source Code Form is "Incompatible With Secondary Licenses" as defined by SHIELD Intelligence Internal-Use MPL 2.0.
+
+SPDX-License-Identifier: SHIELD-MPL-2.0-INTERNAL
