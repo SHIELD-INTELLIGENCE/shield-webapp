@@ -1,141 +1,72 @@
 
-# SHIELD WebApp
+# SHIELD Intelligence — Official Source Code
 
-A **multi-platform intelligence hub** for SHIELD — built with **React + Vite**, deployed globally via **Netlify**, and combat-ready on Android via **Capacitor**.  
-Runs seamlessly as a **PWA** or native Android app, with **Firebase** as the secure backend.
-
----
-
-## Core Features
-
-- **Multi-Platform Deployment** — Web, PWA, and Android APK from one secure codebase.
-- **Blazing Speed** — React + Vite ensures instant load times and smooth ops.
-- **Firebase-Powered** — Authentication, database, and mission data handling.
-- **PWA Capabilities** — Installable on devices for offline-ready access.
-- **CI/CD with Netlify** — Instant redeploys when mission code changes.
-- **Android Packaging via Capacitor** — Native app experience for operatives in the field.
+Copyright (c) 2025 SHIELD Intelligence
+All rights reserved.
 
 ---
 
-## Tech Stack
+## Overview
 
-- **Frontend**: [React](https://react.dev/) + [Vite](https://vitejs.dev/)
-- **Mobile Bridge**: [Capacitor](https://capacitorjs.com/)
-- **Backend/Cloud**: [Firebase](https://firebase.google.com/)
-- **Deployment**: [Netlify](https://www.netlify.com/)
-- **Language**: JavaScript (ES6+)
+This repository contains the official source code for SHIELD Intelligence (`shieldintelligence.in`).  
+It is designed to provide advanced intelligence, security, and operational functionalities as part of the SHIELD platform.
 
 ---
 
-## Mission Files (Folder Structure)
+## Internal Use Only
 
-```
-root/
-├── android/                # Android native project (Capacitor)
-├── public/                 # Static assets, PWA manifest, icons
-├── src/                    # Core React components & mission pages
-│   ├── pages/               # Page-level mission screens
-│   ├── App.jsx              # Central control interface
-│   ├── main.jsx             # Entry point for deployment
-│   ├── firebase.js          # Firebase config (using env variables)
-│   └── index.css            # Global styles
-├── .env.example            # Template for environment variables
-├── .env.local              # Local environment variables (gitignored)
-├── capacitor.config.json    # Capacitor mission settings
-├── netlify.toml             # Netlify deployment directives
-├── package.json             # Dependencies & scripts
-└── vite.config.js           # Vite configuration
-```
+This software is licensed under the SHIELD Intelligence Internal-Use MPL 2.0.  
+
+**Rules for usage:**
+
+1. You may use the software internally within your organization or private systems.  
+2. You may not distribute, sublicense, post publicly, sell, or share the software externally without prior written permission from SHIELD Intelligence.  
+3. All modifications remain subject to the same internal-use-only rules unless otherwise authorized in writing.  
+4. Trademarks, logos, and branding (SHIELD, HYDRA) remain sole property of SHIELD Intelligence and may not be used without explicit permission.  
+
+For the full license, see the [`LICENSE`](./LICENSE) file.
 
 ---
 
-## Deployment & Setup
+## Installation & Usage
 
-### 1️. Clone Repository
+> ⚠️ Internal use only. External distribution is prohibited.  
+
+1. Clone the repository:  
 ```bash
-git clone https://github.com/reyanshrajmishra/shield-webapp.git
-cd shield-webapp
+git clone https://shieldintelligence.in/repo.git
 ```
 
-### 2️. Set Up Environment Variables
-
-1. Copy the example environment file to create your local version:
-```bash
-cp .env.example .env.local
-```
-
-2. Edit `.env.local` with your Firebase credentials:
-```
-VITE_FIREBASE_API_KEY=your-api-key
-VITE_FIREBASE_AUTH_DOMAIN=your-auth-domain
-VITE_FIREBASE_PROJECT_ID=your-project-id
-VITE_FIREBASE_STORAGE_BUCKET=your-storage-bucket
-VITE_FIREBASE_MESSAGING_SENDER_ID=your-sender-id
-VITE_FIREBASE_APP_ID=your-app-id
-```
-
-> **SECURITY NOTE**: Never commit your `.env.local` file to version control. It is already added to `.gitignore`.
-
-### 3️. Install Dependencies
+2. Install dependencies:
 
 ```bash
+# Example
 npm install
 ```
 
-### 4️. Run Locally (Web)
+3. Run the software internally:
 
 ```bash
-npm run dev
+npm start
 ```
 
-Access HQ: `http://localhost:5173/`
+> Modify configurations only for internal deployments. Public sharing is prohibited.
 
 ---
 
-## Android Build Procedure
+## Contributing
 
-```bash
-npm run build
-npx cap sync android
-npx cap open android
-```
+> External contributions are not accepted unless a signed SHIELD Contributor Agreement is on file.
 
-Compile & launch in **Android Studio** for field use.
+If you are an internal collaborator:
 
----
-
-## Netlify Deployment
-
-### Setting Up Environment Variables in Netlify
-
-1. Go to your Netlify dashboard and select your site
-2. Navigate to **Site settings** > **Environment variables**
-3. Add the following environment variables:
-   - `VITE_FIREBASE_API_KEY`
-   - `VITE_FIREBASE_AUTH_DOMAIN`
-   - `VITE_FIREBASE_PROJECT_ID`
-   - `VITE_FIREBASE_STORAGE_BUCKET`
-   - `VITE_FIREBASE_MESSAGING_SENDER_ID`
-   - `VITE_FIREBASE_APP_ID`
-
-### Deployment
-
-Push updates to `main` branch for auto-deployment.
-Manual deploy:
-
-```bash
-npm run build
-```
-
-Upload `dist/` to Netlify dashboard.
+1. Make changes in a branch with proper headers indicating your modifications.
+2. All changes are covered under the internal-use-only license.
+3. Submit pull requests for review by SHIELD Intelligence core maintainers.
 
 ---
 
-## License
+## Contact
 
-[MIT](LICENSE) — Operate with integrity.
-
----
-**SHIELD** *Securing Towmorrow With Staregic Intelligence*
-
----
+For inquiries about commercial licensing or authorized external use:
+**Email:** [legal@shieldintelligence.in](mailto:legal@shieldintelligence.in)
