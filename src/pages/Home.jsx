@@ -103,6 +103,12 @@ function Home() {
             <a href="https://morse.shieldintelligence.in" target="_blank" rel="noopener noreferrer" className="bw-btn">
               Morse Encoder Access
             </a>
+            <a href="https://employees.shieldintelligence.in" target="_blank" rel="noopener noreferrer" className="bw-btn">
+              Employee Directory
+            </a>
+            <a href="https://wanted.shieldintelligence.in" target="_blank" rel="noopener noreferrer" className="bw-btn">
+              Wanted List
+            </a>
           </div>
         </section>
       )}
@@ -113,9 +119,7 @@ function Home() {
         <ul>
           <li><a href="https://aidiary.shieldintelligence.in" target="_blank" rel="noopener noreferrer">AIDIARY</a></li>
           <li><a href="https://shieldintelligence.in" target="_blank" rel="noopener noreferrer">Main Website</a></li>
-          <li><a href="https://employees.shieldintelligence.in" target="_blank" rel="noopener noreferrer">Employee Directory</a></li>
           <li><a href="https://download.shieldintelligence.in" target="_blank" rel="noopener noreferrer">Download App (APK)</a></li>
-          <li><a href="https://wanted.shieldintelligence.in" target="_blank" rel="noopener noreferrer">Wanted List</a></li>
           <li><a href="https://nv.shieldintelligence.in" target="_blank" rel="noopener noreferrer">NotesVault</a></li>
           <li><a href="https://bookmarky.shieldintelligence.in" target="_blank" rel="noopener noreferrer">Bookmarky</a></li>
           <li><a href="https://jyotilite.shieldintelligence.in" target="_blank" rel="noopener noreferrer">Jyotilite</a></li>
