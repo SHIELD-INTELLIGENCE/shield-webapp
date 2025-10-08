@@ -72,13 +72,15 @@ function Navbar({ user, onLogout }) {
 
   return (
     <nav className="navbar">
-      <motion.div 
-        className="logo"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        SHIELD
-      </motion.div>
+      <Link to="/" style={{ textDecoration: 'none' }}>
+        <motion.div 
+          className="logo"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          SHIELD
+        </motion.div>
+      </Link>
 
       {/* Hamburger Button */}
       <motion.button

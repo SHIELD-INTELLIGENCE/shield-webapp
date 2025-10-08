@@ -83,16 +83,13 @@ function Home() {
             Restricted Tools
           </h2>
           <p style={{ color: "#ccc", fontSize: "1rem", marginTop: "0.5rem" }}>
-            Some of our most advanced resources — including encrypted communication, agent-only portals, and our{" "}
-            <span style={{ color: "#fcd34d" }}>morse & encoder tools</span> — are secured and accessible only to authorized SHIELD personnel.
+            Access to advanced SHIELD resources is strictly limited to authorized personnel. Secure portals, internal communication systems, and operational tools are available only to verified agents.
           </p>
           <p style={{ color: "#999", fontSize: "0.9rem", marginTop: "0.5rem" }}>
-            Please contact HQ for credentials if you are part of our operations.
+            If you are a member of our operations team and require access, please contact HQ for credentials.
           </p>
         </section>
       )}
-
-      {/* Agent Tools */}
       {user && (
         <section className="private-access-section">
           <h2>Agent-Only Tools</h2>
