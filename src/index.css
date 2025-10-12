@@ -87,7 +87,6 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  backdrop-filter: blur(10px);
 }
 
 .logo {
@@ -97,7 +96,6 @@ body::before {
   text-transform: uppercase;
   letter-spacing: 1px;
   cursor: pointer;
-  user-select: none;
 }
 
 .hamburger {
@@ -129,7 +127,6 @@ body::before {
   flex-direction: column;
   gap: 0.5rem;
   display: none;
-  backdrop-filter: blur(10px);
 }
 
 .nav-links.show {
@@ -233,7 +230,6 @@ body::before {
   border: 2px solid var(--shield-accent);
   border-radius: 1.5rem;
   box-shadow: 0 0 40px var(--shield-glow);
-  backdrop-filter: blur(10px);
   margin: 0 auto;
 }
 
@@ -295,9 +291,9 @@ body::before {
   }
 
   .home-hero-content-bw img {
-  max-width: 80px;
-  height: auto;
-  margin-bottom: 0.5rem;
+    max-width: 80px;
+    height: auto;
+    margin-bottom: 0.5rem;
   }
 }
 /* Buttons */
@@ -434,7 +430,8 @@ body::before {
   letter-spacing: 0.3px;
 }
 
-.feed-status--new, .feed-status--pending {
+.feed-status--new,
+.feed-status--pending {
   color: #f59e0b; /* amber-500 */
   text-shadow: 0 0 6px rgba(245, 158, 11, 0.25);
 }
@@ -449,7 +446,9 @@ body::before {
   text-shadow: 0 0 6px rgba(52, 211, 153, 0.25);
 }
 
-.feed-status--failed, .feed-status--error, .feed-status--blocked {
+.feed-status--failed,
+.feed-status--error,
+.feed-status--blocked {
   color: #fb7185; /* rose-400 */
   text-shadow: 0 0 6px rgba(251, 113, 133, 0.25);
 }
@@ -619,7 +618,6 @@ body::before {
     0 2px 16px rgba(252, 211, 77, 0.35);
   text-align: center;
   margin: 3rem 0;
-  backdrop-filter: blur(6px);
   animation: fadeInUp 1s ease-out;
 }
 
@@ -636,7 +634,7 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0.5rem; 
+  margin: 0.5rem;
   padding: 1rem 1.6rem;
   background: rgba(252, 211, 77, 0.2);
   border: 1px solid rgba(252, 211, 77, 0.6);
@@ -665,7 +663,12 @@ body::before {
 }
 
 /* Headings and Paragraphs */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--shield-accent);
   text-shadow: 0 0 10px var(--shield-glow);
   margin-bottom: 1rem;
@@ -683,7 +686,11 @@ p {
   inset: 0;
   width: 100vw;
   height: 100vh;
-  background: radial-gradient(circle at top, var(--shield-grey) 0%, var(--shield-black) 100%);
+  background: radial-gradient(
+    circle at top,
+    var(--shield-grey) 0%,
+    var(--shield-black) 100%
+  );
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -717,11 +724,11 @@ p {
     letter-spacing: 1.5px;
     line-height: 1.3;
   }
-  
+
   .shield-loading-title .desktop-text {
     display: none;
   }
-  
+
   .shield-loading-title .mobile-text {
     display: inline;
   }
@@ -765,21 +772,20 @@ p {
   height: 100vh;
 
   /* Fake the light edge created by body padding */
-  background:
-    radial-gradient(circle at top,
+  background: radial-gradient(
+      circle at top,
       rgba(42, 42, 42, 0.9) 0%,
-      rgba(26, 26, 26, 0.9) 100%),
-    linear-gradient(0deg, transparent 6px, rgba(255,255,255,0.05) 6px); /* subtle rim */
+      rgba(26, 26, 26, 0.9) 100%
+    ),
+    linear-gradient(0deg, transparent 6px, rgba(255, 255, 255, 0.05) 6px); /* subtle rim */
   background-clip: content-box, border-box;
-  backdrop-filter: blur(5px);
-
   padding: 0 6px; /* matches your body padding to create the illusion */
   box-sizing: border-box;
 
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 3000; 
+  z-index: 3000;
 }
 
 .shield-spinner-overlay .shield-spinner {
@@ -791,8 +797,12 @@ p {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Logout Screen Styles - Different from Loading */
@@ -835,11 +845,11 @@ p {
     letter-spacing: 1.5px;
     line-height: 1.3;
   }
-  
+
   .shield-logout-title .desktop-text {
     display: none;
   }
-  
+
   .shield-logout-title .mobile-text {
     display: inline;
   }
@@ -884,7 +894,8 @@ p {
   border-radius: 12px; /* soft rounded corners */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* subtle shadow for depth */
 }
-.about-section h1, .about-section h2 {
+.about-section h1,
+.about-section h2 {
   color: var(--shield-accent);
   text-shadow: 0 0 8px var(--shield-glow);
   letter-spacing: 1px;
