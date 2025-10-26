@@ -2,7 +2,8 @@ import React from 'react';
 
 function JoinUsTerms() {
   return (
-    <div style={{ maxWidth: '800px', margin: '40px auto', padding: '0 20px', fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif", lineHeight: 1.6, color: '#333', background: '#f5f5f5', borderRadius: '8px' }}>
+    <div className="joinus-terms" style={{ maxWidth: '800px', margin: '40px auto', padding: '0 20px', fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif", lineHeight: 1.6, color: '#333', background: '#f5f5f5', borderRadius: '8px' }}>
+      <style>{`.joinus-terms p { color: #000 !important; }`}</style>
       <h1>Terms & Conditions for Joining SHIELD</h1>
 
       <h2>1. Eligibility</h2>

@@ -3,7 +3,7 @@ import React from 'react';
 
 const Terms = () => {
   return (
-    <div style={{
+    <div className="terms-page" style={{
       fontFamily: "'Segoe UI', sans-serif",
       maxWidth: "800px",
       margin: "0 auto",
@@ -12,6 +12,7 @@ const Terms = () => {
       background: "#f5f5f5",
       color: "#333"
     }}>
+      <style>{`.terms-page p { color: #000 !important; }`}</style>
       <h1>Terms and Conditions</h1>
       {/* Removed Effective Date if you want */}
       <p><strong>Effective Date:</strong> May 30, 2025</p>
