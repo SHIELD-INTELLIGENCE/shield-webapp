@@ -133,6 +133,7 @@ function Home() {
         <p>X: 0_SHIELD_0</p>
         <p>Instagram: shield_private</p>
         <p>Facebook: SHIELD Intelligence</p>
+        <p>Discord: shield_intelligence</p>
       </div>
 
       {/* Footer */}
