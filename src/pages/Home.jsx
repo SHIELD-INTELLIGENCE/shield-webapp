@@ -25,7 +25,6 @@ const staggerContainer = {
 
 function Home() {
   const [user, setUser] = useState(null);
-  const [showNameNotice, setShowNameNotice] = useState(true);
   const controls = useAnimation(); // Hero animation controller
 
   useEffect(() => {
@@ -36,50 +35,6 @@ function Home() {
 
   return (
     <div className="home-hero-bw">
-      {/* Prominent name display for Dr. Rakshit Tandon (temporary) */}
-      {showNameNotice && (
-        <div
-          style={{
-            background: "#0f172a",
-            color: "#fff",
-            padding: "0.9rem 1rem",
-            borderRadius: "8px",
-            margin: "1rem auto",
-            maxWidth: "980px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            boxShadow: "0 6px 18px rgba(2,6,23,0.35)",
-          }}
-          role="status"
-          aria-live="polite"
-        >
-          <div>
-            <div style={{ fontSize: "1.15rem", fontWeight: 800 }}>To be approved by Dr. Rakshit Tandon only.</div>
-            <div style={{ fontSize: "0.95rem", color: "#cbd5e1", marginTop: "0.15rem" }}>
-              
-            </div>
-          </div>
-
-          <div>
-            <button
-              onClick={() => setShowNameNotice(false)}
-              style={{
-                background: "transparent",
-                border: "1px solid rgba(255,255,255,0.12)",
-                color: "#fff",
-                padding: "6px 10px",
-                borderRadius: "6px",
-                cursor: "pointer",
-                fontWeight: 700,
-              }}
-              aria-label="Hide name notice"
-            >
-              Hide
-            </button>
-          </div>
-        </div>
-      )}
       {/* Hero Section */}
       <motion.div
         className="home-hero-content-bw"
