@@ -1,20 +1,45 @@
 // src/pages/Terms.jsx
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const Terms = () => {
+  // CRITICAL SEO LOGIC: Injecting the noindex tag into the <head>
+  useEffect(() => {
+    // 1. Create the <meta name="robots" content="noindex, follow"> tag
+    const metaTag = document.createElement('meta');
+    metaTag.setAttribute('name', 'robots');
+    metaTag.setAttribute('content', 'noindex, follow');
+    
+    // We assign an ID so we can easily find and remove it later
+    metaTag.setAttribute('id', 'noindex-terms-tag'); 
+
+    // 2. Insert the tag into the document <head>
+    document.head.appendChild(metaTag);
+
+    // 3. Cleanup: Remove the tag when the component unmounts (e.g., when navigating away)
+    return () => {
+      const existingTag = document.getElementById('noindex-terms-tag');
+      if (existingTag) {
+        document.head.removeChild(existingTag);
+      }
+    };
+  }, []); // The empty array ensures this runs only once when the component mounts
+
   return (
-    <div className="terms-page" style={{
-      fontFamily: "'Segoe UI', sans-serif",
-      maxWidth: "800px",
-      margin: "0 auto",
-      padding: "40px 20px",
-      lineHeight: "1.6",
-      background: "#f5f5f5",
-      color: "#333"
-    }}>
+    <div 
+      className="terms-page" 
+      style={{
+        fontFamily: "'Segoe UI', sans-serif",
+        maxWidth: "800px",
+        margin: "0 auto",
+        padding: "40px 20px",
+        lineHeight: "1.6",
+        background: "#f5f5f5",
+        color: "#333"
+      }}
+    >
       <style>{`.terms-page p { color: #000 !important; }`}</style>
+      
       <h1>Terms and Conditions</h1>
-      {/* Removed Effective Date if you want */}
       <p><strong>Effective Date:</strong> May 30, 2025</p>
 
       <h2>1. Introduction</h2>
@@ -23,6 +48,8 @@ const Terms = () => {
       <h2>2. Voluntary Participation</h2>
       <p>By choosing to submit a case, request assistance, or communicate with SHIELD, you agree that your participation is voluntary and at your own discretion. You are not obligated to accept SHIELD’s recommendations or actions.</p>
 
+      {/* ... (Sections 3 through 13 remain the same) ... */}
+      
       <h2>3. No Legal Liability</h2>
       <p>SHIELD and its members are not legally liable for any outcomes or consequences of the advice or support provided. We do not claim to offer professional legal, psychological, or emergency services. We are simply student volunteers aiming to help within our capacity.</p>
 
@@ -78,3 +105,4 @@ const Terms = () => {
 };
 
 export default Terms;
+
