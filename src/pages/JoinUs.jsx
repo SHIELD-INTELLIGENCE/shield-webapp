@@ -81,6 +81,48 @@ function JoinUs() {
       
       <h1>Join SHIELD</h1>
       
+      <div style={{
+        padding: "1.5rem",
+        backgroundColor: "rgba(252, 211, 77, 0.1)",
+        border: "1px solid rgba(252, 211, 77, 0.3)",
+        borderRadius: "0.5rem",
+        maxWidth: "800px",
+        margin: "0 auto 2rem auto"
+      }}>
+        <h2 style={{ color: "rgba(252, 211, 77, 1)", marginTop: 0, fontSize: "1.5rem" }}>Why Join SHIELD?</h2>
+        <p style={{ color: "#ccc", lineHeight: "1.8", fontSize: "1.05rem" }}>
+          Become part of an elite organization that combines intelligence operations with cutting-edge technology. 
+          At SHIELD, you'll work alongside dedicated professionals who value integrity, innovation, and excellence.
+        </p>
+        
+        <h3 style={{ color: "rgba(252, 211, 77, 0.9)", marginTop: "1.5rem", fontSize: "1.2rem" }}>Opportunities at SHIELD:</h3>
+        <ul style={{ color: "#ccc", lineHeight: "1.8", fontSize: "1.05rem" }}>
+          <li><strong>Intelligence Operations:</strong> Work on investigations, surveillance, and information gathering missions</li>
+          <li><strong>Software Development:</strong> Build innovative applications, websites, and digital tools that empower users worldwide</li>
+          <li><strong>Security & Protection:</strong> Provide high-level security services and strategic planning</li>
+          <li><strong>Research & Development:</strong> Contribute to new technologies and methodologies</li>
+        </ul>
+        
+        <p style={{ color: "#ccc", lineHeight: "1.8", fontSize: "1.05rem", marginTop: "1rem" }}>
+          Whether you're skilled in intelligence work, software engineering, security operations, or strategic analysis, 
+          SHIELD offers a unique environment where your talents will be valued and your contributions will make a real difference. 
+          We're building the future of private intelligence and technology solutions — and we want you to be part of it.
+        </p>
+        
+        <div style={{ 
+          marginTop: "1.5rem", 
+          padding: "1rem", 
+          backgroundColor: "rgba(0,0,0,0.3)", 
+          borderLeft: "3px solid rgba(252, 211, 77, 0.8)",
+          borderRadius: "0.25rem"
+        }}>
+          <p style={{ color: "#ccc", margin: 0, fontSize: "1rem" }}>
+            <strong style={{ color: "rgba(252, 211, 77, 1)" }}>What We Look For:</strong> Dedication, discretion, technical excellence, 
+            strategic thinking, and a commitment to our core values of integrity, confidentiality, excellence, vigilance, and innovation.
+          </p>
+        </div>
+      </div>
+      
       <iframe 
         key={iframeKey}
         src="https://docs.google.com/forms/d/e/1FAIpQLSe_t5fBMb7zQD24vRK0hFGqpsVxjf_tsHGH9_tg39ay2mOiRg/viewform?embedded=true" 
@@ -98,7 +140,7 @@ function JoinUs() {
         Loading…
       </iframe>
 
-      <p style={{ marginTop: '20px', fontSize: '14px' }}>
+      <p style={{ marginTop: '20px', fontSize: '14px', textAlign: 'center', color: '#caa94c' }}>
         Please read our <Link to="/join-us-terms">Terms & Conditions for Joining SHIELD</Link> before applying.
       </p>
     </div>

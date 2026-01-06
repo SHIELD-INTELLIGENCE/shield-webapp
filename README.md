@@ -11,7 +11,8 @@ All rights reserved.
 This repository contains the official source code for SHIELD Intelligence (`shieldintelligence.in`).  
 It is designed to provide advanced intelligence, security, and operational functionalities as part of the SHIELD platform.
 
-## Note: The Android app releases are in the https://www.github.com/SHIELD-INTELLIGENCE/APPARCHIVE
+## Note: The Android app releases are in the <https://www.github.com/SHIELD-INTELLIGENCE/APPARCHIVE>
+
 ---
 
 ## Internal Use Only
@@ -34,18 +35,20 @@ For the full license, see the [`LICENSE`](./LICENSE) file.
 > ⚠️ Internal use only. External distribution is prohibited.  
 
 1. Clone the repository:  
+
 ```bash
-git clone https://shieldintelligence.in/repo.git
+
+git clone https://github.com/SHIELD-INTELLIGENCE/shield-webapp
 ```
 
-2. Install dependencies:
+2.Install dependencies:
 
 ```bash
 # Example
 npm install
 ```
 
-3. Run the software internally:
+3.Run the software internally:
 
 ```bash
 npm start
@@ -66,6 +69,7 @@ If you are an internal collaborator:
 3. Submit pull requests for review by SHIELD Intelligence core maintainers.
 
 See also:
+
 - CONTRIBUTING.md — Internal contribution workflow and requirements
 - SECURITY.md — Reporting vulnerabilities and testing guidelines (internal only)
 

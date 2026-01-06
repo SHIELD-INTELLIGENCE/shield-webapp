@@ -55,8 +55,8 @@ function Home() {
         </motion.p>
 
         <motion.div className="home-buttons" variants={fadeInUp}>
-          <Link to="/hire-agent" className="bw-btn">
-            Hire an Agent
+          <Link to="/request-service" className="bw-btn">
+            Request a Service
           </Link>
           <Link to="/join-us" className="bw-btn outline">
             Join Us

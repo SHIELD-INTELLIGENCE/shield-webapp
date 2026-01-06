@@ -21,7 +21,7 @@ import "./assets/errorStyles.css";
 const Home = React.lazy(() => import("./pages/Home"));
 const About = React.lazy(() => import("./pages/About"));
 const JoinUs = React.lazy(() => import("./pages/JoinUs"));
-const HireAgent = React.lazy(() => import("./pages/HireAgent"));
+const RequestService = React.lazy(() => import("./pages/RequestService"));
 const Terms = React.lazy(() => import("./pages/Terms"));
 const JoinUsTerms = React.lazy(() => import("./pages/JoinUsTerms"));
 const Feeds = React.lazy(() => import("./pages/Feeds"));
@@ -229,7 +229,7 @@ function Navbar({ user, onLogout }) {
             whileHover="hover"
             whileTap="tap"
           >
-            <Link to="/hire-agent" className="nav-btn">
+            <Link to="/request-service" className="nav-btn">
               Hire an Agent
             </Link>
           </motion.div>
@@ -358,10 +358,10 @@ function AppContent() {
               }
             />
             <Route
-              path="/hire-agent"
+              path="/request-service"
               element={
                 <AnimatedRoute>
-                  <HireAgent />
+                  <RequestService />
                 </AnimatedRoute>
               }
             />
