@@ -1,6 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { updateSEO } from '../utils/seoUtils';
 
 function JoinUsTerms() {
+  useEffect(() => {
+    updateSEO(
+      "Join Us Terms | SHIELD Intelligence",
+      "Terms and conditions for joining SHIELD Intelligence."
+    );
+    // Inject noindex for legal terms
+    const metaTag = document.createElement('meta');
+    metaTag.setAttribute('name', 'robots');
+    metaTag.setAttribute('content', 'noindex, follow');
+    metaTag.setAttribute('id', 'noindex-join-terms-tag');
+    document.head.appendChild(metaTag);
+
+    return () => {
+      const existingTag = document.getElementById('noindex-join-terms-tag');
+      if (existingTag) {
+        document.head.removeChild(existingTag);
+      }
+    };
+  }, []);
+
   return (
     <div className="joinus-terms" style={{ maxWidth: '800px', margin: '40px auto', padding: '0 20px', fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif", lineHeight: 1.6, color: '#333', background: '#f5f5f5', borderRadius: '8px' }}>
       <style>{`.joinus-terms p { color: #000 !important; }`}</style>

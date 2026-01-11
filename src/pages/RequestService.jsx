@@ -23,6 +23,7 @@ function RequestService() {
   // Set a timeout to detect slow or failed loading
   let timeoutId;
   useEffect(() => {
+    document.title = "Request Service | SHIELD Intelligence";
     timeoutId = setTimeout(() => {
       if (!formLoaded) {
         setLoadTimeout(true);

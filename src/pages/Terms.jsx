@@ -1,9 +1,14 @@
 // src/pages/Terms.jsx
 import React, { useEffect } from 'react';
+import { updateSEO } from '../utils/seoUtils';
 
 const Terms = () => {
   // CRITICAL SEO LOGIC: Injecting the noindex tag into the <head>
   useEffect(() => {
+    updateSEO(
+      "Terms and Conditions | SHIELD Intelligence",
+      "Read the terms and conditions of SHIELD Intelligence."
+    );
     // 1. Create the <meta name="robots" content="noindex, follow"> tag
     const metaTag = document.createElement('meta');
     metaTag.setAttribute('name', 'robots');

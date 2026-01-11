@@ -22,6 +22,7 @@ function JoinUs() {
   // Set a timeout to detect slow or failed loading
   let timeoutId;
   useEffect(() => {
+    document.title = "Join Our Team | SHIELD Intelligence";
     timeoutId = setTimeout(() => {
       if (!formLoaded) {
         setLoadTimeout(true);

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { updateSEO } from '../utils/seoUtils';
 
 const paragraphStyle = {
   fontSize: "1.1rem",
@@ -8,6 +9,13 @@ const paragraphStyle = {
 };
 
 function About() {
+  useEffect(() => {
+    updateSEO(
+      "About Us | SHIELD Intelligence",
+      "Learn about SHIELD — Spies Hub for Intelligence, Elegance, Learning, and Defence. Our mission is to redefine safety and strategic observation."
+    );
+  }, []);
+
   return (
     <div className='about-section'>
       <h1 style={{ color: "var(--shield-accent)", textAlign: "center", marginBottom: "1.5rem" }}>

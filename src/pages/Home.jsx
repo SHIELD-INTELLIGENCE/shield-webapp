@@ -4,6 +4,7 @@ import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
+import { updateSEO } from "../utils/seoUtils";
 
 // Variants
 const fadeInUp = {
@@ -28,6 +29,10 @@ function Home() {
   const controls = useAnimation(); // Hero animation controller
 
   useEffect(() => {
+    updateSEO(
+      "SHIELD Intelligence | Premier Private Intelligence & Security Organization",
+      "SHIELD Intelligence - Your premier private intelligence and security organization. Request professional services, join our elite team, and access advanced security and software solutions."
+    );
     const unsubscribe = onAuthStateChanged(auth, setUser);
     controls.start("visible"); // trigger hero animation on mount
     return () => unsubscribe();
@@ -47,7 +52,7 @@ function Home() {
         </motion.div>
 
         <motion.h1 variants={fadeInUp}>
-          WELCOME TO <span className="bw-highlight">SHIELD</span>
+          WELCOME TO <span className="bw-highlight">SHIELD INTELLIGENCE</span>
         </motion.h1>
 
         <motion.p variants={fadeInUp}>
