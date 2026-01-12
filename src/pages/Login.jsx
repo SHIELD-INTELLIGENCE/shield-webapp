@@ -8,6 +8,7 @@ import {
 import { auth, db } from "../firebase";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { updateSEO } from "../utils/seoUtils";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -17,6 +18,10 @@ export default function Login() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    updateSEO(
+      "Agent Login | SHIELD Intelligence",
+      "Secure login portal for SHIELD Intelligence agents and authorized personnel."
+    );
     onAuthStateChanged(auth, (user) => {
       if (user) navigate("/");
     });

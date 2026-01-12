@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { updateSEO } from '../utils/seoUtils';
 
 function JoinUs() {
   const [formLoaded, setFormLoaded] = useState(false);
@@ -22,7 +23,10 @@ function JoinUs() {
   // Set a timeout to detect slow or failed loading
   let timeoutId;
   useEffect(() => {
-    document.title = "Join Our Team | SHIELD Intelligence";
+    updateSEO(
+      "Join Our Team | SHIELD Intelligence",
+      "Become part of SHIELD's elite team. We are looking for dedicated individuals to join our mission in private intelligence and security."
+    );
     timeoutId = setTimeout(() => {
       if (!formLoaded) {
         setLoadTimeout(true);

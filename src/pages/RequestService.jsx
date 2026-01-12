@@ -1,6 +1,7 @@
 import { text } from 'framer-motion/client';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { updateSEO } from '../utils/seoUtils';
 
 function RequestService() {
   const [formLoaded, setFormLoaded] = useState(false);
@@ -23,7 +24,10 @@ function RequestService() {
   // Set a timeout to detect slow or failed loading
   let timeoutId;
   useEffect(() => {
-    document.title = "Request Service | SHIELD Intelligence";
+    updateSEO(
+      "Request Service | SHIELD Intelligence",
+      "Request professional intelligence and security services from SHIELD. Our elite team provides tailored solutions for your security needs."
+    );
     timeoutId = setTimeout(() => {
       if (!formLoaded) {
         setLoadTimeout(true);
