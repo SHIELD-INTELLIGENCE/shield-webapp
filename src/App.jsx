@@ -148,7 +148,7 @@ function Navbar({ user, onLogout }) {
               className="nav-btn"
               onClick={() => setShowMenu(false)}
             >
-              Request a Serviec
+              Request a Service
             </Link>
           </motion.div>
 
@@ -230,7 +230,7 @@ function Navbar({ user, onLogout }) {
             whileTap="tap"
           >
             <Link to="/request-service" className="nav-btn">
-              Request a Serviec
+              Request a Service
             </Link>
           </motion.div>
 
