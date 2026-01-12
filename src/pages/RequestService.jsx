@@ -25,7 +25,7 @@ function RequestService() {
   let timeoutId;
   useEffect(() => {
     updateSEO(
-      "Request Service | SHIELD Intelligence",
+      "Request a Serviec | SHIELD Intelligence",
       "Request professional intelligence and security services from SHIELD. Our elite team provides tailored solutions for your security needs."
     );
     timeoutId = setTimeout(() => {
@@ -85,7 +85,7 @@ function RequestService() {
         </div>
       )}
       
-      <h1>Request a Service</h1>
+      <h1>Request a Serviec</h1>
       
       <div style={{
         padding: "1.5rem",

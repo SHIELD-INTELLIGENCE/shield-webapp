@@ -84,7 +84,7 @@ function About() {
         >
           visiting the contact section on our home page
         </Link>
-        — our team is always ready to listen. Or explore our <Link to="/request-service" style={{ color: "var(--shield-accent)", textDecoration: "underline" }}>service request form</Link> to get started immediately.
+        — our team is always ready to listen. Or explore our <Link to="/request-service" style={{ color: "var(--shield-accent)", textDecoration: "underline" }}>Request a Serviec page</Link> to get started immediately.
       </p>
     </div>
   );
