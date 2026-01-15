@@ -1,6 +1,6 @@
 {
   "private": true,
-  "license": "SHIELD-MPL-2.0-INTERNAL",
+  "license": "SHIELD Source-Available License (No Redistribution) v1.0",
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",

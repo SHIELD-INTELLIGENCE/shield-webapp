@@ -1,79 +1,45 @@
-SHIELD INTELLIGENCE INTERNAL-USE MPL 2.0
-========================================
+# SHIELD Source-Available License (No Redistribution) v1.0
 
-Copyright (c) 2025 SHIELD Intelligence
-All rights reserved.
+Copyright (c) 2026 SHIELD Intelligence.
 
-This Source Code Form is subject to the terms of the Mozilla Public
-License, v. 2.0 (MPL 2.0). If a copy of the MPL was not distributed
-with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+IMPORTANT: This is a source-available license. It is not an OSI-approved “open source” license.
 
-************************************************************************
-*                                                                      *
-*  INTERNAL USE ONLY:                                                  *
-*                                                                      *
-*  The public and any third party are granted permission to use the    *
-*  Covered Software solely for internal purposes within their own     *
-*  organization. Any distribution, sublicensing, public posting,      *
-*  resale, or sharing of the Covered Software, in whole or in part,   *
-*  with any external entity is strictly prohibited without prior      *
-*  written permission from SHIELD Intelligence.                       *
-*                                                                      *
-************************************************************************
+1) Definitions
 
-1. Definitions
---------------
-[Use MPL 2.0 Sections 1.1 – 1.14 as-is, but reference SHIELD Intelligence as the “Initial Contributor”]
+- “Software” means this software or source code or any accompanying files in this repository.
+- “You” means an individual or legal entity exercising rights under this license.
+- “Internal Use” means use within your own devices and/or within your organization, where access is limited to you and/or your employees/contractors.
+- “Redistribute” means to publish, share, provide, transfer, upload, host, or otherwise make the Software (or a Derivative Work) available to any third party.
+- “Derivative Work” means any modified version of the Software, or any work based on the Software.
 
-2. License Grants and Conditions
---------------------------------
-[Sections 2.1 – 2.7 from MPL 2.0 apply, with the added internal-use-only restriction from above overriding any default redistribution permissions]
+1) Grant of Rights (Personal/Internal Use)
+Subject to the restrictions below, SHIELD Intelligence grants You a non-exclusive, non-transferable, revocable license to:
 
-3. Responsibilities
--------------------
-3.1. Distribution of Source Form
-    You may use the Covered Software internally only. External distribution, sharing, or posting of the Source Code Form is prohibited unless explicitly approved in writing by SHIELD Intelligence.
+- Use the Software.
+- Copy the Software to your devices.
+- Clone the repository to your devices.
+- Modify the Software for Personal/Internal Use.
+- Build and run the Software for Personal/Internal Use.
 
-3.2. Distribution of Executable Form
-    You may run and deploy Executable Form internally, but may not distribute it externally, sublicense, or post publicly without prior written permission from SHIELD Intelligence.
+1) Restrictions (No Redistribution / No Public Copies)
+You may NOT, and you may not permit others to:
 
-3.3 – 3.5 [Apply MPL 2.0, adjusted to internal-use-only as above]
+- Redistribute the Software or any Derivative Work, in source or binary form.
+- Publish the Software or any Derivative Work in any public code hosting service.
+  (This includes creating public forks, mirrors, or re-uploading the code to a public repository.)
+- Distribute builds or installers of the Software or any Derivative Work to third parties.
+- Offer the Software or any Derivative Work as a hosted service (SaaS) to third parties.
+- Sublicense, sell, rent, or commercially exploit the Software or any Derivative Work.
+- Remove or alter copyright, proprietary notices, or this license.
 
-4. Inability to Comply Due to Statute or Regulation
----------------------------------------------------
-[Same as MPL 2.0]
+1) Trademarks
+This license does not grant any rights to SHIELD Intelligence trademarks, logos, or brand assets.
 
-5. Termination
---------------
-5.1 – 5.3 [Same as MPL 2.0, plus automatic termination for any breach of the internal-use-only restriction]
+2) Termination
+This license terminates automatically if You violate any term. Upon termination, You must stop using the Software and delete all copies in Your possession or control.
 
-6. Disclaimer of Warranty
-------------------------
-[Same as MPL 2.0]
+3) Disclaimer of Warranty
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
 
-7. Limitation of Liability
---------------------------
-[Same as MPL 2.0]
-
-8. Litigation
--------------
-All litigation relating to this License must be brought only in the courts of a jurisdiction where SHIELD Intelligence maintains its principal place of business (Dubai, UAE, or India). Applicable laws of that jurisdiction govern, without reference to conflict-of-law provisions.
-
-9. Miscellaneous
-----------------
-[Same as MPL 2.0, with SHIELD Intelligence as the Initial Contributor]
-
-10. Versions of the License
----------------------------
-[Same as MPL 2.0]
-
-Exhibit A – Source Code Form License Notice
--------------------------------------------
-  This Source Code Form is subject to the terms of the SHIELD Intelligence Internal-Use MPL 2.0.
-  If a copy of this License was not distributed with this file, you can obtain one at https://shieldintelligence.in/license.
-
-Exhibit B – "Incompatible With Secondary Licenses" Notice
----------------------------------------------------------
-  This Source Code Form is "Incompatible With Secondary Licenses" as defined by SHIELD Intelligence Internal-Use MPL 2.0.
-
-SPDX-License-Identifier: SHIELD-MPL-2.0-INTERNAL
+4) Limitation of Liability
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL SHIELD INTELLIGENCE BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

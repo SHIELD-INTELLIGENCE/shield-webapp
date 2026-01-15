@@ -17,16 +17,9 @@ It is designed to provide advanced intelligence, security, and operational funct
 
 ## Internal Use Only
 
-This software is licensed under the SHIELD Intelligence Internal-Use MPL 2.0.  
+This software is licensed under the SHIELD Source-Available License (No Redistribution) v1.0
 
-**Rules for usage:**
-
-1. You may use the software internally within your organization or private systems.  
-2. You may not distribute, sublicense, post publicly, sell, or share the software externally without prior written permission from SHIELD Intelligence.  
-3. All modifications remain subject to the same internal-use-only rules unless otherwise authorized in writing.  
-4. Trademarks, logos, and branding (SHIELD, HYDRA) remain sole property of SHIELD Intelligence and may not be used without explicit permission.  
-
-For the full license, see the [`LICENSE`](./LICENSE) file.
+For the license, see the [`LICENSE`](./LICENSE) file.
 
 ---
 

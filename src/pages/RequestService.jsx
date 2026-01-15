@@ -139,21 +139,6 @@ function RequestService() {
             <a href="https://shield-auth.shieldintelligence.in" target="_blank" rel="noopener noreferrer" style={{ color: "rgba(252, 211, 77, 0.7)", fontSize: "0.9rem" }}>Visit →</a>
           </li>
           <li style={{ marginBottom: "0.75rem" }}>
-            <strong style={{ color: "rgba(252, 211, 77, 0.9)" }}>AIDIARY</strong> - Personal AI-powered diary and journaling application for secure journaling.
-            <br />
-            <a href="https://aidiary.shieldintelligence.in" target="_blank" rel="noopener noreferrer" style={{ color: "rgba(252, 211, 77, 0.7)", fontSize: "0.9rem" }}>Visit →</a>
-          </li>
-          <li style={{ marginBottom: "0.75rem" }}>
-            <strong style={{ color: "rgba(252, 211, 77, 0.9)" }}>NotesVault</strong> - Simple note-taking application with advanced features.
-            <br />
-            <a href="https://nv.shieldintelligence.in" target="_blank" rel="noopener noreferrer" style={{ color: "rgba(252, 211, 77, 0.7)", fontSize: "0.9rem" }}>Visit →</a>
-          </li>
-          <li style={{ marginBottom: "0.75rem" }}>
-            <strong style={{ color: "rgba(252, 211, 77, 0.9)" }}>Bookmarky</strong> - Simple bookmark manager to organize and sync your favorite web resources.
-            <br />
-            <a href="https://bookmarky.shieldintelligence.in" target="_blank" rel="noopener noreferrer" style={{ color: "rgba(252, 211, 77, 0.7)", fontSize: "0.9rem" }}>Visit →</a>
-          </li>
-          <li style={{ marginBottom: "0.75rem" }}>
             <strong style={{ color: "rgba(252, 211, 77, 0.9)" }}>SHIELD Mobile App</strong> - Download our official Android application for mobile access to SHIELD services.
             <br />
             <a href="https://download.shieldintelligence.in" target="_blank" rel="noopener noreferrer" style={{ color: "rgba(252, 211, 77, 0.7)", fontSize: "0.9rem" }}>Download APK →</a>

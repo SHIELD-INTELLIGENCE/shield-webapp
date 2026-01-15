@@ -7,7 +7,7 @@ Internal Use Only — External contributions are not accepted unless a signed SH
 ## Prerequisites
 
 - You are a SHIELD Intelligence employee or an approved contractor with a signed Contributor Agreement (on file with Legal).
-- You have read and understand the repository license: SHIELD Intelligence Internal-Use MPL 2.0.
+- You have read and understand the repository license: SHIELD Source-Available License (No Redistribution) v1.0
 
 ---
 

@@ -119,11 +119,8 @@ function Home() {
       <section className="public-resources">
         <h2>Public Resources</h2>
         <ul>
-          <li><a href="https://aidiary.shieldintelligence.in" target="_blank" rel="noopener noreferrer">AIDIARY</a></li>
           <li><a href="https://shieldintelligence.in" target="_blank" rel="noopener noreferrer">Main Website</a></li>
           <li><a href="https://download.shieldintelligence.in" target="_blank" rel="noopener noreferrer">Download App (APK)</a></li>
-          <li><a href="https://nv.shieldintelligence.in" target="_blank" rel="noopener noreferrer">NotesVault</a></li>
-          <li><a href="https://bookmarky.shieldintelligence.in" target="_blank" rel="noopener noreferrer">Bookmarky</a></li>
           <li><a href="https://shield-auth.shieldintelligence.in" target="_blank" rel="noopener noreferrer">SHIELD-Authenticator</a></li>
         </ul>
       </section>
