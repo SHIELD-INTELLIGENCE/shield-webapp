@@ -5,8 +5,8 @@ Allow: /
 # Disallow crawling of sensitive or unnecessary directories
 Disallow: /android/
 Disallow: /test/
-Disallow: /terms
-Disallow: /join-us-terms
+Disallow: /login
+Disallow: /feeds
 
 # Sitemap (add your sitemap URL if available)
 Sitemap: https://shieldintelligence.in/sitemap.xml
