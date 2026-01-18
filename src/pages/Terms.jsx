@@ -3,35 +3,30 @@ import React, { useEffect } from 'react';
 import { updateSEO } from '../utils/seoUtils';
 
 const Terms = () => {
-  // CRITICAL SEO LOGIC: Injecting the noindex tag into the <head>
   useEffect(() => {
     updateSEO(
       "Terms and Conditions | SHIELD Intelligence",
-      "Read the terms and conditions of SHIELD Intelligence."
+      "Terms and conditions governing service requests and use of SHIELD Intelligence platforms."
     );
-    // 1. Create the <meta name="robots" content="noindex, follow"> tag
+
     const metaTag = document.createElement('meta');
     metaTag.setAttribute('name', 'robots');
     metaTag.setAttribute('content', 'noindex, follow');
-    
-    // We assign an ID so we can easily find and remove it later
-    metaTag.setAttribute('id', 'noindex-terms-tag'); 
+    metaTag.setAttribute('id', 'noindex-terms-tag');
 
-    // 2. Insert the tag into the document <head>
     document.head.appendChild(metaTag);
 
-    // 3. Cleanup: Remove the tag when the component unmounts (e.g., when navigating away)
     return () => {
       const existingTag = document.getElementById('noindex-terms-tag');
       if (existingTag) {
         document.head.removeChild(existingTag);
       }
     };
-  }, []); // The empty array ensures this runs only once when the component mounts
+  }, []);
 
   return (
-    <div 
-      className="terms-page" 
+    <div
+      className="terms-page"
       style={{
         fontFamily: "'Segoe UI', sans-serif",
         maxWidth: "800px",
@@ -42,72 +37,129 @@ const Terms = () => {
         color: "#333"
       }}
     >
-      <style>{`.terms-page p { color: #000 !important; }`}</style>
-      
+      <style>{`.terms-page p, .terms-page li { color: #000 !important; }`}</style>
+
       <h1>Terms and Conditions</h1>
-      <p><strong>Effective Date:</strong> May 30, 2025</p>
+      <p><strong>Effective Date:</strong> January 18, 2026</p>
 
       <h2>1. Introduction</h2>
-      <p>SHIELD is a student-led initiative by students of St. Mary’s Inter College, Etawah. The goal of this project is to help resolve issues faced by students in a non-violent, discreet, and responsible manner. SHIELD is not a registered business, legal agency, or private security firm. We operate entirely for educational and school welfare purposes.</p>
+      <p>
+        SHIELD Intelligence (“SHIELD”) is an independent, technology-focused initiative engaged in
+        software development, digital products, and technical consultation. SHIELD is currently
+        not a registered company, legal entity, or licensed security or intelligence firm.
+      </p>
+      <p>
+        These Terms and Conditions govern all service requests, communications, and interactions
+        made through SHIELD platforms, including the “Request a Service” form.
+      </p>
 
-      <h2>2. Voluntary Participation</h2>
-      <p>By choosing to submit a case, request assistance, or communicate with SHIELD, you agree that your participation is voluntary and at your own discretion. You are not obligated to accept SHIELD’s recommendations or actions.</p>
+      <h2>2. Scope of Services</h2>
+      <p>
+        SHIELD currently provides technology-related services only. These include software
+        development, digital product development, and technical consultation.
+      </p>
+      <p>
+        Physical protection services and private intelligence operations are planned future
+        capabilities and are not currently offered, advertised, or contractually available.
+        Any mention of such services is informational only.
+      </p>
 
-      {/* ... (Sections 3 through 13 remain the same) ... */}
-      
-      <h2>3. No Legal Liability</h2>
-      <p>SHIELD and its members are not legally liable for any outcomes or consequences of the advice or support provided. We do not claim to offer professional legal, psychological, or emergency services. We are simply student volunteers aiming to help within our capacity.</p>
+      <h2>3. Voluntary Requests</h2>
+      <p>
+        Submitting a service request to SHIELD is voluntary. Submission of a request does not
+        guarantee acceptance, response, or execution of the requested service.
+      </p>
+      <p>
+        SHIELD reserves the right to decline, modify, or discontinue any request at its discretion.
+      </p>
 
-      <h2>4. Confidentiality and Use of Information</h2>
-      <p>All information shared with SHIELD will be handled respectfully and kept confidential within the team. We will not disclose names, case details, or private conversations without your consent, unless the matter involves danger to someone's safety, in which case it may be shared with a trusted adult or authority figure.</p>
-      <p><strong>Disclaimer:</strong> SHIELD is not responsible for any misuse, unauthorized access, or disclosure of information by third parties or users. Users must exercise caution when sharing personal or sensitive information.</p>
+      <h2>4. No Professional or Legal Liability</h2>
+      <p>
+        SHIELD does not provide legal, financial, law-enforcement, or emergency services. Any guidance or output provided is based on technical judgment
+        and best effort only.
+      </p>
+      <p>
+        SHIELD and its members are not liable for any direct or indirect outcomes resulting from
+        the use, misuse, or interpretation of services or information provided.
+      </p>
 
       <h2>5. User Responsibilities</h2>
       <ul>
-        <li>Provide accurate and truthful information when submitting cases or requests.</li>
-        <li>Respect the privacy and confidentiality of other users and SHIELD members.</li>
-        <li>Refrain from submitting false reports, prank requests, or malicious content.</li>
-        <li>Use SHIELD's services solely for appropriate, lawful, and ethical purposes.</li>
-        <li>Understand that SHIELD does not guarantee resolution or specific outcomes.</li>
+        <li>Provide accurate and truthful information when submitting requests.</li>
+        <li>Do not submit illegal, unethical, or malicious requests.</li>
+        <li>Do not submit passwords, OTPs, private keys, or sensitive credentials.</li>
+        <li>Respect communication boundaries and response timelines.</li>
+        <li>Understand that deliverables depend on scope, feasibility, and agreement.</li>
       </ul>
 
-      <h2>6. Respectful Behavior</h2>
-      <p>We expect all users to treat SHIELD members with respect. We do not tolerate harassment, threats, or misuse of the platform. Violations may result in blacklisting or restricted access.</p>
+      <h2>6. Confidentiality & Information Handling</h2>
+      <p>
+        SHIELD will handle submitted information responsibly and limit access internally on a
+        need-to-know basis.
+      </p>
+      <p>
+        However, SHIELD does not guarantee absolute confidentiality and is not responsible for
+        data exposure caused by user error, third-party platforms (such as Google Forms),
+        or external factors beyond reasonable control.
+      </p>
 
-      <h2>7. Serious Cases and Escalation</h2>
-      <p>In cases of serious or sensitive issues such as bullying, threats, violence, or abuse, SHIELD may escalate the matter to school authorities or recommend contacting appropriate professional or emergency services. SHIELD does not substitute official legal or emergency channels.</p>
+      <h2>7. Payments & Pricing</h2>
+      <p>
+        Any pricing, budget discussions, or payments (if applicable) are handled separately and
+        only after mutual agreement. Submission of a form does not constitute a binding contract
+        or financial obligation.
+      </p>
 
       <h2>8. Limitation of Liability</h2>
-      <p>To the maximum extent permitted by law, SHIELD and its members disclaim all warranties, expressed or implied, including but not limited to accuracy, reliability, and availability of the services. SHIELD will not be liable for any damages arising from the use or inability to use the services.</p>
+      <p>
+        To the maximum extent permitted by applicable law, SHIELD disclaims all warranties,
+        express or implied. SHIELD shall not be liable for damages, losses, or disputes arising
+        from the use or inability to use services.
+      </p>
 
       <h2>9. Intellectual Property</h2>
-      <p>All content, logos, and materials on the SHIELD platform are the property of SHIELD and may not be copied, distributed, or used without permission.</p>
+      <p>
+        All original code, designs, documentation, and materials produced by SHIELD remain the
+        intellectual property of SHIELD unless otherwise agreed in writing.
+      </p>
 
-      <h2>10. Termination and Suspension</h2>
-      <p>SHIELD reserves the right to suspend or terminate access to the platform and services for any user who violates these Terms or engages in conduct harmful to the organization or its members.</p>
+      <h2>10. Termination & Refusal of Service</h2>
+      <p>
+        SHIELD reserves the right to refuse service, terminate communication, or restrict access
+        for any request that violates these Terms or poses legal, ethical, or operational risk.
+      </p>
 
       <h2>11. Changes to These Terms</h2>
-      <p>As SHIELD evolves, these Terms and Conditions may be updated. It is your responsibility to check this page for updates. Major changes will be announced through SHIELD communication channels.</p>
+      <p>
+        SHIELD may update these Terms at any time. Continued use of SHIELD platforms after
+        changes implies acceptance of the revised Terms.
+      </p>
 
       <h2>12. Governing Law</h2>
-      <p>These Terms shall be governed by and construed in accordance with the laws applicable to the jurisdiction of St. Mary’s Inter College, Etawah.</p>
+      <p>
+        These Terms shall be governed in accordance with applicable local laws in India.
+      </p>
 
       <h2>13. Contact</h2>
-      <p>If you have questions or concerns about these terms, you may contact us through our official communication channels or email us at <strong>queriesshield@gmail.com</strong>.</p>
+      <p>
+        For questions regarding these Terms, contact:
+        <strong> queriesshield@gmail.com</strong>
+      </p>
 
-      <footer style={{
-        marginTop: "40px",
-        fontSize: "0.9em",
-        color: "#777",
-        borderTop: "1px solid #ccc",
-        paddingTop: "20px"
-      }}>
-        &copy; 2025 SHIELD (Student Project) — All rights reserved.<br />
-        Website created and maintained by students of St. Mary's Inter College, Etawah.
+      <footer
+        style={{
+          marginTop: "40px",
+          fontSize: "0.9em",
+          color: "#777",
+          borderTop: "1px solid #ccc",
+          paddingTop: "20px"
+        }}
+      >
+        &copy; 2025 SHIELD Intelligence — All rights reserved.<br />
+        This website and its content are independently maintained.
       </footer>
     </div>
   );
 };
 
 export default Terms;
-

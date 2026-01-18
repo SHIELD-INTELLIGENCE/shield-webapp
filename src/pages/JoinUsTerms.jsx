@@ -1,21 +1,22 @@
-import React, { useEffect } from 'react';
-import { updateSEO } from '../utils/seoUtils';
+// src/pages/JoinUsTerms.jsx
+import React, { useEffect } from "react";
+import { updateSEO } from "../utils/seoUtils";
 
-function JoinUsTerms() {
+const JoinUsTerms = () => {
   useEffect(() => {
     updateSEO(
-      "Join Us Terms | SHIELD Intelligence",
-      "Terms and conditions for joining SHIELD Intelligence."
+      "Join SHIELD Intelligence – Terms & Conditions",
+      "Terms and conditions governing applications to join SHIELD Intelligence as a student or contributor."
     );
-    // Inject noindex for legal terms
-    const metaTag = document.createElement('meta');
-    metaTag.setAttribute('name', 'robots');
-    metaTag.setAttribute('content', 'noindex, follow');
-    metaTag.setAttribute('id', 'noindex-join-terms-tag');
+
+    const metaTag = document.createElement("meta");
+    metaTag.setAttribute("name", "robots");
+    metaTag.setAttribute("content", "noindex, follow");
+    metaTag.setAttribute("id", "noindex-joinus-tag");
     document.head.appendChild(metaTag);
 
     return () => {
-      const existingTag = document.getElementById('noindex-join-terms-tag');
+      const existingTag = document.getElementById("noindex-joinus-tag");
       if (existingTag) {
         document.head.removeChild(existingTag);
       }
@@ -23,69 +24,134 @@ function JoinUsTerms() {
   }, []);
 
   return (
-    <div className="joinus-terms" style={{ maxWidth: '800px', margin: '40px auto', padding: '0 20px', fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif", lineHeight: 1.6, color: '#333', background: '#f5f5f5', borderRadius: '8px' }}>
-      <style>{`.joinus-terms p { color: #000 !important; }`}</style>
-      <h1>Terms & Conditions for Joining SHIELD</h1>
+    <div
+      className="terms-page"
+      style={{
+        fontFamily: "'Segoe UI', sans-serif",
+        maxWidth: "800px",
+        margin: "0 auto",
+        padding: "40px 20px",
+        lineHeight: "1.6",
+        background: "#f5f5f5",
+        color: "#333",
+      }}
+    >
+      <style>{`.terms-page p, .terms-page li { color: #000 !important; }`}</style>
 
-      <h2>1. Eligibility</h2>
-      <p>To join SHIELD, you must be a current student of St. Mary's Inter College, Etawah, and agree to abide by all school rules and SHIELD's code of conduct.</p>
+      <h1>Terms & Conditions for Joining SHIELD Intelligence</h1>
+      <p><strong>Effective Date:</strong> January 18, 2026</p>
 
-      <h2>2. Voluntary Membership</h2>
-      <p>Joining SHIELD is completely voluntary. By applying, you accept that you are joining a student-led initiative focused on educational and school welfare purposes only.</p>
+      <h2>1. Introduction</h2>
+      <p>
+        SHIELD Intelligence (“SHIELD”) is a technology-focused initiative engaged in
+        software development, digital products, and technical experimentation.
+        SHIELD is not currently a registered company, government body, security agency,
+        or licensed intelligence organization.
+      </p>
+      <p>
+        These Terms apply to all individuals applying to join SHIELD as students,
+        contributors, interns, or early collaborators through the Join SHIELD Intelligence
+        application form.
+      </p>
 
-      <h2>3. Commitment and Responsibilities</h2>
-      <p>Members are expected to:</p>
+      <h2>2. Nature of Participation</h2>
+      <p>
+        Joining SHIELD does not constitute employment, formal partnership, or guaranteed
+        position. Participation is voluntary and based on availability, interest, and
+        suitability.
+      </p>
+      <p>
+        Roles may involve learning, experimentation, and contribution to real software
+        projects under guidance. There is no guarantee of compensation, recognition,
+        or continued involvement.
+      </p>
+
+      <h2>3. Eligibility</h2>
       <ul>
-        <li>Act responsibly, discreetly, and with integrity at all times.</li>
-        <li>Uphold SHIELD's mission to assist students non-violently and respectfully.</li>
-        <li>Maintain strict confidentiality of all cases, conversations, and information handled, both during and after membership.</li>
-        <li>Participate actively in all assigned tasks, meetings, and events.</li>
-        <li><strong>Unconditionally accept and promptly obey all orders and directives issued by SHIELD’s high command (Director and senior leadership).</strong></li>
-        <li>Respect and maintain the chain of command; direct communication with leadership must follow proper protocols.</li>
-        <li>Maintain professionalism, punctuality, and discipline at all times during SHIELD activities.</li>
-        <li>Demonstrate loyalty and dedication to SHIELD’s goals and values, avoiding any actions that could damage the organization’s reputation.</li>
-        <li>Work cooperatively with fellow members to foster teamwork and a supportive environment.</li>
-        <li>Acknowledge that SHIELD operates as a student project and that membership does not grant any legal or financial rights.</li>
+        <li>Applicants must be at least 13 years of age.</li>
+        <li>Applicants must provide accurate and truthful information.</li>
+        <li>SHIELD reserves the right to accept or reject any application without explanation.</li>
       </ul>
 
-      <h2>4. Code of Conduct</h2>
-      <p>All members are required to:</p>
+      <h2>4. Scope of Work</h2>
+      <p>
+        Current work at SHIELD focuses on software development, digital products,
+        system design, and technical research.
+      </p>
+      <p>
+        Physical protection services and private intelligence operations are planned
+        future divisions only. These are not currently active, and applicants will not
+        be involved in real-world intelligence or physical security operations at this time.
+      </p>
+
+      <h2>5. Conduct & Responsibility</h2>
       <ul>
-        <li>Treat all SHIELD team members, participants, and school community members with respect and professionalism.</li>
-        <li>Refrain from any form of harassment, bullying, discrimination, or inappropriate behavior.</li>
-        <li>Use SHIELD resources and information responsibly and solely for SHIELD purposes.</li>
-        <li>Avoid engaging in activities that could harm the organization or breach trust.</li>
+        <li>Maintain respectful and professional behavior.</li>
+        <li>Do not misuse access, tools, or information.</li>
+        <li>Do not claim affiliation with SHIELD for unauthorized purposes.</li>
+        <li>Follow instructions and boundaries set by SHIELD coordinators.</li>
       </ul>
 
-      <h2>5. Confidentiality and Security</h2>
-      <p>Members must:</p>
-      <ul>
-        <li>Keep all SHIELD-related information confidential and secure.</li>
-        <li>Not share any sensitive data with unauthorized persons or on public platforms.</li>
-        <li>Immediately report any suspected breaches of confidentiality or security to the high command.</li>
-      </ul>
+      <h2>6. Confidentiality</h2>
+      <p>
+        Applicants and contributors may be exposed to internal ideas, discussions,
+        or early-stage systems. Such information must not be shared externally
+        without explicit permission.
+      </p>
+      <p>
+        SHIELD does not guarantee absolute confidentiality and is not liable for
+        disclosures caused by third-party platforms or user negligence.
+      </p>
 
-      <h2>6. Consequences of Non-Compliance</h2>
-      <p>Failure to adhere to these terms may result in:</p>
-      <ul>
-        <li>Immediate suspension or removal from SHIELD membership.</li>
-        <li>Restriction from participating in SHIELD events or communications.</li>
-        <li>Potential reporting to school authorities if conduct violates school policies or endangers others.</li>
-      </ul>
+      <h2>7. No Authority or Representation</h2>
+      <p>
+        Being associated with SHIELD does not grant authority to represent SHIELD
+        publicly, provide services, or speak on behalf of the organization unless
+        explicitly authorized.
+      </p>
 
-      <h2>7. Data and Privacy</h2>
-      <p>All personal data collected during application and membership will be handled confidentially and used solely for SHIELD-related purposes.</p>
+      <h2>8. Removal or Termination</h2>
+      <p>
+        SHIELD reserves the right to remove or restrict any participant at any time
+        for misconduct, inactivity, misrepresentation, or violation of these Terms.
+      </p>
 
-      <h2>8. Termination of Membership</h2>
-      <p>SHIELD reserves the right to revoke membership for any violations, including but not limited to non-participation, insubordination, breach of confidentiality, or conduct detrimental to SHIELD.</p>
+      <h2>9. No Guarantees</h2>
+      <p>
+        SHIELD makes no guarantees regarding learning outcomes, project success,
+        future roles, employment, or involvement in future divisions.
+      </p>
 
-      <h2>9. Amendments</h2>
-      <p>These terms may be updated from time to time. Members will be notified of significant changes and continued membership indicates acceptance.</p>
+      <h2>10. Changes to These Terms</h2>
+      <p>
+        These Terms may be updated as SHIELD evolves. Continued participation
+        implies acceptance of the latest version.
+      </p>
 
-      <h2>10. Contact</h2>
-      <p>For any questions or concerns, please contact: <strong>queriesshield@gmail.com</strong></p>
+      <h2>11. Governing Jurisdiction</h2>
+      <p>
+        These Terms shall be governed by applicable laws within India.
+      </p>
+
+      <h2>12. Contact</h2>
+      <p>
+        For questions regarding joining SHIELD, contact:
+        <strong> queriesshield@gmail.com</strong>
+      </p>
+
+      <footer
+        style={{
+          marginTop: "40px",
+          fontSize: "0.9em",
+          color: "#777",
+          borderTop: "1px solid #ccc",
+          paddingTop: "20px",
+        }}
+      >
+        &copy; 2025 SHIELD Intelligence — All rights reserved.
+      </footer>
     </div>
   );
-}
+};
 
 export default JoinUsTerms;

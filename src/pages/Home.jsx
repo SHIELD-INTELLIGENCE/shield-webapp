@@ -6,7 +6,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
 import { updateSEO } from "../utils/seoUtils";
 
-// Variants
+// Animation Variants
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
@@ -22,19 +22,17 @@ const staggerContainer = {
   visible: { transition: { staggerChildren: 0.15, delayChildren: 0.2 } }
 };
 
-// Note: Scroll-triggered animations have been removed.
-
 function Home() {
   const [user, setUser] = useState(null);
-  const controls = useAnimation(); // Hero animation controller
+  const controls = useAnimation();
 
   useEffect(() => {
     updateSEO(
-      "SHIELD Intelligence | Premier Private Intelligence & Security Organization",
-      "SHIELD Intelligence - Your premier private intelligence and security organization. Request professional services, join our elite team, and access advanced security and software solutions."
+      "SHIELD Intelligence | Secure Software & Digital Systems",
+      "SHIELD Intelligence builds secure software, authentication tools, and privacy-focused digital products. Request services, explore our products, or join as a contributor."
     );
     const unsubscribe = onAuthStateChanged(auth, setUser);
-    controls.start("visible"); // trigger hero animation on mount
+    controls.start("visible");
     return () => unsubscribe();
   }, []);
 
@@ -45,10 +43,10 @@ function Home() {
         className="home-hero-content-bw"
         variants={staggerContainer}
         initial="hidden"
-        animate={controls} // controlled animation
+        animate={controls}
       >
         <motion.div className="logo-container" variants={scaleIn}>
-          <img src={logo} alt="SHIELD Logo" className="logo" />
+          <img src={logo} alt="SHIELD Intelligence Logo" className="logo" />
         </motion.div>
 
         <motion.h1 variants={fadeInUp}>
@@ -56,7 +54,7 @@ function Home() {
         </motion.h1>
 
         <motion.p variants={fadeInUp}>
-          Your premier private intelligence & security organization
+          Secure software, authentication tools, and privacy-focused digital systems.
         </motion.p>
 
         <motion.div className="home-buttons" variants={fadeInUp}>
@@ -69,92 +67,74 @@ function Home() {
         </motion.div>
       </motion.div>
 
-      {/* Restricted Tools */}
-      {!user && (
-        <section
-          className="private-access-section"
-          style={{
-            marginTop: "3rem",
-            padding: "2rem",
-            backgroundColor: "rgba(0,0,0,0.7)",
-            border: "2px dashed rgba(252, 211, 77, 0.6)",
-            borderRadius: "1rem",
-            boxShadow: "0 0 16px rgba(252, 211, 77, 0.3)",
-            textAlign: "center",
-            maxWidth: "900px",
-          }}
-        >
-          <h2 style={{ color: "rgba(252, 211, 77, 1)", textTransform: "uppercase", letterSpacing: "1px" }}>
-            Restricted Tools
-          </h2>
-          <p style={{ color: "#ccc", fontSize: "1rem", marginTop: "0.5rem" }}>
-            Access to advanced SHIELD resources is strictly limited to authorized personnel. Secure portals, internal communication systems, and operational tools are available only to verified agents.
-          </p>
-          <p style={{ color: "#999", fontSize: "0.9rem", marginTop: "0.5rem" }}>
-            If you are a member of our operations team and require access, please contact HQ for credentials.
-          </p>
-        </section>
-      )}
-      {user && (
-        <section className="private-access-section">
-          <h2>Agent-Only Tools</h2>
-          <div className="private-links">
-            <a href="https://sm.shieldintelligence.in" target="_blank" rel="noopener noreferrer" className="bw-btn">
-              Strategic Messaging Terminal
-            </a>
-            <a href="https://morse.shieldintelligence.in" target="_blank" rel="noopener noreferrer" className="bw-btn">
-              Morse Encoder Access
-            </a>
-            <a href="https://employees.shieldintelligence.in" target="_blank" rel="noopener noreferrer" className="bw-btn">
-              Employee Directory
-            </a>
-            <a href="https://wanted.shieldintelligence.in" target="_blank" rel="noopener noreferrer" className="bw-btn">
-              Wanted List
-            </a>
-          </div>
-        </section>
-      )}
-
-      {/* Public Resources */}
-      <section className="public-resources">
-        <h2>Public Resources</h2>
-        <ul>
-          <li><a href="https://shieldintelligence.in" target="_blank" rel="noopener noreferrer">Main Website</a></li>
-          <li><a href="https://download.shieldintelligence.in" target="_blank" rel="noopener noreferrer">Download App (APK)</a></li>
-          <li><a href="https://shield-auth.shieldintelligence.in" target="_blank" rel="noopener noreferrer">SHIELD-Authenticator</a></li>
-        </ul>
-      </section>
-
-      {/* Contact */}
-      <div
-        className="contact-section"
-        id="contact-section"
-      >
-        <h2>Contact Us</h2>
-        <p>Email: shield@shieldintelligence.in</p>
-        <p>X: 0_SHIELD_0</p>
-        <p>Instagram: shield_private</p>
-        <p>Facebook: SHIELD Intelligence</p>
-        <p>Discord: shield_intelligence</p>
-      </div>
-
-      {/* Footer */}
-      <div
+      {/* Product Highlight */}
+      <section
         style={{
-          borderTop: "1px solid #ccc",
-          marginTop: "40px",
-          padding: "20px 0",
-          textAlign: "center",
-          fontSize: "0.9rem",
-          color: "#666",
+          marginTop: "4rem",
+          padding: "2rem",
+          backgroundColor: "#1a1a1a",
+          border: "1px solid rgba(252, 211, 77, 0.3)",
+          borderRadius: "1rem",
+          maxWidth: "1000px",
+          marginInline: "auto"
         }}
       >
-        &copy; 2025 SHIELD — All rights reserved.
-        <br />
-        <Link to="/terms" style={{ color: "#333", textDecoration: "underline", marginTop: "10px", display: "inline-block" }}>
-          Terms & Conditions
-        </Link>
-      </div>
+        <h2 style={{ color: "rgba(252, 211, 77, 1)", marginBottom: "1rem" }}>
+          SHIELD Authenticator
+        </h2>
+
+        <p style={{ color: "#ccc", lineHeight: "1.8", marginBottom: "1rem" }}>
+          SHIELD Authenticator is a privacy-first, TOTP-based authentication tool designed
+          to give users full control over their authentication data. It uses end-to-end
+          encryption and a zero-knowledge architecture to ensure that only you can access
+          your codes.
+        </p>
+
+        <ul style={{ color: "#ccc", lineHeight: "1.8" }}>
+          <li><strong>End-to-End Encryption (256-bit):</strong> Authentication data is protected using a zero-trust, zero-knowledge model.</li>
+          <li><strong>Encrypted Vault:</strong> Accounts are stored in a vault secured by a passphrase known only to you.</li>
+          <li><strong>Cross-Platform Access:</strong> Use securely across web and mobile with encrypted sync.</li>
+          <li><strong>Time-Based Codes:</strong> Generates TOTP codes that refresh every 30 seconds.</li>
+          <li><strong>QR Code Support:</strong> Add accounts quickly via QR scan or manual entry.</li>
+          <li><strong>Offline Access:</strong> Generate codes without an internet connection.</li>
+          <li><strong>Encrypted CSV Backup:</strong> Export and import backups with optional encryption.</li>
+          <li><strong>Account Recovery Options:</strong> Recovery questions help restore access if needed.</li>
+          <li><strong>Privacy Controls:</strong> Mask codes and copy securely for public or shared environments.</li>
+          <li><strong>Trusted Device Convenience:</strong> Optionally remember your vault passphrase on trusted devices.</li>
+        </ul>
+
+        <a
+          href="https://shield-auth.shieldintelligence.in"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bw-btn"
+          style={{ marginTop: "1.5rem", display: "inline-block" }}
+        >
+          Open SHIELD Authenticator
+        </a>
+      </section>
+
+      {/* Public Resources */}
+      <section className="public-resources" style={{ marginTop: "4rem" }}>
+        <h2>Our Products</h2>
+        <ul>
+          <li>
+            <a href="https://shieldintelligence.in" target="_blank" rel="noopener noreferrer">
+              Main Website
+            </a>
+          </li>
+          <li>
+            <a href="https://download.shieldintelligence.in" target="_blank" rel="noopener noreferrer">
+              Download Android App (APK)
+            </a>
+          </li>
+          <li>
+            <a href="https://shield-auth.shieldintelligence.in" target="_blank" rel="noopener noreferrer">
+              SHIELD Authenticator
+            </a>
+          </li>
+        </ul>
+      </section>
     </div>
   );
 }

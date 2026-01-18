@@ -19,8 +19,8 @@ export default function Login() {
 
   useEffect(() => {
     updateSEO(
-      "Agent Login | SHIELD Intelligence",
-      "Secure login portal for SHIELD Intelligence agents and authorized personnel."
+      "User Login | SHIELD Intelligence",
+      "Secure login portal for SHIELD Intelligence authorized personnel."
     );
     onAuthStateChanged(auth, (user) => {
       if (user) navigate("/");
@@ -79,21 +79,21 @@ export default function Login() {
     } catch (e) {
       console.error("Login error:", e);
 
-      // Provide more specific error messages based on Firebase error codes
+      // Use generic error messages to prevent information disclosure
       const errorCode = e.code;
       switch (errorCode) {
         case "auth/user-not-found":
         case "auth/wrong-password":
-          setError("Invalid email or password");
+        case "auth/invalid-credential":
+          // Generic message to prevent account enumeration
+          setError("Invalid login credentials. Please try again");
           break;
         case "auth/too-many-requests":
-          setError("Too many failed login attempts. Please try again later");
+          setError("Too many failed attempts. Please try again later");
           break;
         case "auth/user-disabled":
+          // Keep this specific as it's a legitimate account status
           setError("This account has been disabled");
-          break;
-        case "auth/invalid-credential":
-          setError("Invalid login credentials");
           break;
         case "auth/network-request-failed":
           setError("Network error. Please check your connection");

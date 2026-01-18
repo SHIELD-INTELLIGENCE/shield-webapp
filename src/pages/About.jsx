@@ -12,79 +12,86 @@ function About() {
   useEffect(() => {
     updateSEO(
       "About Us | SHIELD Intelligence",
-      "Learn about SHIELD — Spies Hub for Intelligence, Elegance, Learning, and Defence. Our mission is to redefine safety and strategic observation."
+      "SHIELD Intelligence designs and delivers secure, privacy-conscious software systems and digital products built for real-world use."
     );
   }, []);
 
   return (
     <div className='about-section'>
       <h1 style={{ color: "var(--shield-accent)", textAlign: "center", marginBottom: "1.5rem" }}>
-        About SHIELD
+        About SHIELD Intelligence
       </h1>
 
       <p style={paragraphStyle}>
-        SHIELD — <strong>Spies Hub for Intelligence, Elegance, Learning, and Defence</strong> — is not merely a security company.
-        It is a purpose-driven, future-focused private intelligence and technology powerhouse that redefines what safety, strategic observation,
-        discreet service, and innovative software solutions mean in the modern world.
+        SHIELD Intelligence — <strong>Spies Hub for Intelligence, Elegance, Learning, and Defence</strong> — is a technology-focused organization
+        engaged in the design and development of secure, dependable software systems. Our work is centered on creating modern web
+        applications, internal tools, and digital products that prioritize reliability, controlled access, and responsible data handling.
       </p>
 
       <p style={{ ...paragraphStyle, marginTop: "1rem" }}>
-        Established with a vision to create a world where confidentiality and security enable innovation, our elite teams of professionals
-        are dedicated to delivering intelligence solutions and cutting-edge software products that not only protect what matters most, but also 
-        empower users with powerful digital tools. From advanced security services to custom-built applications and platforms, we proactively 
-        shape a more stable and secure future. Every action we take is guided by unwavering integrity, deep respect for privacy, and an 
-        uncompromising commitment to excellence.
+        We operate with a practical, execution-driven approach. Every system developed under SHIELD Intelligence is intended for active use,
+        built to function consistently in real environments rather than as conceptual or experimental software. Emphasis is placed
+        on maintainable architectures, predictable behavior, and long-term usability across varying operational conditions.
       </p>
 
       <p style={paragraphStyle}>
-        From high-risk personal protection to enterprise-level security audits, advanced cyber intelligence, forensic investigation, 
-        diplomatic liaison, and <strong>custom software development</strong>, SHIELD applies expertise across multiple domains. We design 
-        and build secure digital solutions including websites, mobile applications, authentication systems, productivity tools, and specialized 
-        platforms. Our flagship products include SHIELD Authenticator, AIDIARY, NotesVault, and Bookmarky — all built with the same precision 
-        and security standards we apply to intelligence operations. Our people draw on decades of real-world intelligence experience and 
-        cutting-edge development expertise, working alongside trusted partners and clients who require absolute discretion, rapid response, 
-        and actionable insight.
+        Our current scope includes the development of secure websites, internal dashboards, role-based systems, and privacy-focused
+        applications. Alongside client work, SHIELD Intelligence builds independent security-oriented products, including
+        <strong> SHIELD Authenticator</strong>, a TOTP-based authenticator designed with source availability and end-to-end encryption.
+        These products are engineered to meet the same standards applied to commissioned systems.
       </p>
 
-      <h2 style={{ color: "var(--shield-accent)", marginTop: "2.5rem", fontSize: "1.5rem" }}>Our Mission</h2>
       <p style={paragraphStyle}>
-        Our mission is to leverage unparalleled human expertise and state-of-the-art technology to create a safer, more connected world. 
-        Beyond merely reacting to threats, we proactively identify risks before they become crises while simultaneously building innovative 
-        software solutions that enhance productivity, security, and privacy for everyone. We believe in empowering individuals, organizations,
-        and communities with knowledge, strategy, protection, and powerful digital tools — ensuring that those we serve never have to look 
-        over their shoulders and have the best technology at their fingertips.
+        In addition to product development, SHIELD Intelligence undertakes selective freelance and contract-based work. This includes custom
+        software development for individuals, small shops, and local businesses seeking stable, purpose-built digital solutions.
+        Engagements are handled with clearly defined requirements and a focus on delivering software that remains usable and
+        maintainable beyond initial delivery.
       </p>
 
-      <h2 style={{ color: "var(--shield-accent)", marginTop: "2.5rem", fontSize: "1.5rem" }}>Our Core Values</h2>
-      <ul style={{ paddingLeft: "1.2rem", color: "#ccc", fontSize: "1.1rem", lineHeight: "1.8" }}>
-        <li><strong>Integrity:</strong> Upholding the highest moral standards in every action.</li>
-        <li><strong>Confidentiality:</strong> Treating every matter with utmost discretion.</li>
-        <li><strong>Excellence:</strong> Committing to the absolute best in every service we provide.</li>
-        <li><strong>Vigilance:</strong> Constantly adapting to new challenges and emerging risks.</li>
-        <li><strong>Innovation:</strong> Harnessing new technologies and methodologies to stay ahead of the curve.</li>
-      </ul>
-
-      <h2 style={{ color: "var(--shield-accent)", marginTop: "2.5rem", fontSize: "1.5rem" }}>Why Choose SHIELD?</h2>
+      <h2 style={{ color: "var(--shield-accent)", marginTop: "2.5rem", fontSize: "1.5rem" }}>
+        Our Focus
+      </h2>
       <p style={paragraphStyle}>
-        Every client we serve is unique — and so are the solutions we craft. SHIELD takes the time to understand your goals, assess the
-        landscape, and craft tailored strategies that deliver real-world results. Whether it's protecting assets across borders,
-        supporting dignitaries during high-stakes travel, providing cyber-intelligence that preempts threats, or <strong>developing custom 
-        websites, mobile apps, and specialized software tools</strong> built to your exact specifications — our elite team of
-        professionals is on hand, anytime and anywhere. We combine intelligence expertise with technical excellence to deliver solutions 
-        that exceed expectations.
+        SHIELD Intelligence concentrates on building systems that solve specific, well-understood problems. Rather than offering broad or
+        generalized solutions, we prioritize clarity in scope and implementation. This allows us to deliver software that is
+        technically sound, operationally reliable, and aligned with real usage requirements.
       </p>
 
-      <h2 style={{ color: "var(--shield-accent)", marginTop: "2.5rem", fontSize: "1.5rem" }}>Your Next Step</h2>
+      <p style={paragraphStyle}>
+        Our approach favors careful planning, deliberate design choices, and controlled complexity. By avoiding unnecessary
+        abstractions and overengineering, we ensure that the systems we deliver remain understandable, adaptable, and sustainable
+        as requirements evolve.
+      </p>
+
+      <h2 style={{ color: "var(--shield-accent)", marginTop: "2.5rem", fontSize: "1.5rem" }}>
+        Future Capabilities
+      </h2>
+      <p style={paragraphStyle}>
+        SHIELD Intelligence is structured with long-term growth in mind. Future areas of operation may include physical security and private
+        intelligence services. These capabilities are not currently active, are not publicly marketed, and do not have announced
+        timelines. Until formally launched, SHIELD Intelligence remains focused exclusively on its present software and product development scope.
+      </p>
+
+      <h2 style={{ color: "var(--shield-accent)", marginTop: "2.5rem", fontSize: "1.5rem" }}>
+        Get in Touch
+      </h2>
       <p style={{ ...paragraphStyle, marginBottom: "2rem" }}>
-        Ready to work with us? Whether you need intelligence services, want to build a custom software solution, or wish to explore our 
-        public tools, reach out by
-        <Link 
+        If you are interested in building a secure digital system, developing a custom application, or using one of our public tools,
+        you can reach us by
+        <Link
           to="/#contact-section"
           style={{ color: "var(--shield-accent)", textDecoration: "underline", marginLeft: 4 }}
         >
           visiting the contact section on our home page
         </Link>
-        — our team is always ready to listen. Or explore our <Link to="/request-service" style={{ color: "var(--shield-accent)", textDecoration: "underline" }}>Request a Service page</Link> to get started immediately.
+        . You may also submit a request directly through the{" "}
+        <Link
+          to="/request-service"
+          style={{ color: "var(--shield-accent)", textDecoration: "underline" }}
+        >
+          Request a Service
+        </Link>{" "}
+        page.
       </p>
     </div>
   );

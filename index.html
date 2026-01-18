@@ -7,18 +7,6 @@
   <meta name="description" content="SHIELD Intelligence - Your premier private intelligence and security organization. Request professional services, join our elite team, and access advanced security and software solutions including SHIELD Authenticator. Spies Hub for Intelligence, Elegance, Learning, and Defence." />
   <meta name="keywords" content="shield intelligence, private intelligence, security organization, Request a Service, security services, intelligence agency, SHIELD, shield authenticator" />
   
-  <!-- Open Graph / Social Media -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://shieldintelligence.in/" />
-  <meta property="og:title" content="SHIELD Intelligence | Premier Private Intelligence & Security Organization" />
-  <meta property="og:description" content="Your premier private intelligence and security organization. Request professional services, access software solutions like SHIELD Authenticator, and join our elite team." />
-  <meta property="og:site_name" content="SHIELD Intelligence" />
-  
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="SHIELD Intelligence | Premier Private Intelligence & Security" />
-  <meta name="twitter:description" content="Your premier private intelligence and security organization. Request professional services, access software solutions, and join our elite team." />
-  
   <link rel="icon" href="/favicon.ico" />
   <link rel="manifest" href="/manifest.json" />
   <meta name="theme-color" content="#caa94c" />
@@ -31,13 +19,25 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "SHIELD Intelligence",
+    "alternateName": "SHIELD",
     "url": "https://shieldintelligence.in/",
-    "logo": "https://shieldintelligence.in/logo512.png",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://shieldintelligence.in/logo512.png",
+      "width": 512,
+      "height": 512
+    },
+    "image": "https://shieldintelligence.in/logo512.png",
     "description": "SHIELD Intelligence - Spies Hub for Intelligence, Elegance, Learning, and Defence. Your premier private intelligence and security organization.",
+    "slogan": "Spies Hub for Intelligence, Elegance, Learning, and Defence",
     "contactPoint": {
       "@type": "ContactPoint",
-      "contactType": "customer service"
-    }
+      "contactType": "customer service",
+      "availableLanguage": ["English"]
+    },
+    "foundingDate": "2024",
+    "knowsAbout": ["Intelligence Services", "Security Solutions", "Software Development", "Digital Products"],
+    "areaServed": "IN"
   }
   </script>
   <script type="application/ld+json">
@@ -46,11 +46,16 @@
     "@type": "WebSite",
     "name": "SHIELD Intelligence",
     "url": "https://shieldintelligence.in/",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://shieldintelligence.in/search?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
+    "description": "SHIELD Intelligence - Your premier private intelligence and security organization",
+    "publisher": {
+      "@type": "Organization",
+      "name": "SHIELD Intelligence",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://shieldintelligence.in/logo512.png"
+      }
+    },
+    "inLanguage": "en-US"
   }
   </script>
   </head>
