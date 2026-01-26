@@ -57,29 +57,35 @@ function RequestService() {
 
       {(loadError || loadTimeout) && (
         <div className="shield-error-container" role="alert">
-          <h3 className="shield-error-title">
-            {loadTimeout ? "Loading is taking longer than expected" : "Error loading form"}
+          <h3 className="shield-error-title" style={{ fontSize: "clamp(1.1rem, 4vw, 1.5rem)" }}>
+            {loadTimeout ? "Loading is taking longer than expected" : "Unable to load form"}
           </h3>
-          <p className="shield-error-message">
+          <p className="shield-error-message" style={{ fontSize: "clamp(0.9rem, 3vw, 1rem)" }}>
             {loadTimeout
-              ? "The form is taking longer to load. This may be due to a slow internet connection."
-              : "There was a problem loading the form. It may be temporarily unavailable."}
+              ? "The form is taking longer to load. This may be due to a slow internet connection or browser restrictions."
+              : "The form couldn't be loaded. This might be due to browser security settings, ad blockers, or network restrictions."}
+          </p>
+          <p className="shield-error-message" style={{ marginTop: "0.5rem", fontSize: "clamp(0.85rem, 2.5vw, 0.9rem)" }}>
+            If you're using a strict browser or privacy extension, try opening the form in a new tab instead.
           </p>
           <div className="shield-error-actions">
-            <button className="bw-btn" onClick={retryLoading}>Retry</button>
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLScGKnCxrLnrbfGXPIcNnKzc0uiFlokapZvXjLFanZ10mvzdAg/viewform"
               target="_blank"
               rel="noopener noreferrer"
-              className="bw-btn alternate"
+              className="bw-btn"
+              style={{ fontSize: "clamp(0.9rem, 3vw, 1rem)" }}
             >
               Open Form in New Tab
             </a>
+            <button className="bw-btn outline" onClick={retryLoading} style={{ fontSize: "clamp(0.9rem, 3vw, 1rem)" }}>
+              Try Again
+            </button>
           </div>
         </div>
       )}
 
-      <h1>Request a Service</h1>
+      <h1 style={{ padding: '0 1rem' }}>Request a Service</h1>
 
       <div style={{
         padding: "1.5rem",
@@ -148,39 +154,6 @@ function RequestService() {
           These capabilities are not currently active and are not offered through this form.
         </p>
       </div>
-
-      <div style={{
-        marginTop: "2rem",
-        padding: "1.5rem",
-        backgroundColor: "rgba(0,0,0,0.6)",
-        border: "1px solid rgba(252, 211, 77, 0.3)",
-        borderRadius: "0.5rem",
-        maxWidth: "800px",
-        margin: "2rem auto"
-      }}>
-        <h2 style={{ color: "rgba(252, 211, 77, 1)", marginBottom: "1rem" }}>
-          Public Software Tools
-        </h2>
-
-        <ul style={{ color: "#ccc", listStyle: "none", padding: 0 }}>
-          <li style={{ marginBottom: "0.75rem" }}>
-            <strong style={{ color: "rgba(252, 211, 77, 0.9)" }}>
-              SHIELD Authenticator
-            </strong>{" "}
-            — A TOTP-based authenticator with source availability and end-to-end encryption.
-            <br />
-            <a
-              href="https://shield-auth.shieldintelligence.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: "rgba(252, 211, 77, 0.7)", fontSize: "0.9rem" }}
-            >
-              Visit →
-            </a>
-          </li>
-        </ul>
-      </div>
-
       <p style={{ marginTop: '20px', fontSize: '14px', textAlign: 'center', color: '#caa94c' }}>
         Please read our <Link to="/terms">Terms & Conditions</Link> before requesting a service.
       </p>

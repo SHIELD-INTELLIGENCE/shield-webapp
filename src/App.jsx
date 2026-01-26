@@ -48,6 +48,18 @@ function AppContent() {
     return () => unsub();
   }, [isLoggingOut]);
 
+  // Prevent scrolling during logout
+  useEffect(() => {
+    if (isLoggingOut) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isLoggingOut]);
+
   const handleLogout = async () => {
     try {
       setShowLogoutConfirm(false);
@@ -85,7 +97,7 @@ function AppContent() {
 
       <main className="app-main" id="main-content">
         <React.Suspense fallback={<PageLoadingSpinner />}>
-          <AnimatePresence mode="wait" initial={false}>
+          <AnimatePresence mode="wait" initial={true}>
             <Routes location={location} key={location.pathname}>
             <Route
               path="/"

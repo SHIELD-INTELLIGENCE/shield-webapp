@@ -127,7 +127,7 @@ export default function Header({ user, onLogout }) {
                 <div>
                   <div className="mobile-drawer-logo">SHIELD Intelligence</div>
                   <div className="mobile-drawer-tagline">
-                    Secure Software. Private Systems. Future-Ready.
+                    Securing Towmorrow with Stategic Intelligence.
                   </div>
                 </div>
                 <button onClick={() => setShowMenu(false)}>✕</button>

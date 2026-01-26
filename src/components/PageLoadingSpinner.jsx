@@ -1,5 +1,5 @@
 // src/components/PageLoadingSpinner.jsx
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const spinVariants = {
@@ -28,6 +28,14 @@ const containerVariants = {
 };
 
 const PageLoadingSpinner = () => {
+  useEffect(() => {
+    // Prevent scrolling when loading spinner is visible
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
+
   return (
     <motion.div
       className="shield-loading-screen"

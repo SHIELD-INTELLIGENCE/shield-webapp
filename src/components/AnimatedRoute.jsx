@@ -63,17 +63,17 @@ const pageTransition = {
 import ErrorBoundary from './ErrorBoundary';
 
 const AnimatedRoute = ({ children, variant = "fade" }) => {
-  // Animation variants
+  // Animation variants with faster timing
   const fadeVariants = {
     initial: { opacity: 0 },
-    animate: { opacity: 1, transition: { duration: 0.5 } },
-    exit: { opacity: 0, transition: { duration: 0.3 } }
+    animate: { opacity: 1, transition: { duration: 0.25 } },
+    exit: { opacity: 0, transition: { duration: 0.2 } }
   };
   
   const slideVariants = {
     initial: { x: '100vw' },
-    animate: { x: 0, transition: { type: 'spring', stiffness: 80, damping: 20 } },
-    exit: { x: '-100vw', transition: { ease: 'easeInOut' } }
+    animate: { x: 0, transition: { type: 'spring', stiffness: 100, damping: 20 } },
+    exit: { x: '-100vw', transition: { ease: 'easeInOut', duration: 0.2 } }
   };
   
   // Choose the appropriate variant
@@ -92,6 +92,7 @@ const AnimatedRoute = ({ children, variant = "fade" }) => {
       )}
     >
       <motion.div
+        key={window.location.pathname}
         variants={variants}
         initial="initial"
         animate="animate"

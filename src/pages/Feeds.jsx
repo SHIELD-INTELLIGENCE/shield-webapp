@@ -77,15 +77,32 @@ export default function Feeds() {
 
   return (
     <div className="p-4">
-      <h2 className="text-2xl mb-4">Your Feeds</h2>
+      <h2 className="text-2xl mb-4" style={{ padding: '0 1rem' }}>Your Feeds</h2>
       
       {loading ? (
-        <div className="shield-loading-screen">
-          <div className="shield-loading-title">
-            <span className="desktop-text">Loading</span>
-            <span className="mobile-text">Loading</span>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: '60vh',
+          gap: '2rem'
+        }}>
+          <div style={{
+            fontSize: '1.5rem',
+            fontWeight: 'bold',
+            color: 'var(--shield-accent)',
+            textShadow: '0 0 20px var(--shield-glow)',
+            letterSpacing: '1px'
+          }}>
+            Loading Feeds...
           </div>
-          <div className="shield-spinner"></div>
+          <div className="shield-spinner" style={{
+            width: '3em',
+            height: '3em',
+            border: '0.3em solid var(--shield-accent)',
+            borderTop: '0.3em solid transparent'
+          }}></div>
         </div>
       ) : error ? (
         <div className="error-container" role="alert">
@@ -98,7 +115,7 @@ export default function Feeds() {
           </button>
         </div>
       ) : feeds.length === 0 ? (
-        <p>No messages assigned to you.</p>
+        <p className="text-2xl mb-4" style={{ padding: '0 1rem' }}>No messages assigned to you.</p>
       ) : (
         <div>
           {updateError && (

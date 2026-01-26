@@ -1,7 +1,15 @@
 // src/components/Loading.jsx
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const Loading = () => {
+  useEffect(() => {
+    // Prevent scrolling when loading screen is visible
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
+
   return (
     <div className="shield-loading-screen">
       <div className="shield-loading-title">

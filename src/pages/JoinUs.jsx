@@ -63,33 +63,37 @@ function JoinUs() {
 
       {(loadError || loadTimeout) && (
         <div className="shield-error-container" role="alert">
-          <h3 className="shield-error-title">
+          <h3 className="shield-error-title" style={{ fontSize: "clamp(1.1rem, 4vw, 1.5rem)" }}>
             {loadTimeout
               ? "Loading is taking longer than expected"
-              : "Error loading form"}
+              : "Unable to load form"}
           </h3>
-          <p className="shield-error-message">
+          <p className="shield-error-message" style={{ fontSize: "clamp(0.9rem, 3vw, 1rem)" }}>
             {loadTimeout
-              ? "The form is taking a long time to load. This could be due to a slow internet connection."
-              : "There was a problem loading the form. This might be due to network issues or the form might be temporarily unavailable."}
+              ? "The form is taking a long time to load. This could be due to a slow internet connection or browser restrictions."
+              : "The form couldn't be loaded. This might be due to browser security settings, ad blockers, or network restrictions."}
+          </p>
+          <p className="shield-error-message" style={{ marginTop: "0.5rem", fontSize: "clamp(0.85rem, 2.5vw, 0.9rem)" }}>
+            If you're using a strict browser or privacy extension, try opening the form in a new tab instead.
           </p>
           <div className="shield-error-actions">
-            <button className="bw-btn" onClick={retryLoading}>
-              Retry
-            </button>
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLSe_t5fBMb7zQD24vRK0hFGqpsVxjf_tsHGH9_tg39ay2mOiRg/viewform"
               target="_blank"
               rel="noopener noreferrer"
-              className="bw-btn alternate"
+              className="bw-btn"
+              style={{ fontSize: "clamp(0.9rem, 3vw, 1rem)" }}
             >
               Open Form in New Tab
             </a>
+            <button className="bw-btn outline" onClick={retryLoading} style={{ fontSize: "clamp(0.9rem, 3vw, 1rem)" }}>
+              Try Again
+            </button>
           </div>
         </div>
       )}
 
-      <h1>Join SHIELD Intelligence</h1>
+      <h1 style={{ padding: '0 1rem' }}>Join SHIELD Intelligence</h1>
 
       <div
         style={{

@@ -91,7 +91,7 @@ body::before {
   position: sticky;
   top: 0;
   z-index: 1000;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0;
   background: rgba(26, 26, 26, 0.9);
   border-bottom: 2px solid var(--shield-accent);
   box-shadow: 0 2px 20px var(--shield-glow);
@@ -99,12 +99,12 @@ body::before {
 }
 
 .nav-inner {
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 1rem;
+  padding: 0 1rem;
+  justify-content: flex-start;
 }
 
 .skip-link {
@@ -129,6 +129,7 @@ body::before {
   align-items: flex-start;
   gap: 0.15rem;
   text-decoration: none;
+  margin-right: auto;
 }
 
 .tagline {
@@ -237,6 +238,7 @@ body::before {
     box-shadow: none;
     display: flex !important;
     gap: 1rem;
+    margin-left: auto;
   }
 
   .nav-links .nav-link {
@@ -972,6 +974,7 @@ p {
   align-items: center;
   justify-content: center;
   z-index: 3001;
+  overflow: hidden;
 }
 
 .shield-loading-title {
@@ -1093,6 +1096,7 @@ p {
   align-items: center;
   justify-content: center;
   z-index: 3001;
+  overflow: hidden;
 }
 
 .shield-logout-title {

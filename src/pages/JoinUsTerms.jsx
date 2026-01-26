@@ -32,11 +32,12 @@ const JoinUsTerms = () => {
         margin: "0 auto",
         padding: "40px 20px",
         lineHeight: "1.6",
-        background: "#f5f5f5",
-        color: "#333",
+        background: "#1a1a1a",
+        color: "#e0e0e0",
+        minHeight: "100vh"
       }}
     >
-      <style>{`.terms-page p, .terms-page li { color: #000 !important; }`}</style>
+      <style>{`.terms-page p, .terms-page li { color: #e0e0e0 !important; } .terms-page h1, .terms-page h2 { color: #ffffff; }`}</style>
 
       <h1>Terms & Conditions for Joining SHIELD Intelligence</h1>
       <p><strong>Effective Date:</strong> January 18, 2026</p>
@@ -143,8 +144,8 @@ const JoinUsTerms = () => {
         style={{
           marginTop: "40px",
           fontSize: "0.9em",
-          color: "#777",
-          borderTop: "1px solid #ccc",
+          color: "#999",
+          borderTop: "1px solid #444",
           paddingTop: "20px",
         }}
       >
