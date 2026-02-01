@@ -148,13 +148,7 @@ const Terms = () => {
       </p>
 
       <footer
-        style={{
-          marginTop: "40px",
-          fontSize: "0.9em",
-          color: "#999",
-          borderTop: "1px solid #444",
-          paddingTop: "20px"
-        }}
+       className='terms-footer'
       >
         &copy; 2025 SHIELD Intelligence — All rights reserved.<br />
         This website and its content are independently maintained.

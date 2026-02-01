@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Routes,
   Route,
   useLocation,
+  useNavigate,
 } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { auth } from "./firebase";
@@ -33,6 +34,96 @@ function AppContent() {
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  // Hash scrolling (with retries, MutationObserver fallback, and waiting for animations to finish)
+  useEffect(() => {
+    if (!location.hash) return;
+    const id = location.hash.replace("#", "");
+    let attempts = 0;
+    let observer = null;
+    let observerTimeout = null;
+
+    const waitForAnimationsToFinish = () => {
+      return new Promise((resolve) => {
+        const container =
+          document.querySelector(".animated-route") || document.body;
+        let resolved = false;
+        const onEnd = () => {
+          if (resolved) return;
+          resolved = true;
+          cleanup();
+          resolve();
+        };
+        const cleanup = () => {
+          container.removeEventListener("transitionend", onEnd);
+          container.removeEventListener("animationend", onEnd);
+          clearTimeout(timer);
+        };
+        // If there are no obvious animations/transitions, resolve quickly after a short delay
+        const timer = setTimeout(onEnd, 800);
+        container.addEventListener("transitionend", onEnd, { once: true });
+        container.addEventListener("animationend", onEnd, { once: true });
+      });
+    };
+
+    const tryScroll = async () => {
+      const el = document.getElementById(id);
+      if (el) {
+        // Wait for route animations to finish before scrolling
+        await waitForAnimationsToFinish();
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        return true;
+      }
+      return false;
+    };
+
+    function scheduleRetry() {
+      // Try to scroll immediately (covers preloaded site)
+      tryScroll().then((found) => {
+        if (found) return;
+        if (attempts < 50) {
+          // retry for ~5s
+          attempts++;
+          setTimeout(scheduleRetry, 100);
+          return;
+        }
+        // If still not found, observe DOM changes and scroll when element shows up
+        observer = new MutationObserver(async () => {
+          if (await tryScroll()) {
+            if (observer) observer.disconnect();
+            if (observerTimeout) clearTimeout(observerTimeout);
+          }
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
+        // Stop observing after 10s
+        observerTimeout = setTimeout(() => {
+          if (observer) observer.disconnect();
+        }, 10000);
+      });
+    }
+
+    scheduleRetry();
+
+    // Also listen for explicit embedded content load events so we can try immediately
+    const onEmbeddedLoaded = () => {
+      tryScroll();
+    };
+    window.addEventListener("embeddedContentLoaded", onEmbeddedLoaded);
+
+    return () => {
+      if (observer) observer.disconnect();
+      if (observerTimeout) clearTimeout(observerTimeout);
+      window.removeEventListener("embeddedContentLoaded", onEmbeddedLoaded);
+    };
+  }, [location.hash, location.pathname, authLoading]);
+
+  // Redirect any non-home path that has #contact-section to the home path (preserve hash)
+  useEffect(() => {
+    if (location.hash === "#contact-section" && location.pathname !== "/") {
+      navigate({ pathname: "/", hash: location.hash }, { replace: true });
+    }
+  }, [location.hash, location.pathname, navigate]);
 
   useEffect(() => {
     const unsub = auth.onAuthStateChanged((u) => {
@@ -51,12 +142,12 @@ function AppContent() {
   // Prevent scrolling during logout
   useEffect(() => {
     if (isLoggingOut) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, [isLoggingOut]);
 
@@ -99,78 +190,78 @@ function AppContent() {
         <React.Suspense fallback={<PageLoadingSpinner />}>
           <AnimatePresence mode="wait" initial={true}>
             <Routes location={location} key={location.pathname}>
-            <Route
-              path="/"
-              element={
-                <AnimatedRoute variant="fade">
-                  <Home />
-                </AnimatedRoute>
-              }
-            />
-            <Route
-              path="/about"
-              element={
-                <AnimatedRoute variant="slide">
-                  <About />
-                </AnimatedRoute>
-              }
-            />
-            <Route
-              path="/join-us"
-              element={
-                <AnimatedRoute>
-                  <JoinUs />
-                </AnimatedRoute>
-              }
-            />
-            <Route
-              path="/request-service"
-              element={
-                <AnimatedRoute>
-                  <RequestService />
-                </AnimatedRoute>
-              }
-            />
-            <Route
-              path="/terms"
-              element={
-                <AnimatedRoute variant="fade">
-                  <Terms />
-                </AnimatedRoute>
-              }
-            />
-            <Route
-              path="/join-us-terms"
-              element={
-                <AnimatedRoute variant="fade">
-                  <JoinUsTerms />
-                </AnimatedRoute>
-              }
-            />
-            <Route
-              path="/feeds"
-              element={
-                <AnimatedRoute variant="slide">
-                  {user ? <Feeds /> : <Login />}
-                </AnimatedRoute>
-              }
-            />
-            <Route
-              path="/login"
-              element={
-                <AnimatedRoute variant="slide">
-                  <Login />
-                </AnimatedRoute>
-              }
-            />
-            <Route
-              path="*"
-              element={
-                <AnimatedRoute variant="fade">
-                  <NotFound />
-                </AnimatedRoute>
-              }
-            />
+              <Route
+                path="/"
+                element={
+                  <AnimatedRoute variant="fade">
+                    <Home />
+                  </AnimatedRoute>
+                }
+              />
+              <Route
+                path="/about"
+                element={
+                  <AnimatedRoute variant="fade">
+                    <About />
+                  </AnimatedRoute>
+                }
+              />
+              <Route
+                path="/join-us"
+                element={
+                  <AnimatedRoute>
+                    <JoinUs />
+                  </AnimatedRoute>
+                }
+              />
+              <Route
+                path="/request-service"
+                element={
+                  <AnimatedRoute>
+                    <RequestService />
+                  </AnimatedRoute>
+                }
+              />
+              <Route
+                path="/terms"
+                element={
+                  <AnimatedRoute variant="fade">
+                    <Terms />
+                  </AnimatedRoute>
+                }
+              />
+              <Route
+                path="/join-us-terms"
+                element={
+                  <AnimatedRoute variant="fade">
+                    <JoinUsTerms />
+                  </AnimatedRoute>
+                }
+              />
+              <Route
+                path="/feeds"
+                element={
+                  <AnimatedRoute variant="slide">
+                    {user ? <Feeds /> : <Login />}
+                  </AnimatedRoute>
+                }
+              />
+              <Route
+                path="/login"
+                element={
+                  <AnimatedRoute variant="fade">
+                    <Login />
+                  </AnimatedRoute>
+                }
+              />
+              <Route
+                path="*"
+                element={
+                  <AnimatedRoute variant="fade">
+                    <NotFound />
+                  </AnimatedRoute>
+                }
+              />
             </Routes>
           </AnimatePresence>
         </React.Suspense>
@@ -191,77 +282,17 @@ function AppContent() {
 function LogoutConfirmModal({ open, onCancel, onConfirm }) {
   if (!open) return null;
   return (
-    <div
-      role="dialog"
-      aria-modal="true"
-      className="logout-confirm-overlay"
-      style={{
-        position: "fixed",
-        inset: 0,
-        background: "rgba(0, 0, 0, 0.5)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        zIndex: 10000,
-      }}
-    >
-      <div
-        className="logout-confirm-box"
-        style={{
-          background: "rgba(42, 42, 42, 0.9)",
-          padding: "1.5rem",
-          borderRadius: "8px",
-          boxShadow: "0 8px 24px rgba(0,0,0,0.3)",
-          maxWidth: "420px",
-          width: "90%",
-          color: "#fff",
-          border: "1px solid rgba(255,255,255,0.1)",
-        }}
-      >
-        <h3 style={{ marginTop: 0, color: "#caa94c" }}>Confirm Logout</h3>
-        <p>Are you sure you want to log out?</p>
+    <div role="dialog" aria-modal="true" className="logout-confirm-overlay">
+      <div className="logout-confirm-box">
+        <h3 className="logout-confirm-title">Confirm Logout</h3>
+        <p className="logout-confirm-text">Are you sure you want to log out?</p>
 
-        <div
-          style={{
-            display: "flex",
-            gap: "0.5rem",
-            justifyContent: "flex-end",
-            marginTop: "1rem",
-          }}
-        >
-          <button
-            className="bw-btn"
-            onClick={onCancel}
-            style={{
-              background: "transparent",
-              color: "#fff",
-              border: "1px solid rgba(255,255,255,0.3)",
-              padding: "0.4rem 1rem",
-              borderRadius: "6px",
-              cursor: "pointer",
-              transition: "all 0.2s ease",
-            }}
-            onMouseOver={(e) => {
-              e.target.style.border = "1px solid rgba(255,255,255,0.6)";
-              e.target.style.background = "rgba(255,255,255,0.05)";
-            }}
-            onMouseOut={(e) => {
-              e.target.style.border = "1px solid rgba(255,255,255,0.3)";
-              e.target.style.background = "transparent";
-            }}
-            onFocus={(e) => e.target.blur()}
-          >
+        <div className="logout-confirm-actions">
+          <button className="bw-btn logout-cancel-btn" onClick={onCancel}>
             Cancel
           </button>
 
-          <button
-            className="bw-btn"
-            onClick={onConfirm}
-            style={{
-              background: "var(--shield-accent, #ffd200)",
-              color: "#000",
-            }}
-          >
+          <button className="bw-btn logout-confirm-btn" onClick={onConfirm}>
             Log out
           </button>
         </div>
@@ -289,9 +320,11 @@ export default function App() {
         console.error("App crashed with error:", error);
       }}
     >
-      <Router>
+      <BrowserRouter
+        future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+      >
         <AppContent />
-      </Router>
+      </BrowserRouter>
     </ErrorBoundary>
   );
 }

@@ -32,7 +32,7 @@ export default function Footer({ user }) {
           </div>
 
           <div className="footer-col">
-            <div className="footer-heading">Contact</div>
+            <div className="footer-heading" id="contact-section">Contact</div>
             <a className="footer-link" href="mailto:shield@shieldintelligence.in">
               shield@shieldintelligence.in
             </a>

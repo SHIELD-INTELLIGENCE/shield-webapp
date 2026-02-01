@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import {
   signInWithEmailAndPassword,
   setPersistence,
@@ -20,8 +21,9 @@ export default function Login() {
   useEffect(() => {
     updateSEO(
       "User Login | SHIELD Intelligence",
-      "Secure login portal for SHIELD Intelligence authorized personnel."
+      "Secure login portal for SHIELD Intelligence authorized personnel.",
     );
+
     onAuthStateChanged(auth, (user) => {
       if (user) navigate("/");
     });
@@ -33,7 +35,6 @@ export default function Login() {
       return false;
     }
 
-    // Basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       setError("Please enter a valid email address");
@@ -50,11 +51,7 @@ export default function Login() {
 
   const login = async () => {
     setError("");
-
-    // Validate inputs before attempting login
-    if (!validateInputs()) {
-      return;
-    }
+    if (!validateInputs()) return;
 
     setIsLoading(true);
 
@@ -62,37 +59,28 @@ export default function Login() {
       await setPersistence(auth, browserLocalPersistence);
       const { user } = await signInWithEmailAndPassword(auth, email, password);
 
-      // Try-catch for Firestore operations
       try {
         const userRef = doc(db, "users", user.email);
         const userSnap = await getDoc(userRef);
-
         if (!userSnap.exists()) {
           await setDoc(userRef, { email: user.email });
         }
       } catch (firestoreError) {
         console.error("Firestore error:", firestoreError);
-        // Continue despite Firestore error - user is still logged in
       }
 
       navigate("/");
     } catch (e) {
-      console.error("Login error:", e);
-
-      // Use generic error messages to prevent information disclosure
-      const errorCode = e.code;
-      switch (errorCode) {
+      switch (e.code) {
         case "auth/user-not-found":
         case "auth/wrong-password":
         case "auth/invalid-credential":
-          // Generic message to prevent account enumeration
           setError("Invalid login credentials. Please try again");
           break;
         case "auth/too-many-requests":
           setError("Too many failed attempts. Please try again later");
           break;
         case "auth/user-disabled":
-          // Keep this specific as it's a legitimate account status
           setError("This account has been disabled");
           break;
         case "auth/network-request-failed":
@@ -106,9 +94,30 @@ export default function Login() {
     }
   };
 
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1
+      }
+    }
+  };
+
   return (
-    <div className="shield-login-wrapper">
-      <div className="shield-login-container">
+    <motion.div
+      className="shield-login-wrapper"
+      initial="hidden"
+      animate="visible"
+      variants={staggerContainer}
+    >
+      <motion.div className="shield-login-container" variants={fadeInUp}>
         <h2>SHIELD Login</h2>
 
         <form
@@ -119,16 +128,16 @@ export default function Login() {
           autoComplete="on"
           className="shield-login-form"
         >
-          {/* Hidden username field improves Chrome/Firefox autofill reliability */}
+          {/* Autofill helper */}
           <input
             type="text"
             name="username"
-            id="username"
             autoComplete="username"
-            style={{ position: "absolute", left: "-9999px", top: "auto" }}
+            className="hidden-autofill-input"
             tabIndex={-1}
             aria-hidden="true"
           />
+
           <input
             className="shield-clean-input"
             placeholder="Email"
@@ -140,7 +149,6 @@ export default function Login() {
             disabled={isLoading}
             required
             aria-label="Email"
-            aria-required="true"
           />
 
           <input
@@ -152,19 +160,15 @@ export default function Login() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             onKeyDown={(e) => {
-              // Allow Enter to submit when focused in password field
-              if (e.key === "Enter") {
-                // Prevent double form submissions
+              if (e.key === "Enter" && !isLoading) {
                 e.preventDefault();
-                // Only attempt login when not loading
-                if (!isLoading) login();
+                login();
               }
             }}
             disabled={isLoading}
             required
             aria-label="Password"
-            aria-required="true"
-            minLength="6"
+            minLength={6}
           />
 
           {error && (
@@ -175,33 +179,14 @@ export default function Login() {
 
           <button
             type="submit"
-            className="bw-btn"
+            className={`bw-btn login-btn ${isLoading ? "login-btn-loading" : ""}`}
             disabled={isLoading}
-            style={{
-              opacity: isLoading ? 0.7 : 1,
-              cursor: isLoading ? "not-allowed" : "pointer",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "0.5rem",
-            }}
           >
-            {isLoading && (
-              <div
-                className="shield-spinner"
-                style={{
-                  width: "1em",
-                  height: "1em",
-                  border: "0.15em solid var(--shield-black)",
-                  borderTop: "0.15em solid transparent",
-                  margin: 0,
-                }}
-              />
-            )}
+            {isLoading && <span className="login-spinner" />}
             {isLoading ? "Authenticating..." : "Login"}
           </button>
         </form>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 /**
  * Error Boundary component to catch and handle JavaScript errors anywhere in the child component tree.
  * Prevents the entire app from crashing when an error occurs in a component.
@@ -79,7 +78,7 @@ class ErrorBoundary extends Component {
             An unexpected error occurred. Our team has been notified and we're working on fixing the issue.
           </p>
           {error && process.env.NODE_ENV === 'development' && (
-            <details style={{ whiteSpace: 'pre-wrap', marginTop: '1rem' }}>
+            <details className="error-details">
               <summary>Error Details</summary>
               <p>{error.toString()}</p>
             </details>

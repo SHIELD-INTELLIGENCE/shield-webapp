@@ -1,31 +1,23 @@
 // src/pages/NotFound.jsx
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { updateSEO } from '../utils/seoUtils';
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { updateSEO } from "../utils/seoUtils";
 
 export default function NotFound() {
   useEffect(() => {
     updateSEO(
       "404 - Access Denied | SHIELD Intelligence",
-      "The page you looking for doesn't exist or you don't have permission to access it."
+      "The page you looking for doesn't exist or you don't have permission to access it.",
     );
   }, []);
 
   return (
-    <div style={{
-      backgroundColor: '#1a1a1a',
-      color: '#caa94c',
-      fontFamily: 'Roboto, sans-serif',
-      height: '100vh',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      textAlign: 'center'
-    }}>
-      <h1 style={{ fontSize: '4rem' }}>404 — SHIELD Access Denied</h1>
-      <p style={{ fontSize: '1.5rem' }}>The page you’re looking for doesn’t exist.</p>
-      <Link to="/" style={{ color: '#fafafa', marginTop: '20px' }}>
+    <div className="notfound-page">
+      <h1 className="notfound-title">404 — SHIELD Access Denied</h1>
+      <p className="notfound-text">
+        The page you’re looking for doesn’t exist.
+      </p>
+      <Link to="/" className="notfound-link">
         Return to SHIELD Main Console
       </Link>
     </div>

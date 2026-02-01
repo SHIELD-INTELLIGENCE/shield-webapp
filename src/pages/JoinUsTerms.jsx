@@ -6,7 +6,7 @@ const JoinUsTerms = () => {
   useEffect(() => {
     updateSEO(
       "Join SHIELD Intelligence – Terms & Conditions",
-      "Terms and conditions governing applications to join SHIELD Intelligence as a student or contributor."
+      "Terms and conditions governing applications to join SHIELD Intelligence as a student or contributor.",
     );
 
     const metaTag = document.createElement("meta");
@@ -24,54 +24,48 @@ const JoinUsTerms = () => {
   }, []);
 
   return (
-    <div
-      className="terms-page"
-      style={{
-        fontFamily: "'Segoe UI', sans-serif",
-        maxWidth: "800px",
-        margin: "0 auto",
-        padding: "40px 20px",
-        lineHeight: "1.6",
-        background: "#1a1a1a",
-        color: "#e0e0e0",
-        minHeight: "100vh"
-      }}
-    >
-      <style>{`.terms-page p, .terms-page li { color: #e0e0e0 !important; } .terms-page h1, .terms-page h2 { color: #ffffff; }`}</style>
+    <div className="terms-page">
+      <h1 className="terms-title">
+        Terms & Conditions for Joining SHIELD Intelligence
+      </h1>
 
-      <h1>Terms & Conditions for Joining SHIELD Intelligence</h1>
-      <p><strong>Effective Date:</strong> January 18, 2026</p>
+      <p className="terms-meta">
+        <strong>Effective Date:</strong> January 18, 2026
+      </p>
 
       <h2>1. Introduction</h2>
       <p>
-        SHIELD Intelligence (“SHIELD”) is a technology-focused initiative engaged in
-        software development, digital products, and technical experimentation.
-        SHIELD is not currently a registered company, government body, security agency,
-        or licensed intelligence organization.
+        SHIELD Intelligence (“SHIELD”) is a technology-focused initiative engaged
+        in software development, digital products, and technical experimentation.
+        SHIELD is not currently a registered company, government body, security
+        agency, or licensed intelligence organization.
       </p>
       <p>
         These Terms apply to all individuals applying to join SHIELD as students,
-        contributors, interns, or early collaborators through the Join SHIELD Intelligence
-        application form.
+        contributors, interns, or early collaborators through the Join SHIELD
+        Intelligence application form.
       </p>
 
       <h2>2. Nature of Participation</h2>
       <p>
-        Joining SHIELD does not constitute employment, formal partnership, or guaranteed
-        position. Participation is voluntary and based on availability, interest, and
-        suitability.
+        Joining SHIELD does not constitute employment, formal partnership, or
+        guaranteed position. Participation is voluntary and based on
+        availability, interest, and suitability.
       </p>
       <p>
-        Roles may involve learning, experimentation, and contribution to real software
-        projects under guidance. There is no guarantee of compensation, recognition,
-        or continued involvement.
+        Roles may involve learning, experimentation, and contribution to real
+        software projects under guidance. There is no guarantee of compensation,
+        recognition, or continued involvement.
       </p>
 
       <h2>3. Eligibility</h2>
       <ul>
         <li>Applicants must be at least 13 years of age.</li>
         <li>Applicants must provide accurate and truthful information.</li>
-        <li>SHIELD reserves the right to accept or reject any application without explanation.</li>
+        <li>
+          SHIELD reserves the right to accept or reject any application without
+          explanation.
+        </li>
       </ul>
 
       <h2>4. Scope of Work</h2>
@@ -80,9 +74,10 @@ const JoinUsTerms = () => {
         system design, and technical research.
       </p>
       <p>
-        Physical protection services and private intelligence operations are planned
-        future divisions only. These are not currently active, and applicants will not
-        be involved in real-world intelligence or physical security operations at this time.
+        Physical protection services and private intelligence operations are
+        planned future divisions only. These are not currently active, and
+        applicants will not be involved in real-world intelligence or physical
+        security operations at this time.
       </p>
 
       <h2>5. Conduct & Responsibility</h2>
@@ -95,9 +90,9 @@ const JoinUsTerms = () => {
 
       <h2>6. Confidentiality</h2>
       <p>
-        Applicants and contributors may be exposed to internal ideas, discussions,
-        or early-stage systems. Such information must not be shared externally
-        without explicit permission.
+        Applicants and contributors may be exposed to internal ideas,
+        discussions, or early-stage systems. Such information must not be shared
+        externally without explicit permission.
       </p>
       <p>
         SHIELD does not guarantee absolute confidentiality and is not liable for
@@ -113,8 +108,9 @@ const JoinUsTerms = () => {
 
       <h2>8. Removal or Termination</h2>
       <p>
-        SHIELD reserves the right to remove or restrict any participant at any time
-        for misconduct, inactivity, misrepresentation, or violation of these Terms.
+        SHIELD reserves the right to remove or restrict any participant at any
+        time for misconduct, inactivity, misrepresentation, or violation of
+        these Terms.
       </p>
 
       <h2>9. No Guarantees</h2>
@@ -130,9 +126,7 @@ const JoinUsTerms = () => {
       </p>
 
       <h2>11. Governing Jurisdiction</h2>
-      <p>
-        These Terms shall be governed by applicable laws within India.
-      </p>
+      <p>These Terms shall be governed by applicable laws within India.</p>
 
       <h2>12. Contact</h2>
       <p>
@@ -140,16 +134,8 @@ const JoinUsTerms = () => {
         <strong> queriesshield@gmail.com</strong>
       </p>
 
-      <footer
-        style={{
-          marginTop: "40px",
-          fontSize: "0.9em",
-          color: "#999",
-          borderTop: "1px solid #444",
-          paddingTop: "20px",
-        }}
-      >
-        &copy; 2025 SHIELD Intelligence — All rights reserved.
+      <footer className="terms-footer">
+        © 2025 SHIELD Intelligence — All rights reserved.
       </footer>
     </div>
   );
