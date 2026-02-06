@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { updateSEO } from "../utils/seoUtils";
@@ -14,9 +14,10 @@ async function submitServiceRequest(formData) {
     serviceType: formData.serviceType,
     projectReference: formData.projectReference,
     requirements: formData.requirements,
-    budget: formData.budget,
+    plan: formData.plan,
     acceptedTerms: true,
     preferredContact: formData.preferredContact,
+    otherContacts: formData.otherContacts, // Save the new field to the database
     createdAt: serverTimestamp(),
     source: "request-service",
   });
@@ -26,7 +27,8 @@ function RequestService() {
   const [isModalOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [touched, setTouched] = useState({}); // Track visited fields
+  const [touched, setTouched] = useState({});
+  const formRef = useRef(null);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -36,12 +38,12 @@ function RequestService() {
     serviceType: "",
     projectReference: "",
     requirements: "",
-    budget: "",
+    plan: "",
     acceptedTerms: false,
     preferredContact: "",
+    otherContacts: "",
   });
 
-  // Validation Helpers
   const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   const isFormValid =
@@ -51,7 +53,7 @@ function RequestService() {
     formData.date !== "" &&
     formData.serviceType !== "" &&
     formData.requirements.trim() !== "" &&
-    formData.budget !== "" &&
+    formData.plan !== "" &&
     formData.preferredContact !== "" &&
     formData.acceptedTerms === true;
 
@@ -99,7 +101,7 @@ function RequestService() {
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
   };
 
   const staggerContainer = {
@@ -108,26 +110,155 @@ function RequestService() {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const scrollToForm = () => {
+    if (!formRef.current) return;
+    requestAnimationFrame(() => {
+      formRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
   };
 
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={staggerContainer}
-    >
+    <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
       <motion.h1 className="form-title" variants={fadeInUp}>
         Request a Service
       </motion.h1>
 
-      <motion.div className="form-layout" variants={fadeInUp}>
+      {/* Pricing Plans Section */}
+      <motion.div className="pricing-plans-section" variants={fadeInUp}>
+        <h2 className="pricing-plans-title">Choose Your Plan</h2>
+        <p className="pricing-plans-subtitle">
+          Select a plan that fits your needs
+        </p>
+
+        <div className="pricing-plans-grid">
+          {/* Starter Plan */}
+          <div
+            className={`pricing-plan-card ${formData.plan === "Starter Plan" ? "selected" : ""}`}
+          >
+            <div className="pricing-plan-header">
+              <h3 className="pricing-plan-name">Starter Plan</h3>
+              <p className="pricing-plan-build-cost">
+                Build Cost: ₹2,499 – ₹3,999 (one-time)
+              </p>
+              <p className="pricing-plan-monthly">₹599 / month</p>
+              <div className="pricing-plan-offer">
+                Special: ₹1,499 / 3 months (save ₹300)
+              </div>
+            </div>
+            <ul className="pricing-plan-features">
+              <li>Website / product (basic to medium)</li>
+              <li>Basic SEO</li>
+              <li>Hosting included</li>
+              <li>Domain (.in)</li>
+              <li>99.99% uptime</li>
+              <li>1 large commit + 3 small changes</li>
+              <li>Monthly audits & reports</li>
+              <li>Support with under 24-hour reply</li>
+            </ul>
+            <button
+              type="button"
+              className="pricing-plan-button"
+              onClick={() => {
+                updateField("plan", "Starter Plan");
+                scrollToForm();
+              }}
+            >
+              {formData.plan === "Starter Plan" ? "Selected" : "Choose Plan"}
+            </button>
+          </div>
+
+          {/* Premium Plan (Highlighted) */}
+          <div
+            className={`pricing-plan-card highlighted ${
+              formData.plan === "Premium Plan" ? "selected" : ""
+            }`}
+          >
+            <div className="pricing-plan-header">
+              <h3 className="pricing-plan-name">Premium Plan</h3>
+              <p className="pricing-plan-badge">
+                Most Chosen by Growing Businesses
+              </p>
+              <p className="pricing-plan-build-cost">
+                Build Cost: ₹4,999 – ₹9,999 (one-time)
+              </p>
+              <p className="pricing-plan-monthly">₹1,999 / month</p>
+              <div className="pricing-plan-offer">
+                Special: ₹4,999 / 3 months (save ₹1,000)
+              </div>
+            </div>
+            <ul className="pricing-plan-features">
+              <li>Professional Website / product (higher standards)</li>
+              <li>Advanced SEO</li>
+              <li>Hosting included</li>
+              <li>Domain (.in or .com)</li>
+              <li>99.99% uptime</li>
+              <li>4 large commits + 6 small changes</li>
+              <li>Monthly audits & reports</li>
+              <li>Support with under 24-hour reply</li>
+            </ul>
+            <button
+              type="button"
+              className="pricing-plan-button"
+              onClick={() => {
+                updateField("plan", "Premium Plan");
+                scrollToForm();
+              }}
+            >
+              {formData.plan === "Premium Plan" ? "Selected" : "Choose Plan"}
+            </button>
+          </div>
+
+          {/* Elite Plan */}
+          <div
+            className={`pricing-plan-card ${formData.plan === "Elite Plan" ? "selected" : ""}`}
+          >
+            <div className="pricing-plan-header">
+              <h3 className="pricing-plan-name">Elite Plan</h3>
+              <p className="pricing-plan-build-cost">
+                Build Cost: ₹14,999 – ₹29,999 (one-time)
+              </p>
+              <p className="pricing-plan-monthly">₹4,999 / month</p>
+              <div className="pricing-plan-offer">
+                Special: ₹13,999 / 3 months (save ₹1,000)
+              </div>
+            </div>
+            <ul className="pricing-plan-features">
+              <li>Enterprise-grade product</li>
+              <li>Advanced SEO & performance optimization</li>
+              <li>High-availability hosting</li>
+              <li>Unlimited small changes</li>
+              <li>Domain (Your choice)</li>
+              <li>8 large commits per month</li>
+              <li>Security hardening & backups</li>
+              <li>Direct founder involvement</li>
+            </ul>
+            <button
+              type="button"
+              className="pricing-plan-button"
+              onClick={() => {
+                updateField("plan", "Elite Plan");
+                scrollToForm();
+              }}
+            >
+              {formData.plan === "Elite Plan" ? "Selected" : "Choose Plan"}
+            </button>
+          </div>
+        </div>
+      </motion.div>
+
+      <motion.div className="form-layout" variants={fadeInUp} ref={formRef}>
         {/* Left: Content Column */}
         <div className="form-info-column">
           <div className="form-info-card">
-            <h3 form-info-title>Current Services</h3>
+            <h3 className="form-info-title">Current Services</h3>
             <ul className="form-info-text">
               <li>
                 <strong>Software Development:</strong> Custom websites, web
@@ -174,9 +305,10 @@ function RequestService() {
                     serviceType: "",
                     projectReference: "",
                     requirements: "",
-                    budget: "",
+                    plan: "",
                     acceptedTerms: false,
                     preferredContact: "",
+                    otherContacts: "",
                   });
                 }}
               >
@@ -240,6 +372,14 @@ If not, write “Not applicable”.)"
                 <span className="form-error-text">Invalid email address</span>
               )}
 
+              <label className="form-label">Other Contacts (Optional)</label>
+              <textarea
+                className="form-textarea"
+                rows={3}
+                value={formData.otherContacts}
+                onChange={(e) => updateField("otherContacts", e.target.value)}
+                placeholder="Provide additional contact details, if any (e.g., alternate phone, email, etc.)"
+              />
               <label className="form-label">Date</label>
               <input
                 type="date"
@@ -287,24 +427,24 @@ If not, write “Not applicable”.)"
                 value={formData.requirements}
                 onBlur={() => handleBlur("requirements")}
                 onChange={(e) => updateField("requirements", e.target.value)}
-                placeholder="Explain your request clearly..."
+                placeholder="Explain your request clearly... or write 'To be discussed' if you want to discuss details later."
               />
 
               <hr className="form-divider-second" />
-              <h3 className="form-section-title">Budget & Contact</h3>
-              <label className="form-label">Budget Range</label>
+              <h3 className="form-section-title">Plan & Contact</h3>
+              <label className="form-label">Selected Plan</label>
               <select
                 className={`form-input ${
-                  hasError("budget") ? "input-error" : ""
+                  hasError("plan") ? "input-error" : ""
                 }`}
-                value={formData.budget}
-                onBlur={() => handleBlur("budget")}
-                onChange={(e) => updateField("budget", e.target.value)}
+                value={formData.plan}
+                onBlur={() => handleBlur("plan")}
+                onChange={(e) => updateField("plan", e.target.value)}
               >
-                <option value="">Select</option>
-                <option>₹1,000 – ₹3,000 (For Individuals)</option>
-                <option>₹5,000 – ₹7,000 (Small scale)</option>
-                <option>₹10,000+50, (Advanced/Large Scale)</option>
+                <option value="">Select a Plan</option>
+                <option>Starter Plan</option>
+                <option>Premium Plan</option>
+                <option>Elite Plan</option>
                 <option>To be discussed</option>
               </select>
 
@@ -335,15 +475,13 @@ If not, write “Not applicable”.)"
                     handleBlur("acceptedTerms");
                   }}
                 />{" "}
-              I have read and accept the{" "}
+                I have read and accept the{" "}
                 <a href="/terms" className="terms-link">
                   Terms and Conditions
                 </a>
               </label>
               {hasError("acceptedTerms") && (
-                <div className="form-error-text">
-                  Required
-                </div>
+                <div className="form-error-text">Required</div>
               )}
               <button
                 className={`bw-btn ${
@@ -354,7 +492,7 @@ If not, write “Not applicable”.)"
               >
                 {submitting ? "Submitting..." : "Submit Request"}
               </button>
-               {!isFormValid && (
+              {!isFormValid && (
                 <p className="form-error-summary">
                   * Please complete all required fields correctly.
                 </p>

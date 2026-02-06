@@ -47,11 +47,11 @@ export default function Header({ user, onLogout }) {
       <NavLink to="/about" className={getNavLinkClass} onClick={closeMenu}>
         About
       </NavLink>
-      <NavLink to="/join-us" className={getNavLinkClass} onClick={closeMenu}>
-        Join Us
-      </NavLink>
       <NavLink to="/request-service" className={getNavLinkClass} onClick={closeMenu}>
         Request a Service
+      </NavLink>
+      <NavLink to="/join-us" className={getNavLinkClass} onClick={closeMenu}>
+        Join Us
       </NavLink>
 
       {user && (
