@@ -1535,9 +1535,11 @@ p {
   background: rgba(26, 26, 26, 0.95);
   border: 2px solid rgba(202, 169, 76, 0.4);
   border-radius: 1rem;
-  max-width: 1100px;
+  max-width: min(1100px, calc(100% - 2rem));
   margin-inline: auto;
   box-shadow: 0 8px 32px rgba(202, 169, 76, 0.15);
+  overflow: visible;
+  padding-inline: clamp(1rem, 4vw, 2rem);
 }
 
 /* CTA */
@@ -1557,6 +1559,17 @@ p {
   font-size: 1.05rem;
   padding: 0.85rem 2rem;
   white-space: nowrap;
+}
+
+/* shrink CTA button on small screens to prevent overflow */
+@media (max-width: 800px) {
+  .home-cta-btn {
+    font-size: 1.05rem;
+    padding: 0.75rem 1.6rem; 
+    white-space: normal;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
 }
 .auth-highlight-header {
   text-align: center;
@@ -1596,9 +1609,12 @@ p {
 }
 .auth-feature-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 0 0 2rem 0;
+  width: 100%;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .auth-feature-item {
@@ -2065,14 +2081,12 @@ p {
   border-top: 1px solid #444;
   padding-top: 20px;
 }
-/* Hidden autofill helper */
 .hidden-autofill-input {
   position: absolute;
   left: -9999px;
   top: auto;
 }
 
-/* Login button loading state */
 .login-btn {
   display: flex;
   align-items: center;
@@ -2085,7 +2099,6 @@ p {
   cursor: not-allowed;
 }
 
-/* Inline spinner inside button */
 .login-spinner {
   width: 1em;
   height: 1em;

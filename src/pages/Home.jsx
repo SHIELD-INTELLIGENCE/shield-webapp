@@ -277,7 +277,7 @@ function Home() {
             rel="noopener noreferrer"
             className="bw-btn home-cta-btn"
           >
-            Open SHIELD Authenticator →
+            Open SHIELD Authenticator
           </a>
         </motion.div>
       </motion.section>
