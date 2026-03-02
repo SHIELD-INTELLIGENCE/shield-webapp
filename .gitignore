@@ -26,4 +26,5 @@ node_modules/
 
 # Local Netlify folder
 .netlify
-.vscode/
+.vscode/*.jks
+*.keystore
