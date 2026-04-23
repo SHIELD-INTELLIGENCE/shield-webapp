@@ -117,75 +117,94 @@ export default function Login() {
       animate="visible"
       variants={staggerContainer}
     >
-      <motion.div className="shield-login-container" variants={fadeInUp}>
-        <h2>SHIELD Login</h2>
+      <motion.div className="shield-login-shell" variants={fadeInUp}>
+        <motion.section className="shield-login-brand" variants={fadeInUp}>
+          <div className="shield-login-logo-frame">
+            <img
+              src="/logo192.png"
+              alt="SHIELD Intelligence logo"
+              className="shield-login-logo"
+            />
+          </div>
+          <h1 className="shield-login-brand-title">SHIELD Intelligence</h1>
+          <p className="shield-login-brand-subtitle">
+            Secure Access Portal
+          </p>
+          <p className="shield-login-brand-note">
+            Authorized members can securely access internal systems and protected resources.
+          </p>
+        </motion.section>
 
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            login();
-          }}
-          autoComplete="on"
-          className="shield-login-form"
-        >
-          {/* Autofill helper */}
-          <input
-            type="text"
-            name="username"
-            autoComplete="username"
-            className="hidden-autofill-input"
-            tabIndex={-1}
-            aria-hidden="true"
-          />
+        <motion.section className="shield-login-container" variants={fadeInUp}>
+          <h2>SHIELD Login</h2>
 
-          <input
-            className="shield-clean-input"
-            placeholder="Email"
-            type="email"
-            name="email"
-            autoComplete="username email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            disabled={isLoading}
-            required
-            aria-label="Email"
-          />
-
-          <input
-            className="shield-clean-input"
-            placeholder="Password"
-            type="password"
-            name="password"
-            autoComplete="current-password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && !isLoading) {
-                e.preventDefault();
-                login();
-              }
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              login();
             }}
-            disabled={isLoading}
-            required
-            aria-label="Password"
-            minLength={6}
-          />
-
-          {error && (
-            <p className="shield-login-error" role="alert">
-              {error}
-            </p>
-          )}
-
-          <button
-            type="submit"
-            className={`bw-btn login-btn ${isLoading ? "login-btn-loading" : ""}`}
-            disabled={isLoading}
+            autoComplete="on"
+            className="shield-login-form"
           >
-            {isLoading && <span className="login-spinner" />}
-            {isLoading ? "Authenticating..." : "Login"}
-          </button>
-        </form>
+            {/* Autofill helper */}
+            <input
+              type="text"
+              name="username"
+              autoComplete="username"
+              className="hidden-autofill-input"
+              tabIndex={-1}
+              aria-hidden="true"
+            />
+
+            <input
+              className="shield-clean-input"
+              placeholder="Email"
+              type="email"
+              name="email"
+              autoComplete="username email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              disabled={isLoading}
+              required
+              aria-label="Email"
+            />
+
+            <input
+              className="shield-clean-input"
+              placeholder="Password"
+              type="password"
+              name="password"
+              autoComplete="current-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && !isLoading) {
+                  e.preventDefault();
+                  login();
+                }
+              }}
+              disabled={isLoading}
+              required
+              aria-label="Password"
+              minLength={6}
+            />
+
+            {error && (
+              <p className="shield-login-error" role="alert">
+                {error}
+              </p>
+            )}
+
+            <button
+              type="submit"
+              className={`bw-btn login-btn ${isLoading ? "login-btn-loading" : ""}`}
+              disabled={isLoading}
+            >
+              {isLoading && <span className="login-spinner" />}
+              {isLoading ? "Authenticating..." : "Login"}
+            </button>
+          </form>
+        </motion.section>
       </motion.div>
     </motion.div>
   );

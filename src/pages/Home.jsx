@@ -87,7 +87,7 @@ function Home() {
   }, []);
 
   return (
-    <div className="home-hero-bw">
+    <div className="home-hero-bw home-page">
       {/* Hero Section */}
       <motion.div
         className="home-hero-content-bw"
@@ -96,7 +96,7 @@ function Home() {
         animate={controls}
       >
         <motion.div className="logo-container" variants={scaleIn}>
-          <img src={logo} alt="SHIELD Intelligence Logo" className="logo" />
+          <img src={logo} alt="SHIELD Intelligence Logo" className="home-hero-logo" />
         </motion.div>
 
         <motion.h1 variants={fadeInUp}>
@@ -121,7 +121,7 @@ function Home() {
 
       {/* Value Proposition Section */}
       <motion.section
-        className="home-section home-section-wide"
+        className="home-section home-section-wide home-panel"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
@@ -184,7 +184,7 @@ function Home() {
 
       {/* SHIELD Authenticator Highlight */}
       <motion.section
-        className="home-section home-highlight"
+        className="home-section home-highlight home-panel"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
@@ -288,7 +288,7 @@ function Home() {
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
         variants={staggerContainer}
-        className="home-approach"
+        className="home-approach home-panel"
       >
         <motion.h2 variants={fadeInUp} className="home-approach-title">
           Our Approach
@@ -326,7 +326,7 @@ function Home() {
 
       {/* CTA Section */}
       <motion.section
-        className="home-section home-cta"
+        className="home-section home-cta home-panel"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
@@ -349,7 +349,7 @@ function Home() {
 
       {/* Products & Resources */}
       <motion.section
-        className="public-resources"
+        className="public-resources home-panel"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}

@@ -73,14 +73,6 @@ function RequestService() {
     return touched[field] && String(formData[field]).trim() === "";
   };
 
-  const getInputStyle = (field) => ({
-    border: hasError(field)
-      ? "1px solid #ff6b6b"
-      : "1px solid rgba(255,255,255,0.08)",
-    outline: "none",
-    transition: "border 0.3s ease",
-  });
-
   useEffect(() => {
     if (isModalOpen) {
       document.body.style.overflow = "hidden";
@@ -126,7 +118,12 @@ function RequestService() {
   };
 
   return (
-    <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
+    <motion.div
+      className="request-service-page"
+      initial="hidden"
+      animate="visible"
+      variants={staggerContainer}
+    >
       <motion.h1 className="form-title" variants={fadeInUp}>
         Request a Service
       </motion.h1>
@@ -338,8 +335,7 @@ function RequestService() {
               <h3 className="form-section-title">Contact Information</h3>
               <label className="form-label">Name of Requester</label>
               <input
-                className="form-input"
-                style={getInputStyle("name")}
+                className={`form-input ${hasError("name") ? "input-error" : ""}`}
                 value={formData.name}
                 onBlur={() => handleBlur("name")}
                 onChange={(e) => updateField("name", e.target.value)}
@@ -348,8 +344,7 @@ function RequestService() {
 
               <label className="form-label">Class / Section / Status</label>
               <input
-                className="form-input"
-                style={getInputStyle("education")}
+                className={`form-input ${hasError("education") ? "input-error" : ""}`}
                 value={formData.education}
                 onBlur={() => handleBlur("education")}
                 onChange={(e) => updateField("education", e.target.value)}
@@ -383,8 +378,7 @@ If not, write “Not applicable”.)"
               <label className="form-label">Date</label>
               <input
                 type="date"
-                className="form-input"
-                style={getInputStyle("date")}
+                className={`form-input ${hasError("date") ? "input-error" : ""}`}
                 value={formData.date}
                 onBlur={() => handleBlur("date")}
                 onChange={(e) => updateField("date", e.target.value)}
@@ -394,8 +388,7 @@ If not, write “Not applicable”.)"
               <h3 className="form-section-title">Service Details</h3>
               <label className="form-label">Service Type</label>
               <select
-                className="form-input"
-                style={getInputStyle("serviceType")}
+                className={`form-input ${hasError("serviceType") ? "input-error" : ""}`}
                 value={formData.serviceType}
                 onBlur={() => handleBlur("serviceType")}
                 onChange={(e) => updateField("serviceType", e.target.value)}
@@ -450,8 +443,7 @@ If not, write “Not applicable”.)"
 
               <label className="form-label">Preferred Contact Method</label>
               <select
-                className="form-input"
-                style={getInputStyle("preferredContact")}
+                className={`form-input ${hasError("preferredContact") ? "input-error" : ""}`}
                 value={formData.preferredContact}
                 onBlur={() => handleBlur("preferredContact")}
                 onChange={(e) =>

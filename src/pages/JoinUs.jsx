@@ -156,6 +156,7 @@ function JoinUs() {
 
   return (
     <motion.div
+      className="join-us-page"
       initial="hidden"
       animate="visible"
       variants={staggerContainer}
