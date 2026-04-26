@@ -5,6 +5,73 @@ import { updateSEO } from "../utils/seoUtils";
 import { db } from "../firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
+const INTEREST_OPTIONS = [
+  "Software Development",
+  "Web & Application Development",
+  "Cybersecurity",
+  "Cryptography",
+  "Technology Research",
+  "System Design & Engineering",
+  "Strategy & Planning",
+  "Communication Systems",
+  "Leadership & Team Coordination",
+  "Codebreaking & Logical Analysis",
+  "Physical Protection & Security (future division)",
+  "Private Intelligence Services (future division)",
+];
+
+const INITIAL_JOIN_DATA = {
+  fullName: "",
+  dob: "",
+  email: "",
+  contact: "",
+  is13Plus: "",
+  education: "",
+  interests: [],
+  primaryInterest: "",
+  acceptedTerms: false,
+  reason: "",
+};
+
+function validateJoinForm(formData) {
+  const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email);
+  const isNameValid = formData.fullName.trim().length >= 2;
+  const isContactValid = formData.contact.trim() !== "";
+  const isDobValid = formData.dob !== "";
+  const isEducationValid = formData.education.trim() !== "";
+  const isReasonValid = formData.reason.trim() !== "";
+  const isInterestsValid = formData.interests.length > 0;
+  const isPrimaryInterestValid =
+    formData.primaryInterest.trim() !== "" &&
+    formData.interests.includes(formData.primaryInterest);
+  const is13PlusValid = formData.is13Plus !== "";
+  const isTermsValid = formData.acceptedTerms === true;
+
+  return {
+    isEmailValid,
+    isNameValid,
+    isContactValid,
+    isDobValid,
+    isEducationValid,
+    isReasonValid,
+    isInterestsValid,
+    isPrimaryInterestValid,
+    is13PlusValid,
+    isTermsValid,
+    isFormValid:
+      isNameValid &&
+      isEmailValid &&
+      isContactValid &&
+      isDobValid &&
+      isEducationValid &&
+      isInterestsValid &&
+      isPrimaryInterestValid &&
+      isReasonValid &&
+      is13PlusValid &&
+      isTermsValid,
+  };
+}
+
 async function submitToFirebase(formData) {
   await addDoc(collection(db, "joinApplications"), {
     fullName: formData.fullName,
@@ -13,6 +80,7 @@ async function submitToFirebase(formData) {
     dob: formData.dob,
     education: formData.education,
     interests: formData.interests,
+    primaryInterest: formData.primaryInterest,
     reason: formData.reason,
     is13Plus: formData.is13Plus,
     acceptedTerms: true,
@@ -32,76 +100,33 @@ function JoinUs() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [isModalOpen] = useState(false);
+  const [submitAttempted, setSubmitAttempted] = useState(false);
 
-  // 1. ADDED: Touched state to track which fields user has visited
   const [touched, setTouched] = useState({});
 
-  const [formData, setFormData] = useState({
-    fullName: "",
-    dob: "",
-    email: "",
-    contact: "",
-    is13Plus: "",
-    education: "",
-    interests: [],
-    acceptedTerms: false,
-    reason: "",
-  });
+  const [formData, setFormData] = useState(INITIAL_JOIN_DATA);
 
-  const INTEREST_OPTIONS = [
-    "Software Development",
-    "Web & Application Development",
-    "Cybersecurity",
-    "Cryptography",
-    "Technology Research",
-    "System Design & Engineering",
-    "Strategy & Planning",
-    "Communication Systems",
-    "Leadership & Team Coordination",
-    "Codebreaking & Logical Analysis",
-    "Physical Protection & Security (future division)",
-    "Private Intelligence Services (future division)",
-  ];
+  const {
+    isEmailValid,
+    isInterestsValid,
+    is13PlusValid,
+    isFormValid,
+  } = validateJoinForm(formData);
 
-  // Helper: Regex for email
-  const isValidEmail = (email) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  };
-
-  // Check validity for individual fields
-  const isEmailValid = isValidEmail(formData.email);
-  const isNameValid = formData.fullName.trim().length >= 2;
-  const isContactValid = formData.contact.trim() !== "";
-  const isDobValid = formData.dob !== "";
-  const isEducationValid = formData.education.trim() !== "";
-  const isReasonValid = formData.reason.trim() !== "";
-  const isInterestsValid = formData.interests.length > 0;
-  const is13PlusValid = formData.is13Plus !== "";
-  const isTermsValid = formData.acceptedTerms === true;
-
-  // Global Form Validity
-  const isFormValid =
-    isNameValid &&
-    isEmailValid &&
-    isContactValid &&
-    isDobValid &&
-    isEducationValid &&
-    isInterestsValid &&
-    isReasonValid &&
-    is13PlusValid &&
-    isTermsValid;
-
-  // 2. HELPER: Determine if we should show error style
-  // Returns true if field has been touched AND is invalid
   const hasError = (field) => {
-    // Special handling for email because it has a regex check
     if (field === "email") {
-      return touched.email && !isEmailValid;
+      return (touched.email || submitAttempted) && !isEmailValid;
     }
-    // Generic check for empty fields
+    if (field === "acceptedTerms") {
+      return (touched.acceptedTerms || submitAttempted) && !formData.acceptedTerms;
+    }
+    if (field === "is13Plus") {
+      return submitAttempted && !is13PlusValid;
+    }
     const value = formData[field];
-    if (Array.isArray(value)) return touched[field] && value.length === 0;
-    if (typeof value === "string") return touched[field] && value.trim() === "";
+    const shouldShow = touched[field] || submitAttempted;
+    if (Array.isArray(value)) return shouldShow && value.length === 0;
+    if (typeof value === "string") return shouldShow && value.trim() === "";
     return false;
   };
 
@@ -112,7 +137,6 @@ function JoinUs() {
     }));
   }
 
-  // 4. HANDLER: Mark field as touched on Blur
   const handleBlur = (field) => {
     setTouched((prev) => ({
       ...prev,
@@ -230,18 +254,9 @@ function JoinUs() {
                   localStorage.removeItem("shield_join_form_submitted");
                   setSubmitted(false);
                   setSubmitting(false);
-                  setFormData({
-                    fullName: "",
-                    dob: "",
-                    email: "",
-                    contact: "",
-                    is13Plus: "",
-                    education: "",
-                    interests: [],
-                    acceptedTerms: false,
-                    reason: "",
-                  });
-                  setTouched({}); // Reset touched state
+                  setSubmitAttempted(false);
+                  setFormData(INITIAL_JOIN_DATA);
+                  setTouched({});
                 }}
               >
                 Submit Another Response
@@ -251,6 +266,7 @@ function JoinUs() {
             <form
               onSubmit={async (e) => {
                 e.preventDefault();
+                setSubmitAttempted(true);
                 if (submitting || !isFormValid) return;
                 try {
                   setSubmitting(true);
@@ -292,7 +308,7 @@ function JoinUs() {
                 placeholder="Required"
               />
               {/* Specific Email Error Text */}
-              {touched.email && !isEmailValid && (
+              {hasError("email") && (
                 <div className="form-error-text">
                   Please enter a valid email address (e.g., name@example.com)
                 </div>
@@ -343,7 +359,6 @@ function JoinUs() {
               {/* Checkbox Box*/}
               <div
                 className={hasError("interests") ? "field-error" : ""}
-                onBlur={() => handleBlur("interests")}
               >
                 {INTEREST_OPTIONS.map((interest) => (
                   <label key={interest} className="checkbox-label">
@@ -352,27 +367,47 @@ function JoinUs() {
                       className="checkboxes"
                       checked={formData.interests.includes(interest)}
                       onChange={(e) => {
-                        handleBlur("interests"); // Mark touched immediately on click
-                        if (e.target.checked) {
-                          updateField("interests", [
-                            ...formData.interests,
-                            interest,
-                          ]);
-                        } else {
-                          updateField(
-                            "interests",
-                            formData.interests.filter((i) => i !== interest),
-                          );
+                        const newInterests = e.target.checked
+                          ? [...formData.interests, interest]
+                          : formData.interests.filter((i) => i !== interest);
+
+                        updateField("interests", newInterests);
+                        if (!newInterests.includes(formData.primaryInterest)) {
+                          updateField("primaryInterest", "");
                         }
+                        handleBlur("interests");
                       }}
                     />{" "}
                     {interest}
                   </label>
                 ))}
               </div>
-              {touched.interests && !isInterestsValid && (
+              {hasError("interests") && !isInterestsValid && (
                 <div className="form-error-text">
                   * Please select at least one area of interest.
+                </div>
+              )}
+
+              <label className="form-label">
+                Primary Interest <span className="form-hint">(Strongest area)</span>
+              </label>
+              <select
+                value={formData.primaryInterest}
+                onChange={(e) => updateField("primaryInterest", e.target.value)}
+                onBlur={() => handleBlur("primaryInterest")}
+                className={`form-input ${hasError("primaryInterest") ? "input-error" : ""}`}
+                disabled={formData.interests.length === 0}
+              >
+                <option value="">Select your primary interest</option>
+                {formData.interests.map((interest) => (
+                  <option key={interest} value={interest}>
+                    {interest}
+                  </option>
+                ))}
+              </select>
+              {hasError("primaryInterest") && (
+                <div className="form-error-text">
+                  * Please select your strongest area of interest.
                 </div>
               )}
 
@@ -397,7 +432,6 @@ function JoinUs() {
               </label>
               <div
                 className={hasError("is13Plus") ? "field-error" : ""}
-                onBlur={() => handleBlur("is13Plus")}
               >
                 <label className="radio-label">
                   <input
@@ -407,7 +441,6 @@ function JoinUs() {
                     checked={formData.is13Plus === "Yes"}
                     onChange={(e) => {
                       updateField("is13Plus", e.target.value);
-                      handleBlur("is13Plus");
                     }}
                   />{" "}
                   Yes
@@ -420,7 +453,6 @@ function JoinUs() {
                     checked={formData.is13Plus === "No"}
                     onChange={(e) => {
                       updateField("is13Plus", e.target.value);
-                      handleBlur("is13Plus");
                     }}
                   />{" "}
                   No
@@ -435,15 +467,17 @@ function JoinUs() {
                   type="checkbox"
                   className="checkboxes"
                   checked={formData.acceptedTerms}
-                  onChange={(e) =>
-                    updateField("acceptedTerms", e.target.checked)
-                  }
+                  onBlur={() => handleBlur("acceptedTerms")}
+                  onChange={(e) => updateField("acceptedTerms", e.target.checked)}
                 />{" "}
                 I have read and accept the{" "}
                 <a href="/join-us-terms" className="terms-link">
                   Terms and Conditions
                 </a>
               </label>
+              {hasError("acceptedTerms") && (
+                <div className="form-error-text">* You must accept the terms.</div>
+              )}
 
               {/* Submit Button */}
               <button

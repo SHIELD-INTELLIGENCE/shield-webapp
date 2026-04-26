@@ -5,19 +5,94 @@ import { updateSEO } from "../utils/seoUtils";
 import { db } from "../firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
+const PLANS = [
+  {
+    id: "starter",
+    name: "Starter Plan",
+    buildCost: "₹2,499 - ₹3,999 (one-time)",
+    monthlyPrice: "₹599 / month",
+    quarterlyOffer: "₹1,499 / 3 months",
+    savings: "save ₹300",
+    features: [
+      "Website / product (basic to medium)",
+      "Basic SEO",
+      "Hosting included",
+      "Domain (.in)",
+      "99.99% uptime",
+      "1 large commit + 3 small changes",
+      "Monthly audits & reports",
+      "Support with under 24-hour reply",
+    ],
+  },
+  {
+    id: "premium",
+    name: "Premium Plan",
+    badge: "Most Chosen by Growing Businesses",
+    buildCost: "₹4,999 - ₹9,999 (one-time)",
+    monthlyPrice: "₹1,999 / month",
+    quarterlyOffer: "₹4,999 / 3 months",
+    savings: "save ₹1,000",
+    highlighted: true,
+    features: [
+      "Professional Website / product (higher standards)",
+      "Advanced SEO",
+      "Hosting included",
+      "Domain (.in or .com)",
+      "99.99% uptime",
+      "4 large commits + 6 small changes",
+      "Monthly audits & reports",
+      "Support with under 24-hour reply",
+    ],
+  },
+  {
+    id: "elite",
+    name: "Elite Plan",
+    buildCost: "₹14,999 - ₹29,999 (one-time)",
+    monthlyPrice: "₹4,999 / month",
+    quarterlyOffer: "₹13,999 / 3 months",
+    savings: "save ₹1,000",
+    features: [
+      "Enterprise-grade product",
+      "Advanced SEO & performance optimization",
+      "High-availability hosting",
+      "Unlimited small changes",
+      "Domain (Your choice)",
+      "8 large commits per month",
+      "Security hardening & backups",
+      "Direct founder involvement",
+    ],
+  },
+];
+
+const INITIAL_FORM_DATA = {
+  name: "",
+  requesterStatus: "",
+  email: "",
+  date: "",
+  serviceType: "",
+  projectReference: "",
+  requirements: "",
+  plan: "",
+  billingCycle: "monthly",
+  acceptedTerms: false,
+  preferredContact: "",
+  otherContacts: "",
+};
+
 async function submitServiceRequest(formData) {
   await addDoc(collection(db, "serviceRequests"), {
     name: formData.name,
-    education: formData.education,
+    requesterStatus: formData.requesterStatus,
     email: formData.email,
     date: formData.date,
     serviceType: formData.serviceType,
     projectReference: formData.projectReference,
     requirements: formData.requirements,
     plan: formData.plan,
+    billingCycle: formData.billingCycle,
     acceptedTerms: true,
     preferredContact: formData.preferredContact,
-    otherContacts: formData.otherContacts, // Save the new field to the database
+    otherContacts: formData.otherContacts,
     createdAt: serverTimestamp(),
     source: "request-service",
   });
@@ -30,25 +105,13 @@ function RequestService() {
   const [touched, setTouched] = useState({});
   const formRef = useRef(null);
 
-  const [formData, setFormData] = useState({
-    name: "",
-    education: "",
-    email: "",
-    date: "",
-    serviceType: "",
-    projectReference: "",
-    requirements: "",
-    plan: "",
-    acceptedTerms: false,
-    preferredContact: "",
-    otherContacts: "",
-  });
+  const [formData, setFormData] = useState(INITIAL_FORM_DATA);
 
   const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   const isFormValid =
     formData.name.trim() !== "" &&
-    formData.education.trim() !== "" &&
+    formData.requesterStatus.trim() !== "" &&
     isValidEmail(formData.email) &&
     formData.date !== "" &&
     formData.serviceType !== "" &&
@@ -85,6 +148,13 @@ function RequestService() {
   }, [isModalOpen]);
 
   useEffect(() => {
+    const saved = localStorage.getItem("shield_service_request_submitted");
+    if (saved === "true") {
+      setSubmitted(true);
+    }
+  }, []);
+
+  useEffect(() => {
     updateSEO(
       "Request a Service | SHIELD Intelligence",
       "Request secure software development, digital products, and custom technology solutions from SHIELD Intelligence.",
@@ -117,6 +187,19 @@ function RequestService() {
     });
   };
 
+  const selectPlanWithCycle = (planName, billingCycle) => {
+    setFormData((prev) => ({
+      ...prev,
+      plan: planName,
+      billingCycle,
+    }));
+    setTouched((prev) => ({
+      ...prev,
+      plan: true,
+    }));
+    scrollToForm();
+  };
+
   return (
     <motion.div
       className="request-service-page"
@@ -136,118 +219,54 @@ function RequestService() {
         </p>
 
         <div className="pricing-plans-grid">
-          {/* Starter Plan */}
-          <div
-            className={`pricing-plan-card ${formData.plan === "Starter Plan" ? "selected" : ""}`}
-          >
-            <div className="pricing-plan-header">
-              <h3 className="pricing-plan-name">Starter Plan</h3>
-              <p className="pricing-plan-build-cost">
-                Build Cost: ₹2,499 – ₹3,999 (one-time)
-              </p>
-              <p className="pricing-plan-monthly">₹599 / month</p>
-              <div className="pricing-plan-offer">
-                Special: ₹1,499 / 3 months (save ₹300)
-              </div>
-            </div>
-            <ul className="pricing-plan-features">
-              <li>Website / product (basic to medium)</li>
-              <li>Basic SEO</li>
-              <li>Hosting included</li>
-              <li>Domain (.in)</li>
-              <li>99.99% uptime</li>
-              <li>1 large commit + 3 small changes</li>
-              <li>Monthly audits & reports</li>
-              <li>Support with under 24-hour reply</li>
-            </ul>
-            <button
-              type="button"
-              className="pricing-plan-button"
-              onClick={() => {
-                updateField("plan", "Starter Plan");
-                scrollToForm();
-              }}
-            >
-              {formData.plan === "Starter Plan" ? "Selected" : "Choose Plan"}
-            </button>
-          </div>
+          {PLANS.map((plan) => {
+            const isSelectedPlan = formData.plan === plan.name;
+            const monthlySelected = isSelectedPlan && formData.billingCycle === "monthly";
+            const quarterlySelected =
+              isSelectedPlan && formData.billingCycle === "quarterly";
 
-          {/* Premium Plan (Highlighted) */}
-          <div
-            className={`pricing-plan-card highlighted ${
-              formData.plan === "Premium Plan" ? "selected" : ""
-            }`}
-          >
-            <div className="pricing-plan-header">
-              <h3 className="pricing-plan-name">Premium Plan</h3>
-              <p className="pricing-plan-badge">
-                Most Chosen by Growing Businesses
-              </p>
-              <p className="pricing-plan-build-cost">
-                Build Cost: ₹4,999 – ₹9,999 (one-time)
-              </p>
-              <p className="pricing-plan-monthly">₹1,999 / month</p>
-              <div className="pricing-plan-offer">
-                Special: ₹4,999 / 3 months (save ₹1,000)
-              </div>
-            </div>
-            <ul className="pricing-plan-features">
-              <li>Professional Website / product (higher standards)</li>
-              <li>Advanced SEO</li>
-              <li>Hosting included</li>
-              <li>Domain (.in or .com)</li>
-              <li>99.99% uptime</li>
-              <li>4 large commits + 6 small changes</li>
-              <li>Monthly audits & reports</li>
-              <li>Support with under 24-hour reply</li>
-            </ul>
-            <button
-              type="button"
-              className="pricing-plan-button"
-              onClick={() => {
-                updateField("plan", "Premium Plan");
-                scrollToForm();
-              }}
-            >
-              {formData.plan === "Premium Plan" ? "Selected" : "Choose Plan"}
-            </button>
-          </div>
+            return (
+              <div
+                key={plan.id}
+                className={`pricing-plan-card ${plan.highlighted ? "highlighted" : ""} ${
+                  isSelectedPlan ? "selected" : ""
+                }`}
+              >
+                <div className="pricing-plan-header">
+                  <h3 className="pricing-plan-name">{plan.name}</h3>
+                  {plan.badge && <p className="pricing-plan-badge">{plan.badge}</p>}
+                  <p className="pricing-plan-build-cost">Build Cost: {plan.buildCost}</p>
+                  <p className="pricing-plan-monthly">{plan.monthlyPrice}</p>
+                  <div className="pricing-plan-offer">
+                    Special: {plan.quarterlyOffer} ({plan.savings})
+                  </div>
+                </div>
 
-          {/* Elite Plan */}
-          <div
-            className={`pricing-plan-card ${formData.plan === "Elite Plan" ? "selected" : ""}`}
-          >
-            <div className="pricing-plan-header">
-              <h3 className="pricing-plan-name">Elite Plan</h3>
-              <p className="pricing-plan-build-cost">
-                Build Cost: ₹14,999 – ₹29,999 (one-time)
-              </p>
-              <p className="pricing-plan-monthly">₹4,999 / month</p>
-              <div className="pricing-plan-offer">
-                Special: ₹13,999 / 3 months (save ₹1,000)
+                <ul className="pricing-plan-features">
+                  {plan.features.map((feature) => (
+                    <li key={feature}>{feature}</li>
+                  ))}
+                </ul>
+
+                <div className="pricing-plan-actions">
+                  <button
+                    type="button"
+                    className="pricing-plan-button"
+                    onClick={() => selectPlanWithCycle(plan.name, "monthly")}
+                  >
+                    {monthlySelected ? "Monthly Selected" : "Choose Monthly"}
+                  </button>
+                  <button
+                    type="button"
+                    className="pricing-plan-button"
+                    onClick={() => selectPlanWithCycle(plan.name, "quarterly")}
+                  >
+                    {quarterlySelected ? "Special Offer Selected" : "Choose Special Offer"}
+                  </button>
+                </div>
               </div>
-            </div>
-            <ul className="pricing-plan-features">
-              <li>Enterprise-grade product</li>
-              <li>Advanced SEO & performance optimization</li>
-              <li>High-availability hosting</li>
-              <li>Unlimited small changes</li>
-              <li>Domain (Your choice)</li>
-              <li>8 large commits per month</li>
-              <li>Security hardening & backups</li>
-              <li>Direct founder involvement</li>
-            </ul>
-            <button
-              type="button"
-              className="pricing-plan-button"
-              onClick={() => {
-                updateField("plan", "Elite Plan");
-                scrollToForm();
-              }}
-            >
-              {formData.plan === "Elite Plan" ? "Selected" : "Choose Plan"}
-            </button>
-          </div>
+            );
+          })}
         </div>
       </motion.div>
 
@@ -292,21 +311,11 @@ function RequestService() {
               <button
                 className="bw-btn form-success-btn"
                 onClick={() => {
+                  localStorage.removeItem("shield_service_request_submitted");
                   setSubmitted(false);
                   setTouched({});
-                  setFormData({
-                    name: "",
-                    education: "",
-                    email: "",
-                    date: "",
-                    serviceType: "",
-                    projectReference: "",
-                    requirements: "",
-                    plan: "",
-                    acceptedTerms: false,
-                    preferredContact: "",
-                    otherContacts: "",
-                  });
+                  setSubmitting(false);
+                  setFormData(INITIAL_FORM_DATA);
                 }}
               >
                 Submit Another Request
@@ -320,6 +329,7 @@ function RequestService() {
                 try {
                   setSubmitting(true);
                   await submitServiceRequest(formData);
+                  localStorage.setItem("shield_service_request_submitted", "true");
                   setSubmitted(true);
                 } catch (err) {
                   alert("Submission failed. Please try again.");
@@ -344,10 +354,10 @@ function RequestService() {
 
               <label className="form-label">Status</label>
               <input
-                className={`form-input ${hasError("education") ? "input-error" : ""}`}
-                value={formData.education}
-                onBlur={() => handleBlur("education")}
-                onChange={(e) => updateField("education", e.target.value)}
+                className={`form-input ${hasError("requesterStatus") ? "input-error" : ""}`}
+                value={formData.requesterStatus}
+                onBlur={() => handleBlur("requesterStatus")}
+                onChange={(e) => updateField("requesterStatus", e.target.value)}
                 placeholder="Student, Professional, etc."
               />
 
@@ -431,13 +441,34 @@ function RequestService() {
                 }`}
                 value={formData.plan}
                 onBlur={() => handleBlur("plan")}
-                onChange={(e) => updateField("plan", e.target.value)}
+                onChange={(e) => {
+                  const selectedPlan = e.target.value;
+                  updateField("plan", selectedPlan);
+                  if (selectedPlan === "To be discussed") {
+                    updateField("billingCycle", "");
+                  } else if (!formData.billingCycle) {
+                    updateField("billingCycle", "monthly");
+                  }
+                }}
               >
                 <option value="">Select a Plan</option>
-                <option>Starter Plan</option>
-                <option>Premium Plan</option>
-                <option>Elite Plan</option>
+                {PLANS.map((plan) => (
+                  <option key={plan.id} value={plan.name}>
+                    {plan.name}
+                  </option>
+                ))}
                 <option>To be discussed</option>
+              </select>
+
+              <label className="form-label">Billing Cycle</label>
+              <select
+                className="form-input"
+                value={formData.billingCycle}
+                onChange={(e) => updateField("billingCycle", e.target.value)}
+                disabled={formData.plan === "" || formData.plan === "To be discussed"}
+              >
+                <option value="monthly">Monthly</option>
+                <option value="quarterly">Quarterly (Special Offer)</option>
               </select>
 
               <label className="form-label">Preferred Contact Method</label>
