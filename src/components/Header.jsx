@@ -89,7 +89,7 @@ export default function Header({ user, onLogout }) {
               SHIELD Intelligence
             </motion.div>
             <div className="tagline">
-              Securing Towmorrow with Stategic Intelligence.
+              Securing Tomorrow with Stategic Intelligence.
             </div>
           </Link>
     
@@ -127,7 +127,7 @@ export default function Header({ user, onLogout }) {
                 <div>
                   <div className="mobile-drawer-logo">SHIELD Intelligence</div>
                   <div className="mobile-drawer-tagline">
-                    Securing Towmorrow with Stategic Intelligence.
+                    Securing Tomorrow with Stategic Intelligence.
                   </div>
                 </div>
                 <button onClick={() => setShowMenu(false)}>✕</button>

@@ -342,14 +342,13 @@ function RequestService() {
                 placeholder="Full Name"
               />
 
-              <label className="form-label">Class / Section / Status</label>
+              <label className="form-label">Status</label>
               <input
                 className={`form-input ${hasError("education") ? "input-error" : ""}`}
                 value={formData.education}
                 onBlur={() => handleBlur("education")}
                 onChange={(e) => updateField("education", e.target.value)}
-                placeholder="(If you are a student, mention your class, section, and school name.
-If not, write “Not applicable”.)"
+                placeholder="Student, Professional, etc."
               />
 
               <label className="form-label">Contact Email</label>
