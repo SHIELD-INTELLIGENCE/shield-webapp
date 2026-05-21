@@ -3358,6 +3358,57 @@ p {
   color: rgba(240, 240, 240, 0.72);
 }
 
+.request-service-page .pricing-plans-advantage {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin: 1rem auto 1.2rem;
+  padding: 1rem 1.15rem;
+  max-width: 980px;
+  border-radius: 18px;
+  border: 1px solid rgba(247, 214, 118, 0.52);
+  background: linear-gradient(135deg, rgba(247, 214, 118, 0.18), rgba(202, 169, 76, 0.08));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 16px 30px rgba(0, 0, 0, 0.28);
+}
+
+.request-service-page .pricing-plans-advantage-label {
+  display: inline-flex;
+  align-self: center;
+  padding: 0.34rem 0.78rem;
+  border-radius: 999px;
+  border: 1px solid rgba(247, 214, 118, 0.48);
+  background: rgba(247, 214, 118, 0.12);
+  color: #f7d676;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.request-service-page .pricing-plans-advantage-text {
+  margin: 0;
+  align-self: center;
+  color: rgba(250, 245, 229, 0.98);
+  font-size: 1.06rem;
+  line-height: 1.65;
+  font-weight: 500;
+  text-align: center;
+  max-width: 52rem;
+}
+
+.request-service-page .pricing-plans-advantage-emphasis {
+  color: #fff2b0;
+  font-weight: 800;
+  text-shadow: 0 0 18px rgba(247, 214, 118, 0.18);
+}
+
+.request-service-page .pricing-plans-advantage-muted {
+  color: rgba(250, 245, 229, 0.82);
+  font-weight: 600;
+}
+
 .request-service-page .pricing-plans-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -3483,6 +3534,10 @@ p {
 
   .request-service-page .pricing-plans-grid {
     grid-template-columns: 1fr;
+  }
+
+  .request-service-page .pricing-plans-advantage {
+    margin-bottom: 1rem;
   }
 
   .request-service-page .request-info-column {

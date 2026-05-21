@@ -66,10 +66,8 @@ const PLANS = [
 
 const INITIAL_FORM_DATA = {
   name: "",
-  requesterStatus: "",
   email: "",
   date: "",
-  serviceType: "",
   projectReference: "",
   requirements: "",
   plan: "",
@@ -82,10 +80,8 @@ const INITIAL_FORM_DATA = {
 async function submitServiceRequest(formData) {
   await addDoc(collection(db, "serviceRequests"), {
     name: formData.name,
-    requesterStatus: formData.requesterStatus,
     email: formData.email,
     date: formData.date,
-    serviceType: formData.serviceType,
     projectReference: formData.projectReference,
     requirements: formData.requirements,
     plan: formData.plan,
@@ -111,10 +107,8 @@ function RequestService() {
 
   const isFormValid =
     formData.name.trim() !== "" &&
-    formData.requesterStatus.trim() !== "" &&
     isValidEmail(formData.email) &&
     formData.date !== "" &&
-    formData.serviceType !== "" &&
     formData.requirements.trim() !== "" &&
     formData.plan !== "" &&
     formData.preferredContact !== "" &&
@@ -217,6 +211,13 @@ function RequestService() {
         <p className="pricing-plans-subtitle">
           Select a plan that fits your needs
         </p>
+
+        <div className="pricing-plans-advantage" role="note" aria-label="First month free notice">
+          <span className="pricing-plans-advantage-label">Exclusive advantage</span>
+          <p className="pricing-plans-advantage-text">
+            First month is <span className="pricing-plans-advantage-emphasis">FREE</span> if SHIELD builds your website <span className="pricing-plans-advantage-emphasis">from scratch</span>. <span className="pricing-plans-advantage-muted">Not applicable for pre-built projects.</span>
+          </p>
+        </div>
 
         <div className="pricing-plans-grid">
           {PLANS.map((plan) => {
@@ -338,7 +339,7 @@ function RequestService() {
                 }
               }}
               className="form"
-            >
+            >-
               <h2 className="form-title">Service Request Form</h2>
               <hr className="form-divider" />
 
@@ -350,15 +351,6 @@ function RequestService() {
                 onBlur={() => handleBlur("name")}
                 onChange={(e) => updateField("name", e.target.value)}
                 placeholder="Full Name"
-              />
-
-              <label className="form-label">Status</label>
-              <input
-                className={`form-input ${hasError("requesterStatus") ? "input-error" : ""}`}
-                value={formData.requesterStatus}
-                onBlur={() => handleBlur("requesterStatus")}
-                onChange={(e) => updateField("requesterStatus", e.target.value)}
-                placeholder="Student, Professional, etc."
               />
 
               <label className="form-label">Contact Email</label>
@@ -395,21 +387,6 @@ function RequestService() {
 
               <hr className="form-divider-second" />
               <h3 className="form-section-title">Service Details</h3>
-              <label className="form-label">Service Type</label>
-              <select
-                className={`form-input ${hasError("serviceType") ? "input-error" : ""}`}
-                value={formData.serviceType}
-                onBlur={() => handleBlur("serviceType")}
-                onChange={(e) => updateField("serviceType", e.target.value)}
-              >
-                <option value="">Select</option>
-                <option>Software Development</option>
-                <option>Cybersecurity</option>
-                <option>Digital Product Development</option>
-                <option>Technical Consultation & Planning</option>
-                <option>Other</option>
-              </select>
-
               <label className="form-label">Project Name / Reference</label>
               <input
                 className="form-input"
