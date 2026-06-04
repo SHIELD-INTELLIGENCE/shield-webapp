@@ -11,7 +11,7 @@ All rights reserved.
 This repository contains the official source code for SHIELD Intelligence (`shieldintelligence.in`).  
 It is designed to provide advanced intelligence, security, and operational functionalities as part of the SHIELD platform.
 
-## Note: The Android app releases are in the <https://www.github.com/SHIELD-INTELLIGENCE/APPARCHIVE>
+## Note: The Android app releases can be found in <https://www.github.com/SHIELD-INTELLIGENCE/APPARCHIVE>  
 
 ---
 
