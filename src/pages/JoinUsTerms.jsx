@@ -73,12 +73,7 @@ const JoinUsTerms = () => {
         Current work at SHIELD focuses on software development, digital products,
         system design, and technical research.
       </p>
-      <p>
-        Physical protection services and private intelligence operations are
-        planned future divisions only. These are not currently active, and
-        applicants will not be involved in real-world intelligence or physical
-        security operations at this time.
-      </p>
+
 
       <h2>5. Conduct & Responsibility</h2>
       <ul>
@@ -135,7 +130,7 @@ const JoinUsTerms = () => {
       </p>
 
       <footer className="terms-footer">
-        © 2025 SHIELD Intelligence — All rights reserved.
+        © 2026 SHIELD Intelligence — All rights reserved.
       </footer>
     </div>
   );

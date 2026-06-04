@@ -123,18 +123,6 @@ function About() {
         </motion.p>
       </motion.section>
 
-      <motion.section className="about-block" variants={fadeInUp}>
-        <motion.h2 className="about-subtitle" variants={fadeInUp}>Future Capabilities</motion.h2>
-        <motion.p className="about-paragraph" variants={fadeInUp}>
-          SHIELD Intelligence is structured with long-term growth in mind. Future
-          areas of operation may include physical security and private
-          intelligence services. These capabilities are not currently active, are
-          not publicly marketed, and do not have announced timelines. Until
-          formally launched, SHIELD Intelligence remains focused exclusively on
-          its present software and product development scope.
-        </motion.p>
-      </motion.section>
-
       <motion.section className="about-block about-block-contact" variants={fadeInUp}>
         <motion.h2 className="about-subtitle" variants={fadeInUp}>Get in Touch</motion.h2>
         <motion.p className="about-paragraph about-paragraph-bottom" variants={fadeInUp}>

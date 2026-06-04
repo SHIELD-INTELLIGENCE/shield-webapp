@@ -1,7 +1,7 @@
 
 # SHIELD Intelligence — Official Source Code
 
-Copyright (c) 2025 SHIELD Intelligence
+Copyright (c) 2026 SHIELD Intelligence
 All rights reserved.
 
 ---

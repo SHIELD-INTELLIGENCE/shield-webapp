@@ -54,4 +54,4 @@ If you comply with this policy and act in good faith, SHIELD Intelligence will c
 
 ---
 
-© 2025 SHIELD Intelligence · All rights reserved.
+© 2026 SHIELD Intelligence · All rights reserved.

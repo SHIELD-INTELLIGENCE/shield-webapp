@@ -16,6 +16,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import NetworkStatus from "./components/NetworkStatus";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import CookieConsent from "./components/CookieConsent";
 import "./assets/errorStyles.css";
 
 const Home = React.lazy(() => import("./pages/Home"));
@@ -23,6 +24,7 @@ const About = React.lazy(() => import("./pages/About"));
 const JoinUs = React.lazy(() => import("./pages/JoinUs"));
 const RequestService = React.lazy(() => import("./pages/RequestService"));
 const Terms = React.lazy(() => import("./pages/Terms"));
+const Privacy = React.lazy(() => import("./pages/Privacy"));
 const JoinUsTerms = React.lazy(() => import("./pages/JoinUsTerms"));
 const Feeds = React.lazy(() => import("./pages/Feeds"));
 const Login = React.lazy(() => import("./pages/Login"));
@@ -231,6 +233,14 @@ function AppContent() {
                 }
               />
               <Route
+                path="/privacy"
+                element={
+                  <AnimatedRoute variant="fade">
+                    <Privacy />
+                  </AnimatedRoute>
+                }
+              />
+              <Route
                 path="/join-us-terms"
                 element={
                   <AnimatedRoute variant="fade">
@@ -268,6 +278,8 @@ function AppContent() {
       </main>
 
       <Footer user={user} />
+
+      <CookieConsent />
 
       <LogoutConfirmModal
         open={showLogoutConfirm}

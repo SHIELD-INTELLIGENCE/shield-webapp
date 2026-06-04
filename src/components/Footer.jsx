@@ -11,7 +11,7 @@ export default function Footer({ user }) {
           <div className="footer-col">
             <div className="footer-brand">SHIELD Intelligence</div>
             <div className="footer-tagline">
-              Securing Tomorrow with Stategic Intelligence.
+              Securing Tomorrow with Strategic Intelligence.
             </div>
             <div className="footer-note">
             Building secure software, authentication tools, and privacy-focused digital systems.
@@ -51,6 +51,7 @@ export default function Footer({ user }) {
           <div className="footer-col">
             <div className="footer-heading">Legal</div>
             <Link className="footer-link" to="/terms">Service Terms</Link>
+            <Link className="footer-link" to="/privacy">Privacy Policy</Link>
             <Link className="footer-link" to="/join-us-terms">Join Us Terms</Link>
           </div>
         </div>

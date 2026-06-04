@@ -18,7 +18,7 @@ const PLANS = [
       "Basic SEO",
       "Hosting included",
       "Domain (.in)",
-      "99.99% uptime",
+      "Reliable hosting and monitoring",
       "1 large commit + 3 small changes",
       "Monthly audits & reports",
       "Support with under 24-hour reply",
@@ -35,11 +35,11 @@ const PLANS = [
     highlighted: true,
     features: [
       "Professional Website / product (higher standards)",
-      "Advanced SEO",
+      "Advanced SEO with google prescence",
       "Hosting included",
       "Domain (.in or .com)",
-      "99.99% uptime",
-      "4 large commits + 6 small changes",
+      "Reliable hosting and monitoring",
+      "4 major updates + 6 small changes",
       "Monthly audits & reports",
       "Support with under 24-hour reply",
     ],
@@ -53,11 +53,11 @@ const PLANS = [
     savings: "save ₹1,000",
     features: [
       "Enterprise-grade product",
-      "Advanced SEO & performance optimization",
+      "Advanced SEO with google prescence & performance optimization",
       "High-availability hosting",
       "Unlimited small changes",
       "Domain (Your choice)",
-      "8 large commits per month",
+      "8 major updates per month",
       "Security hardening & backups",
       "Direct founder involvement",
     ],
@@ -73,6 +73,9 @@ const INITIAL_FORM_DATA = {
   plan: "",
   billingCycle: "monthly",
   acceptedTerms: false,
+  country: "",
+  billingName: "",
+  currency: "INR",
   preferredContact: "",
   otherContacts: "",
 };
@@ -86,7 +89,10 @@ async function submitServiceRequest(formData) {
     requirements: formData.requirements,
     plan: formData.plan,
     billingCycle: formData.billingCycle,
-    acceptedTerms: true,
+    acceptedTerms: formData.acceptedTerms === true,
+    country: formData.country,
+    billingName: formData.billingName || null,
+    currency: formData.currency,
     preferredContact: formData.preferredContact,
     otherContacts: formData.otherContacts,
     createdAt: serverTimestamp(),
@@ -109,6 +115,7 @@ function RequestService() {
     formData.name.trim() !== "" &&
     isValidEmail(formData.email) &&
     formData.date !== "" &&
+    formData.country.trim() !== "" &&
     formData.requirements.trim() !== "" &&
     formData.plan !== "" &&
     formData.preferredContact !== "" &&
@@ -212,6 +219,12 @@ function RequestService() {
           Select a plan that fits your needs
         </p>
 
+        <p className="pricing-plans-disclaimer">
+          Final build pricing depends on project scope, complexity, integrations,
+          and hosting requirements. All pricing shown is indicative and subject
+          to review.
+        </p>
+
         <div className="pricing-plans-advantage" role="note" aria-label="First month free notice">
           <span className="pricing-plans-advantage-label">Exclusive advantage</span>
           <p className="pricing-plans-advantage-text">
@@ -291,14 +304,6 @@ function RequestService() {
               </li>
             </ul>
           </div>
-
-          <div className="form-info-card">
-            <h2 className="form-info-title">Future Capabilities</h2>
-            <p className="form-info-text">
-              Physical protection services and private intelligence operations
-              are planned for the future and not currently active.
-            </p>
-          </div>
         </div>
 
         {/* Right: Form Column */}
@@ -339,7 +344,7 @@ function RequestService() {
                 }
               }}
               className="form"
-            >-
+            >
               <h2 className="form-title">Service Request Form</h2>
               <hr className="form-divider" />
 
@@ -384,6 +389,36 @@ function RequestService() {
                 onBlur={() => handleBlur("date")}
                 onChange={(e) => updateField("date", e.target.value)}
               />
+
+              <label className="form-label">Country</label>
+              <input
+                className={`form-input ${hasError("country") ? "input-error" : ""}`}
+                value={formData.country}
+                onBlur={() => handleBlur("country")}
+                onChange={(e) => updateField("country", e.target.value)}
+                placeholder="Country (required for billing and international clients)"
+              />
+
+              <label className="form-label">Billing Name</label>
+              <input
+                className="form-input"
+                value={formData.billingName}
+                onChange={(e) => updateField("billingName", e.target.value)}
+                placeholder="Optional billing / invoice name"
+              />
+
+              <label className="form-label">Currency</label>
+              <select
+                className="form-input"
+                value={formData.currency}
+                onChange={(e) => updateField("currency", e.target.value)}
+              >
+                <option value="INR">INR - Indian Rupee</option>
+                <option value="USD">USD - US Dollar</option>
+                <option value="EUR">EUR - Euro</option>
+                <option value="GBP">GBP - British Pound</option>
+                <option value="AED">AED - UAE Dirham</option>
+              </select>
 
               <hr className="form-divider-second" />
               <h3 className="form-section-title">Service Details</h3>

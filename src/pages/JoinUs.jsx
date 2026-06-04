@@ -16,8 +16,6 @@ const INTEREST_OPTIONS = [
   "Communication Systems",
   "Leadership & Team Coordination",
   "Codebreaking & Logical Analysis",
-  "Physical Protection & Security (future division)",
-  "Private Intelligence Services (future division)",
 ];
 
 const INITIAL_JOIN_DATA = {
@@ -83,7 +81,7 @@ async function submitToFirebase(formData) {
     primaryInterest: formData.primaryInterest,
     reason: formData.reason,
     is13Plus: formData.is13Plus,
-    acceptedTerms: true,
+    acceptedTerms: formData.acceptedTerms === true,
     createdAt: serverTimestamp(),
     source: "join-us",
   });
@@ -223,11 +221,6 @@ function JoinUs() {
                 <strong>System Design & Research:</strong> Explore technologies,
                 frameworks, and approaches used in building dependable and
                 secure systems.
-              </li>
-              <li>
-                <strong>Future Divisions (Planned):</strong> Physical protection
-                services and private intelligence operations (not active yet,
-                training and groundwork only).
               </li>
             </ul>
 

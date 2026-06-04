@@ -62,4 +62,4 @@ Internal Use Only — External contributions are not accepted unless a signed SH
 - General and contributor agreements: <mailto:shield@shieldintelligence.in>
 - Alternate/general queries: <mailto:queriesshield@gmail.com>
 
-© 2025 SHIELD Intelligence · All rights reserved.
+© 2026 SHIELD Intelligence · All rights reserved.
