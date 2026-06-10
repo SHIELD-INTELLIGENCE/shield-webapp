@@ -22,6 +22,16 @@ export default defineConfig(({ mode }) => {
         },
       },
       brotliSize: true,
+      chunkSizeWarningLimit: 1000,
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules/firebase')) return 'vendor-firebase';
+            if (id.includes('node_modules/framer-motion')) return 'vendor-framer';
+            if (id.includes('node_modules/react')) return 'vendor-react';
+          },
+        },
+      },
     },
     server: {
       historyApiFallback: true,
