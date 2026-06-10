@@ -73,7 +73,7 @@ function WhoWeAre() {
 
         <motion.div className="founder-card" variants={fadeInUp}>
           <h3 className="founder-name">Reyansh Raj Mishra</h3>
-          <p className="founder-role"><strong>Designation:</strong> Founder & Chief Executive Officer</p>
+          <p className="founder-role"><strong>Designation:</strong> Founder | Chief Executive Officer</p>
           <p className="about-paragraph">
             SHIELD was built on a simple belief: technology should be dependable, secure, and built
             with purpose.
@@ -93,12 +93,12 @@ function WhoWeAre() {
             We are still at the start of our journey, but our direction is clear: build exceptional
             products, earn trust through results, and create a lasting impact through technology.
           </p>
-          <p className="founder-signoff">— Reyansh Raj Mishra<br/>Founder & CEO</p>
+          <p className="founder-signoff">— Reyansh Raj Mishra<br/>Founder | CEO</p>
         </motion.div>
 
         <motion.div className="founder-card" variants={fadeInUp}>
           <h3 className="founder-name">Akshit Pandey</h3>
-          <p className="founder-role"><strong>Designation:</strong> Co-Founder & Chief Operations Officer</p>
+          <p className="founder-role"><strong>Designation:</strong> Co-Founder | Chief Operations Officer</p>
           <p className="about-paragraph">
             Building great technology requires more than strong ideas—it requires consistency,
             discipline, and execution.
@@ -117,12 +117,12 @@ function WhoWeAre() {
             As SHIELD grows, I remain committed to strengthening the systems, culture, and
             operational framework that will support our vision for years to come.
           </p>
-          <p className="founder-signoff">— Akshit Pandey<br/>Co-Founder & COO</p>
+          <p className="founder-signoff">— Akshit Pandey<br/>Co-Founder | Chief Operations Officer</p>
         </motion.div>
 
         <motion.div className="founder-card" variants={fadeInUp}>
           <h3 className="founder-name">Shubham Kumar Upadhyay</h3>
-          <p className="founder-role"><strong>Designation:</strong> Co-Founder & Chief Growth Officer</p>
+          <p className="founder-role"><strong>Designation:</strong> Engineer | Co-Founder | Chief Growth Officer</p>
           <p className="about-paragraph">
             Innovation creates opportunities, but meaningful growth comes from understanding people,
             solving real problems, and building lasting relationships.
@@ -142,7 +142,7 @@ function WhoWeAre() {
             My commitment is to help SHIELD continuously evolve, strengthen its market presence, and
             create long-term value for every client and partner we serve.
           </p>
-          <p className="founder-signoff">— Shubham Kumar Upadhyay<br/>Co-Founder & Chief Growth Officer</p>
+          <p className="founder-signoff">— Shubham Kumar Upadhyay<br/>Engineer | Co-Founder | Chief Growth Officer</p>
         </motion.div>
       </motion.section>
     </motion.div>

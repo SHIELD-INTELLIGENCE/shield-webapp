@@ -47,6 +47,9 @@ export default function Footer({ user }) {
               Facebook
             </a>
             <span className="footer-link">Discord: shield_intelligence</span>
+            <a className="footer-link" href="https://www.linkedin.com/company/shield-intelligence/" target="_blank" rel="noopener noreferrer">
+              LinkedIn
+            </a>
           </div>
 
           <div className="footer-col">
