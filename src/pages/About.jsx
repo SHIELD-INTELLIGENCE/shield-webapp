@@ -64,7 +64,7 @@ function About() {
         <motion.p className="about-paragraph" variants={fadeInUp}>
           SHIELD Intelligence —{" "}
           <strong>
-            Spies Hub for Intelligence, Elegance, Learning, and Defence
+            Secure Hub of Intelligence, Elegance, Learning, and Development
           </strong>{" "}
           — is a technology-focused organization engaged in the design and
           development of secure, dependable software systems. Our work is centered
