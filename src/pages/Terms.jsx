@@ -25,19 +25,7 @@ const Terms = () => {
   }, []);
 
   return (
-    <div
-      className="terms-page"
-      style={{
-        fontFamily: "'Segoe UI', sans-serif",
-        maxWidth: "800px",
-        margin: "0 auto",
-        padding: "40px 20px",
-        lineHeight: "1.6",
-        background: "#1a1a1a",
-        color: "#e0e0e0",
-        minHeight: "100vh",
-      }}
-    >
+    <div className="terms-page">
       <style>{`.terms-page p, .terms-page li { color: #e0e0e0 !important; } .terms-page h1, .terms-page h2 { color: #ffffff; }`}</style>
 
       <h1>Terms and Conditions</h1>

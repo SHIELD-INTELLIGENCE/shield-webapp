@@ -130,7 +130,7 @@ export default function Header({ user, onLogout }) {
                     Securing Tomorrow with Strategic Intelligence.
                   </div>
                 </div>
-                <button onClick={() => setShowMenu(false)}>✕</button>
+                <button className="mobile-drawer-close" onClick={() => setShowMenu(false)}>✕</button>
               </div>
 
               <div className="mobile-drawer-links">
