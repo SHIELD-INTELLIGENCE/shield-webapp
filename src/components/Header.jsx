@@ -47,6 +47,9 @@ export default function Header({ user, onLogout }) {
       <NavLink to="/about" className={getNavLinkClass} onClick={closeMenu}>
         About
       </NavLink>
+      <NavLink to="/who-we-are" className={getNavLinkClass} onClick={closeMenu}>
+        Who We Are
+      </NavLink>
       <NavLink to="/request-service" className={getNavLinkClass} onClick={closeMenu}>
         Request a Service
       </NavLink>

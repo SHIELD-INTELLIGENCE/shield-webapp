@@ -26,6 +26,7 @@ const RequestService = React.lazy(() => import("./pages/RequestService"));
 const Terms = React.lazy(() => import("./pages/Terms"));
 const Privacy = React.lazy(() => import("./pages/Privacy"));
 const JoinUsTerms = React.lazy(() => import("./pages/JoinUsTerms"));
+const WhoWeAre = React.lazy(() => import("./pages/WhoWeAre"));
 const Feeds = React.lazy(() => import("./pages/Feeds"));
 const Login = React.lazy(() => import("./pages/Login"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
@@ -205,6 +206,14 @@ function AppContent() {
                 element={
                   <AnimatedRoute variant="fade">
                     <About />
+                  </AnimatedRoute>
+                }
+              />
+              <Route
+                path="/who-we-are"
+                element={
+                  <AnimatedRoute variant="fade">
+                    <WhoWeAre />
                   </AnimatedRoute>
                 }
               />

@@ -123,6 +123,15 @@ function About() {
         </motion.p>
       </motion.section>
 
+      <motion.section className="about-block" variants={fadeInUp}>
+        <motion.p className="about-paragraph" variants={fadeInUp}>
+          Meet the people building SHIELD Intelligence —{" "}
+          <Link to="/who-we-are" className="accent-link">
+            learn about our founders
+          </Link>.
+        </motion.p>
+      </motion.section>
+
       <motion.section className="about-block about-block-contact" variants={fadeInUp}>
         <motion.h2 className="about-subtitle" variants={fadeInUp}>Get in Touch</motion.h2>
         <motion.p className="about-paragraph about-paragraph-bottom" variants={fadeInUp}>
