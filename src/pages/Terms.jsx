@@ -83,6 +83,16 @@ const Terms = () => {
         SHIELD reserves the right to classify requests as minor or major updates
         based on technical complexity and development effort.
       </p>
+      <p>
+        Multiple related requests submitted together may be treated as a single
+        update and classified according to their combined complexity, scope, and
+        estimated development effort.
+      </p>
+      <p>
+        Features not included in the originally agreed project scope may be
+        classified as major updates regardless of the time required to implement
+        them.
+      </p>
 
       <h2>3. Scope of Services</h2>
       <p>
@@ -160,6 +170,12 @@ const Terms = () => {
         it does not by itself create a tax invoice unless a registered business
         entity is explicitly identified on the document.
       </p>
+      <p>
+        Hosting, domain registration, third-party subscriptions, API usage fees,
+        email delivery services, payment gateway charges, and other external
+        service costs may be billed separately unless explicitly included in the
+        selected service plan.
+      </p>
       <h2>9. Service Plans, Billing & Enforcement</h2>
 
       <p>
@@ -211,6 +227,40 @@ const Terms = () => {
         SHIELD retains full control over service continuation, pausing, or
         resumption based on billing status and operational judgment.
       </p>
+      <h2>9A. Service Plan Scope & Update Quotas</h2>
+
+      <p>
+        Monthly maintenance allowances apply only to accepted service plans with
+        an active billing status.
+      </p>
+
+      <p>
+        Included updates are limited to the quotas specified by the client's
+        selected plan.
+      </p>
+
+      <p>
+        Unused updates do not roll over into future billing periods unless
+        explicitly agreed in writing.
+      </p>
+
+      <p>
+        Requests exceeding the included monthly quota may be accepted at
+        SHIELD's discretion and may be billed separately.
+      </p>
+
+      <p>
+        New features, project expansions, architectural changes, platform
+        migrations, or functionality not included in the original project scope
+        may require a separate quotation regardless of remaining update
+        allowances.
+      </p>
+
+      <p>
+        SHIELD reserves the right to determine whether a request falls within
+        maintenance coverage or constitutes additional development work.
+      </p>
+
       <h2>10. Limitation of Liability</h2>
       <p>
         To the maximum extent permitted by applicable law, SHIELD disclaims all
@@ -220,9 +270,11 @@ const Terms = () => {
 
       <h2>11. Intellectual Property</h2>
       <p>
-        All original code, designs, documentation, and materials produced by
-        SHIELD remain the intellectual property of SHIELD unless otherwise
-        agreed in writing.
+        Upon full payment of agreed project fees, the client receives ownership
+        and usage rights to the delivered project unless otherwise specified in
+        the project agreement. SHIELD retains ownership of internal tools,
+        reusable frameworks, templates, libraries, utilities, and proprietary
+        systems used in development.
       </p>
 
       <h2>12. Termination & Refusal of Service</h2>

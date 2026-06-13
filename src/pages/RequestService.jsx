@@ -106,6 +106,7 @@ function RequestService() {
   const [submitted, setSubmitted] = useState(false);
   const [touched, setTouched] = useState({});
   const formRef = useRef(null);
+  const comparisonRef = useRef(null);
 
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
 
@@ -184,6 +185,16 @@ function RequestService() {
       formRef.current.scrollIntoView({
         behavior: "smooth",
         block: "start",
+      });
+    });
+  };
+
+  const scrollToComparison = () => {
+    if (!comparisonRef.current) return;
+    requestAnimationFrame(() => {
+      comparisonRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
       });
     });
   };
@@ -278,9 +289,154 @@ function RequestService() {
                     {quarterlySelected ? "Special Offer Selected" : "Choose Special Offer"}
                   </button>
                 </div>
-              </div>
-            );
-          })}
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="pricing-comparison-btn-wrapper">
+            <button
+              type="button"
+              className="pricing-comparison-btn"
+              onClick={scrollToComparison}
+            >
+              See Details About These Plans
+            </button>
+          </div>
+      </motion.div>
+
+      {/* Comparison Table Section */}
+      <motion.div
+        className="pricing-comparison-section"
+        variants={fadeInUp}
+        ref={comparisonRef}
+      >
+        <h2 className="pricing-comparison-title">Plan Comparison</h2>
+        <p className="pricing-comparison-subtitle">
+          Compare features across all plans
+        </p>
+
+        <div className="pricing-comparison-table-wrapper">
+          <table className="pricing-comparison-table">
+            <thead>
+              <tr>
+                <th className="comparison-header-feature">Feature</th>
+                <th>Starter</th>
+                <th className="comparison-highlight">Premium</th>
+                <th>Elite</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="comparison-feature-name">Static Pages</td>
+                <td><span className="comparison-check">&#10003;</span></td>
+                <td className="comparison-highlight"><span className="comparison-check">&#10003;</span></td>
+                <td><span className="comparison-check">&#10003;</span></td>
+              </tr>
+              <tr>
+                <td className="comparison-feature-name">Contact Form</td>
+                <td><span className="comparison-check">&#10003;</span></td>
+                <td className="comparison-highlight"><span className="comparison-check">&#10003;</span></td>
+                <td><span className="comparison-check">&#10003;</span></td>
+              </tr>
+              <tr>
+                <td className="comparison-feature-name">Blog</td>
+                <td><span className="comparison-check">&#10003;</span></td>
+                <td className="comparison-highlight"><span className="comparison-check">&#10003;</span></td>
+                <td><span className="comparison-check">&#10003;</span></td>
+              </tr>
+              <tr>
+                <td className="comparison-feature-name">CMS</td>
+                <td><span className="comparison-cross">&#10007;</span></td>
+                <td className="comparison-highlight"><span className="comparison-check">&#10003;</span></td>
+                <td><span className="comparison-check">&#10003;</span></td>
+              </tr>
+              <tr>
+                <td className="comparison-feature-name">Authentication</td>
+                <td><span className="comparison-cross">&#10007;</span></td>
+                <td className="comparison-highlight"><span className="comparison-check">&#10003;</span></td>
+                <td><span className="comparison-check">&#10003;</span></td>
+              </tr>
+              <tr>
+                <td className="comparison-feature-name">Dashboard</td>
+                <td><span className="comparison-cross">&#10007;</span></td>
+                <td className="comparison-highlight"><span>Limited</span></td>
+                <td><span className="comparison-check">&#10003;</span></td>
+              </tr>
+              <tr>
+                <td className="comparison-feature-name">Payments</td>
+                <td><span className="comparison-cross">&#10007;</span></td>
+                <td className="comparison-highlight"><span>Optional</span></td>
+                <td><span className="comparison-check">&#10003;</span></td>
+              </tr>
+              <tr>
+                <td className="comparison-feature-name">Custom Backend</td>
+                <td><span className="comparison-cross">&#10007;</span></td>
+                <td className="comparison-highlight"><span>Limited</span></td>
+                <td><span className="comparison-check">&#10003;</span></td>
+              </tr>
+              <tr>
+                <td className="comparison-feature-name">User Roles</td>
+                <td><span className="comparison-cross">&#10007;</span></td>
+                <td className="comparison-highlight"><span className="comparison-cross">&#10007;</span></td>
+                <td><span className="comparison-check">&#10003;</span></td>
+              </tr>
+              <tr>
+                <td className="comparison-feature-name">API Integrations</td>
+                <td><span className="comparison-cross">&#10007;</span></td>
+                <td className="comparison-highlight"><span>1&ndash;2</span></td>
+                <td><span>Unlimited</span></td>
+              </tr>
+              <tr>
+                <td className="comparison-feature-name">Major Updates / Month</td>
+                <td>1</td>
+                <td className="comparison-highlight">4</td>
+                <td>8</td>
+              </tr>
+              <tr>
+                <td className="comparison-feature-name">Minor Changes / Month</td>
+                <td>3</td>
+                <td className="comparison-highlight">6</td>
+                <td>Unlimited</td>
+              </tr>
+              <tr>
+                <td className="comparison-feature-name">Hosting Included</td>
+                <td><span className="comparison-check">&#10003;</span></td>
+                <td className="comparison-highlight"><span className="comparison-check">&#10003;</span></td>
+                <td><span className="comparison-check">&#10003;</span></td>
+              </tr>
+              <tr>
+                <td className="comparison-feature-name">Domain Included</td>
+                <td>.in</td>
+                <td className="comparison-highlight">.in / .com</td>
+                <td>Client Choice</td>
+              </tr>
+              <tr>
+                <td className="comparison-feature-name">Support Response</td>
+                <td>&lt;24h</td>
+                <td className="comparison-highlight">&lt;24h</td>
+                <td>Priority</td>
+              </tr>
+              <tr>
+                <td className="comparison-feature-name">Monthly Audit Report</td>
+                <td><span className="comparison-check">&#10003;</span></td>
+                <td className="comparison-highlight"><span className="comparison-check">&#10003;</span></td>
+                <td><span className="comparison-check">&#10003;</span></td>
+              </tr>
+              <tr>
+                <td className="comparison-feature-name">Security Hardening</td>
+                <td><span className="comparison-cross">&#10007;</span></td>
+                <td className="comparison-highlight"><span>Limited</span></td>
+                <td><span className="comparison-check">&#10003;</span></td>
+              </tr>
+              <tr>
+                <td className="comparison-feature-name">Direct Founder Involvement</td>
+                <td><span className="comparison-cross">&#10007;</span></td>
+                <td className="comparison-highlight"><span className="comparison-cross">&#10007;</span></td>
+                <td><span className="comparison-check">&#10003;</span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </motion.div>
 
