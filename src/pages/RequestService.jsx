@@ -14,7 +14,7 @@ const PLANS = [
     quarterlyOffer: "₹1,499 / 3 months",
     savings: "save ₹300",
     features: [
-      "Website / product (basic to medium)",
+      "Static Website / Basic Landing Page",
       "Basic SEO",
       "Hosting included",
       "Domain (.in)",
