@@ -12,6 +12,7 @@ import { signOut } from "firebase/auth";
 import Loading from "./components/Loading";
 import AnimatedRoute from "./components/AnimatedRoute";
 import PageLoadingSpinner from "./components/PageLoadingSpinner";
+import ScrollToTop from "./components/ScrollToTop";
 import ErrorBoundary from "./components/ErrorBoundary";
 import NetworkStatus from "./components/NetworkStatus";
 import Header from "./components/Header";
@@ -27,8 +28,10 @@ const Terms = React.lazy(() => import("./pages/Terms"));
 const Privacy = React.lazy(() => import("./pages/Privacy"));
 const JoinUsTerms = React.lazy(() => import("./pages/JoinUsTerms"));
 const WhoWeAre = React.lazy(() => import("./pages/WhoWeAre"));
-const Feeds = React.lazy(() => import("./pages/Feeds"));
+const OurWork = React.lazy(() => import("./pages/OurWork"));
 const Login = React.lazy(() => import("./pages/Login"));
+const EnterpriseConsultation = React.lazy(() => import("./pages/EnterpriseConsultation"));
+const ClientDashboard = React.lazy(() => import("./pages/ClientDashboard"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 
 function AppContent() {
@@ -192,6 +195,7 @@ function AppContent() {
       <main className="app-main" id="main-content">
         <React.Suspense fallback={<PageLoadingSpinner />}>
           <AnimatePresence mode="wait" initial={true}>
+            <ScrollToTop>
             <Routes location={location} key={location.pathname}>
               <Route
                 path="/"
@@ -218,6 +222,14 @@ function AppContent() {
                 }
               />
               <Route
+                path="/our-work"
+                element={
+                  <AnimatedRoute variant="fade">
+                    <OurWork />
+                  </AnimatedRoute>
+                }
+              />
+              <Route
                 path="/join-us"
                 element={
                   <AnimatedRoute>
@@ -230,6 +242,14 @@ function AppContent() {
                 element={
                   <AnimatedRoute>
                     <RequestService />
+                  </AnimatedRoute>
+                }
+              />
+              <Route
+                path="/enterprise-consultation"
+                element={
+                  <AnimatedRoute>
+                    <EnterpriseConsultation />
                   </AnimatedRoute>
                 }
               />
@@ -258,18 +278,18 @@ function AppContent() {
                 }
               />
               <Route
-                path="/feeds"
-                element={
-                  <AnimatedRoute variant="slide">
-                    {user ? <Feeds /> : <Login />}
-                  </AnimatedRoute>
-                }
-              />
-              <Route
                 path="/login"
                 element={
                   <AnimatedRoute variant="fade">
                     <Login />
+                  </AnimatedRoute>
+                }
+              />
+              <Route
+                path="/dashboard"
+                element={
+                  <AnimatedRoute variant="fade">
+                    <ClientDashboard />
                   </AnimatedRoute>
                 }
               />
@@ -282,6 +302,7 @@ function AppContent() {
                 }
               />
             </Routes>
+            </ScrollToTop>
           </AnimatePresence>
         </React.Suspense>
       </main>

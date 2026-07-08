@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { updateSEO } from "../utils/seoUtils";
+import logo from "../assets/logo.png";
 
 function WhoWeAre() {
   useEffect(() => {
     updateSEO(
       "Who We Are | SHIELD Intelligence",
-      "Meet the founders behind SHIELD Intelligence — Reyansh Raj Mishra, Akshit Pandey, and Shubham Kumar Upadhyay.",
+      "Meet the team behind SHIELD Intelligence — Reyansh Raj Mishra, Akshit Pandey, Shubham Kumar Upadhyay, and Aditya Pandey.",
     );
   }, []);
 
@@ -41,7 +42,7 @@ function WhoWeAre() {
           transition={{ duration: 0.55, delay: 0.1 }}
         >
           <motion.img
-            src="/logo512.png"
+            src={logo}
             alt="SHIELD Intelligence logo"
             className="about-brand-logo"
             animate={{ y: [0, -5, 0] }}
@@ -143,6 +144,30 @@ function WhoWeAre() {
             create long-term value for every client and partner we serve.
           </p>
           <p className="founder-signoff">— Shubham Kumar Upadhyay<br/>Engineer | Co-Founder | Chief Growth Officer</p>
+        </motion.div>
+
+        <motion.div className="founder-card" variants={fadeInUp}>
+          <h3 className="founder-name">Aditya Pandey</h3>
+          <p className="founder-role"><strong>Designation:</strong> Chief Financial Officer</p>
+          <p className="about-paragraph">
+            Aditya Pandey serves as the Chief Financial Officer of SHIELD Intelligence,
+            bringing strategic financial oversight and disciplined resource management
+            to the organization. His role encompasses financial planning, budgeting,
+            and ensuring that the company's growth is built on a solid economic foundation.
+          </p>
+          <p className="about-paragraph">
+            With a sharp eye for detail and a commitment to long-term stability,
+            Aditya works closely with the founding team to align financial strategy
+            with business objectives. His approach emphasizes transparency,
+            accountability, and sustainable value creation.
+          </p>
+          <p className="about-paragraph">
+            Aditya's leadership ensures that SHIELD Intelligence operates with
+            financial discipline while continuing to invest in the people,
+            tools, and infrastructure needed to deliver exceptional results
+            for our clients.
+          </p>
+          <p className="founder-signoff">— Aditya Pandey<br/>Chief Financial Officer</p>
         </motion.div>
       </motion.section>
     </motion.div>

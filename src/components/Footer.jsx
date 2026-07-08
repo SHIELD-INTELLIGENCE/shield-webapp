@@ -23,11 +23,11 @@ export default function Footer({ user }) {
             <Link className="footer-link" to="/">Home</Link>
             <Link className="footer-link" to="/about">About</Link>
             <Link className="footer-link" to="/who-we-are">Who We Are</Link>
+            <Link className="footer-link" to="/our-work">Our Work</Link>
             <Link className="footer-link" to="/join-us">Join Us</Link>
             <Link className="footer-link" to="/request-service">Request a Service</Link>
-            {user ? (
-              <Link className="footer-link" to="/feeds">My Feeds</Link>
-            ) : (
+            <Link className="footer-link" to="/enterprise-consultation">Enterprise</Link>
+            {!user && (
               <Link className="footer-link" to="/login">Login</Link>
             )}
           </div>

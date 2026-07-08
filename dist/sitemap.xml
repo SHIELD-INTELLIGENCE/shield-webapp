@@ -42,4 +42,10 @@
     <priority>0.3</priority>
     <changefreq>yearly</changefreq>
   </url>
+  <url>
+    <loc>https://shieldintelligence.in/our-work</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>

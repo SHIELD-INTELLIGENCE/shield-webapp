@@ -3,7 +3,7 @@
     "short_name": "SHIELD",
     "icons": [
       {
-        "src": "logo192.png",
+        "src": "logo.png",
         "type": "image/png",
         "sizes": "192x192"
       },

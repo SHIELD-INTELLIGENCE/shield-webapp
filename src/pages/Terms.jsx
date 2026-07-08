@@ -261,6 +261,78 @@ const Terms = () => {
         maintenance coverage or constitutes additional development work.
       </p>
 
+      <h2>9B. Enterprise Projects</h2>
+
+      <p>
+        Enterprise Consultation requests are handled on a case-by-case basis.
+        Submission of an enterprise consultation request does not guarantee
+        acceptance, response, or execution of the requested project.
+      </p>
+
+      <p>
+        Enterprise projects may involve custom pricing, extended timelines,
+        dedicated SLAs, and bespoke contractual terms agreed separately between
+        SHIELD and the requesting organization.
+      </p>
+
+      <p>
+        Enterprise projects include a credits-based maintenance system. Each
+        project is allocated a pool of large commits (major updates) and small
+        changes per billing period, as defined in the project agreement. Credits
+        are managed and tracked internally by SHIELD.
+      </p>
+
+      <p>
+        Large commits represent major feature additions, architectural changes,
+        integrations, or any work requiring significant development effort. Small
+        changes cover minor modifications such as content updates, styling
+        adjustments, or configuration changes. The same classification principles
+        in Section 2 apply to enterprise projects.
+      </p>
+
+      <p>
+        Unused credits do not roll over to the next billing period unless
+        explicitly agreed in writing. Requests exceeding the allocated credit
+        pool may be billed separately at rates agreed in the project agreement.
+      </p>
+
+      <p>
+        Enterprise projects include a dedicated project manager and development
+        team, priority support with guaranteed response times as specified in the
+        SLA, and regular progress reports. Quarterly business reviews and roadmap
+        planning sessions are included for active enterprise engagements.
+      </p>
+
+      <p>
+        SHIELD reserves the right to decline, modify, or discontinue any
+        enterprise project at its discretion. Any non-disclosure agreements
+        (NDAs), data processing agreements (DPAs), or other legal instruments
+        must be agreed in writing before project initiation.
+      </p>
+
+      <p>
+        When applicable, enterprise clients may be required to sign a separate
+        Master Services Agreement (MSA) or Statement of Work (SOW) that
+        supersedes these general Terms for the specific engagement.
+      </p>
+
+      <p>
+        Invoicing for enterprise projects follows the same internal billing
+        framework described in Section 9. Enterprise invoices are tracked by
+        SHIELD's internal numbering system and are not legal tax invoices unless
+        a registered business entity is explicitly identified on the document.
+        Enterprise invoices include the client organization name, project title,
+        billing period, amount, and payment status.
+      </p>
+
+      <p>
+        Enterprise project data, source code, and deliverables are handled with
+        enhanced confidentiality. Source code access is granted to authorized
+        representatives of the client organization. SHIELD retains the right to
+        use anonymized, non-identifiable technical patterns and methodologies
+        developed during enterprise projects in future work.
+      </p>
+
       <h2>10. Limitation of Liability</h2>
       <p>
         To the maximum extent permitted by applicable law, SHIELD disclaims all

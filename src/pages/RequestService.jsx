@@ -59,7 +59,27 @@ const PLANS = [
       "Domain (Your choice)",
       "8 major updates per month",
       "Security hardening & backups",
-      "Direct founder involvement",
+    ],
+  },
+  {
+    id: "enterprise",
+    name: "Enterprise Plan",
+    badge: "Custom Solutions",
+    buildCost: "Custom (To be discussed)",
+    monthlyPrice: "Custom pricing",
+    quarterlyOffer: "Custom pricing",
+    savings: "negotiated",
+    highlighted: false,
+    features: [
+      "Fully custom software product",
+      "Dedicated project manager & development team",
+      "Custom integrations with existing systems",
+      "Advanced security & compliance",
+      "10 major updates per month + unlimited small changes",
+      "99.9% uptime SLA with priority support",
+      "Custom domain, hosting, and infrastructure",
+      "Ongoing consultation & strategic planning",
+      "Quarterly business reviews & roadmap planning",
     ],
   },
 ];
@@ -429,15 +449,38 @@ function RequestService() {
                 <td className="comparison-highlight"><span>Limited</span></td>
                 <td><span className="comparison-check">&#10003;</span></td>
               </tr>
-              <tr>
-                <td className="comparison-feature-name">Direct Founder Involvement</td>
-                <td><span className="comparison-cross">&#10007;</span></td>
-                <td className="comparison-highlight"><span className="comparison-cross">&#10007;</span></td>
-                <td><span className="comparison-check">&#10003;</span></td>
-              </tr>
             </tbody>
           </table>
         </div>
+      </motion.div>
+
+      <motion.div
+        className="enterprise-callout"
+        variants={fadeInUp}
+        style={{
+          background: "rgba(202,169,76,0.06)",
+          border: "1px solid rgba(202,169,76,0.25)",
+          borderRadius: 12,
+          padding: "28px 32px",
+          marginTop: 32,
+          textAlign: "center",
+        }}
+      >
+        <h2 style={{ color: "#caa94c", margin: "0 0 8px" }}>
+          Looking for Enterprise Solutions?
+        </h2>
+        <p style={{ color: "#d4d4d4", margin: "0 0 16px", maxWidth: 560, marginLeft: "auto", marginRight: "auto" }}>
+          If you need custom architecture, security audits, strategic
+          consultation, or large-scale systems, submit an enterprise consultation
+          request.
+        </p>
+        <Link
+          to="/enterprise-consultation"
+          className="bw-btn"
+          style={{ display: "inline-block", textDecoration: "none" }}
+        >
+          Request Enterprise Consultation
+        </Link>
       </motion.div>
 
       <motion.div className="form-layout" variants={fadeInUp} ref={formRef}>

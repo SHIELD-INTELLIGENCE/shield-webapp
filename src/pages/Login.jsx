@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   signInWithEmailAndPassword,
+  signOut,
   setPersistence,
   browserLocalPersistence,
   onAuthStateChanged,
 } from "firebase/auth";
 import { auth, db } from "../firebase";
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { updateSEO } from "../utils/seoUtils";
 
@@ -59,17 +60,28 @@ export default function Login() {
       await setPersistence(auth, browserLocalPersistence);
       const { user } = await signInWithEmailAndPassword(auth, email, password);
 
-      try {
-        const userRef = doc(db, "users", user.email);
-        const userSnap = await getDoc(userRef);
-        if (!userSnap.exists()) {
-          await setDoc(userRef, { email: user.email });
-        }
-      } catch (firestoreError) {
-        console.error("Firestore error:", firestoreError);
+      const userRef = doc(db, "users", user.email);
+      const userSnap = await getDoc(userRef);
+
+      if (!userSnap.exists()) {
+        await signOut(auth);
+        setError("Access denied. No SHIELD account found. Contact an administrator.");
+        return;
       }
 
-      navigate("/");
+      const userData = userSnap.data();
+      if (userData.archived) {
+        await signOut(auth);
+        setError("This account has been deactivated. Contact an administrator.");
+        return;
+      }
+
+      const role = userData.role || "user";
+      if (role === "admin") {
+        window.location.href = process.env.ADMIN_URL || "https://shielddashboard.netlify.app";
+      } else {
+        navigate("/dashboard");
+      }
     } catch (e) {
       switch (e.code) {
         case "auth/user-not-found":
@@ -121,7 +133,7 @@ export default function Login() {
         <motion.section className="shield-login-brand" variants={fadeInUp}>
           <div className="shield-login-logo-frame">
             <img
-              src="/logo192.png"
+              src="/logo.png"
               alt="SHIELD Intelligence logo"
               className="shield-login-logo"
             />

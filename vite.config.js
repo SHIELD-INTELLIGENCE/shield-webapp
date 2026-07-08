@@ -47,6 +47,7 @@ export default defineConfig(({ mode }) => {
         FIREBASE_STORAGE_BUCKET: env.VITE_FIREBASE_STORAGE_BUCKET,
         FIREBASE_MESSAGING_SENDER_ID: env.VITE_FIREBASE_MESSAGING_SENDER_ID,
         FIREBASE_APP_ID: env.VITE_FIREBASE_APP_ID,
+        ADMIN_URL: env.VITE_ADMIN_URL || 'https://shielddashboard.netlify.app',
       }
     }
   };

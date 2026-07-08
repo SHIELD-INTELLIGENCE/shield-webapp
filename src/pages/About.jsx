@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { updateSEO } from "../utils/seoUtils";
+import logo from "../assets/logo.png";
 
 function About() {
   useEffect(() => {
@@ -42,7 +43,7 @@ function About() {
           transition={{ duration: 0.55, delay: 0.1 }}
         >
           <motion.img
-            src="/logo512.png"
+            src={logo}
             alt="SHIELD Intelligence logo"
             className="about-brand-logo"
             animate={{ y: [0, -5, 0] }}
@@ -102,6 +103,23 @@ function About() {
           seeking stable, purpose-built digital solutions. Engagements are handled
           with clearly defined requirements and a focus on delivering software
           that remains usable and maintainable beyond initial delivery.
+        </motion.p>
+      </motion.section>
+
+      <motion.section className="about-block" variants={fadeInUp}>
+        <motion.h2 className="about-subtitle" variants={fadeInUp}>Founded in 2024</motion.h2>
+        <motion.p className="about-paragraph" variants={fadeInUp}>
+          SHIELD Intelligence was founded in 2024 with a clear mission — to build
+          secure, dependable software that solves real problems. Since our inception,
+          we have grown steadily, taking on projects that span web applications,
+          school management systems, authentication tools, and privacy-focused
+          digital products.
+        </motion.p>
+        <motion.p className="about-paragraph" variants={fadeInUp}>
+          Every system we build reflects our commitment to quality, reliability,
+          and purpose-driven engineering. We are a young organization with a focused
+          vision, and we continue to invest in the people and technology needed to
+          deliver lasting value.
         </motion.p>
       </motion.section>
 
