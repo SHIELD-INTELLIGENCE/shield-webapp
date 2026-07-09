@@ -411,6 +411,13 @@ function EnterpriseConsultation() {
                 <div className="form-error-text">Required</div>
               )}
 
+              <div className="pricing-plans-advantage" role="note" aria-label="Enterprise billing notice" style={{ margin: "16px 0" }}>
+                <span className="pricing-plans-advantage-label">Enterprise Billing</span>
+                <p className="pricing-plans-advantage-text" style={{ margin: "4px 0 0" }}>
+                  Enterprise plans are <span className="pricing-plans-advantage-emphasis">billed yearly</span>. First year is <span className="pricing-plans-advantage-emphasis">FREE</span> if we build your site from scratch. <span className="pricing-plans-advantage-muted">Not applicable for pre-built projects.</span>
+                </p>
+              </div>
+
               <button
                 className={`bw-btn ${!isFormValid || submitting ? "btn-disabled" : ""}`}
                 type="submit"

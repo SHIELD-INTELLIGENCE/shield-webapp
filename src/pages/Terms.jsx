@@ -192,9 +192,11 @@ const Terms = () => {
 
       <p>
         If SHIELD is responsible for building a website or product from scratch,
-        the first billing cycle may be offered free of charge. This benefit
-        applies only to projects built entirely by SHIELD and does not apply to
-        pre-existing or third-party projects provided by the client.
+        the first billing period is offered free of charge — the first month for
+        monthly plans, the first quarter for quarterly plans, and the first year
+        for yearly plans. This benefit applies only to projects built entirely by
+        SHIELD and does not apply to pre-existing or third-party projects provided
+        by the client. Not applicable for Custom Plans or pre-built projects.
       </p>
 
       <p>

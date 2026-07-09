@@ -323,8 +323,21 @@ function AppContent() {
 // Simple in-app confirmation modal rendered by AppContent via state
 function LogoutConfirmModal({ open, onCancel, onConfirm }) {
   if (!open) return null;
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === "Escape") onCancel(); };
+    const onPop = () => onCancel();
+    document.addEventListener("keydown", onKey);
+    window.addEventListener("popstate", onPop);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      window.removeEventListener("popstate", onPop);
+    };
+  }, [open, onCancel]);
+  const handleOverlayClick = (e) => {
+    if (e.target === e.currentTarget) onCancel();
+  };
   return (
-    <div role="dialog" aria-modal="true" className="logout-confirm-overlay">
+    <div role="dialog" aria-modal="true" className="logout-confirm-overlay" onClick={handleOverlayClick}>
       <div className="logout-confirm-box">
         <h3 className="logout-confirm-title">Confirm Logout</h3>
         <p className="logout-confirm-text">Are you sure you want to log out?</p>

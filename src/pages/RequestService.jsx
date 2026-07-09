@@ -61,27 +61,6 @@ const PLANS = [
       "Security hardening & backups",
     ],
   },
-  {
-    id: "enterprise",
-    name: "Enterprise Plan",
-    badge: "Custom Solutions",
-    buildCost: "Custom (To be discussed)",
-    monthlyPrice: "Custom pricing",
-    quarterlyOffer: "Custom pricing",
-    savings: "negotiated",
-    highlighted: false,
-    features: [
-      "Fully custom software product",
-      "Dedicated project manager & development team",
-      "Custom integrations with existing systems",
-      "Advanced security & compliance",
-      "10 major updates per month + unlimited small changes",
-      "99.9% uptime SLA with priority support",
-      "Custom domain, hosting, and infrastructure",
-      "Ongoing consultation & strategic planning",
-      "Quarterly business reviews & roadmap planning",
-    ],
-  },
 ];
 
 const INITIAL_FORM_DATA = {
@@ -256,10 +235,13 @@ function RequestService() {
           to review.
         </p>
 
-        <div className="pricing-plans-advantage" role="note" aria-label="First month free notice">
+        <div className="pricing-plans-advantage" role="note" aria-label="First billing period free notice">
           <span className="pricing-plans-advantage-label">Exclusive advantage</span>
           <p className="pricing-plans-advantage-text">
-            First month is <span className="pricing-plans-advantage-emphasis">FREE</span> if SHIELD builds your website <span className="pricing-plans-advantage-emphasis">from scratch</span>. <span className="pricing-plans-advantage-muted">Not applicable for pre-built projects.</span>
+            {(() => {
+              const bc = (formData.billingCycle || "").toLowerCase();
+              return <>First <span className="pricing-plans-advantage-emphasis">{bc === "quarterly" ? "quarter" : "month"}</span> is <span className="pricing-plans-advantage-emphasis">FREE</span></>;
+            })()} if SHIELD builds your website <span className="pricing-plans-advantage-emphasis">from scratch</span>. <span className="pricing-plans-advantage-muted">Not applicable for pre-built projects.</span>
           </p>
         </div>
 
