@@ -148,7 +148,7 @@ function WhoWeAre() {
 
         <motion.div className="founder-card" variants={fadeInUp}>
           <h3 className="founder-name">Aditya Pandey</h3>
-          <p className="founder-role"><strong>Designation:</strong> Chief Financial Officer</p>
+          <p className="founder-role"><strong>Designation:</strong> Chief Financial Officer | Co-Founder </p>
           <p className="about-paragraph">
             Aditya Pandey serves as the Chief Financial Officer of SHIELD Intelligence,
             bringing strategic financial oversight and disciplined resource management
@@ -167,7 +167,7 @@ function WhoWeAre() {
             tools, and infrastructure needed to deliver exceptional results
             for our clients.
           </p>
-          <p className="founder-signoff">— Aditya Pandey<br/>Chief Financial Officer</p>
+          <p className="founder-signoff">— Aditya Pandey<br/>Chief Financial Officer | Co-Founder </p>
         </motion.div>
       </motion.section>
     </motion.div>
