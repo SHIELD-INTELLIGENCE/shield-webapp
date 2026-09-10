@@ -11,7 +11,7 @@ function OurWork() {
 
   useEffect(() => {
     updateSEO(
-      "Our Work | SHIELD Intelligence | Ballia",
+      "Our Work | SHIELD Intelligence",
       "Explore SHIELD Intelligence's portfolio — Green Lawns Public School (Ballia) website and our secure software solutions.",
     );
   }, []);
