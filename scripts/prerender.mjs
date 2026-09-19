@@ -97,9 +97,22 @@ async function startPreview() {
 
 async function killPreview(proc) {
   if (!proc) return;
+  if (proc.exitCode !== null) return;
   proc.kill('SIGTERM');
-  await new Promise(r => setTimeout(r, 500));
-  if (!proc.killed) proc.kill('SIGKILL');
+  await new Promise(resolve => {
+    const t = setTimeout(() => {
+      try { if (proc.exitCode === null) proc.kill('SIGKILL'); } catch {}
+      resolve();
+    }, 2000);
+    proc.once('exit', () => {
+      clearTimeout(t);
+      resolve();
+    });
+    proc.once('error', () => {
+      clearTimeout(t);
+      resolve();
+    });
+  });
 }
 
 async function prerender() {
@@ -260,9 +273,13 @@ async function prerender() {
 
     console.log('[prerender] all routes rendered successfully');
   } finally {
-    if (browser) await browser.close();
+    if (browser) {
+      try { await browser.close(); } catch {}
+    }
     await killPreview(previewProc);
   }
+  // Force clean exit to avoid hanging vite preview server keeping event loop alive
+  process.exit(0);
 }
 
 prerender().catch(err => {
