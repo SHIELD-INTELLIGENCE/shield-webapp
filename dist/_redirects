@@ -1,1 +1,11 @@
-/*    /index.html   200
+# Valid SPA routes — serve index.html with 200
+/login    /index.html   200
+/login/*  /index.html   200
+/privacy  /index.html   200
+/terms    /index.html   200
+/join-us-terms  /index.html   200
+/dashboard  /index.html   200
+/dashboard/*  /index.html   200
+
+# Unknown routes — serve 404.html with 404
+/*    /404.html   404

@@ -1,13 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { hydrateRoot } from 'react-dom/client';
 import App from './App.jsx';
 import './index.css';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+const rootEl = document.getElementById('root');
+const app = (
   <React.StrictMode>
     <App />
   </React.StrictMode>
 );
+// If prerendered HTML exists, hydrate to preserve static content; otherwise create new root
+if (rootEl && rootEl.hasChildNodes()) {
+  hydrateRoot(rootEl, app);
+} else {
+  ReactDOM.createRoot(rootEl).render(app);
+}
 
 // Register the service worker only once
 if ('serviceWorker' in navigator) {

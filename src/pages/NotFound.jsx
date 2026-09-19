@@ -1,14 +1,26 @@
 // src/pages/NotFound.jsx
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { updateSEO } from "../utils/seoUtils";
+import { updateSEO, setRobotsNoIndex, removeCanonical } from "../utils/seoUtils";
 
 export default function NotFound() {
   useEffect(() => {
     updateSEO(
-      "404 - Access Denied | SHIELD Intelligence",
-      "The page you looking for doesn't exist or you don't have permission to access it.",
+      "404 - Page Not Found | SHIELD Intelligence",
+      "The page you are looking for does not exist on SHIELD Intelligence.",
     );
+    // 404 must not be indexed and must not advertise a canonical as indexable
+    setRobotsNoIndex('noindex, follow');
+    removeCanonical();
+    return () => {
+      // cleanup robots tag when leaving 404 (SPA navigation)
+      const tag = document.querySelector('meta[name="robots"]');
+      if (tag && tag.getAttribute('content') === 'noindex, follow') {
+        // Only remove if it is the 404 tag and no other noindex is intended
+        // Legal pages manage their own tags, so check id
+        if (!tag.id) tag.remove();
+      }
+    };
   }, []);
 
   return (

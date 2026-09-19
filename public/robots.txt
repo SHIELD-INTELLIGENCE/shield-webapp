@@ -1,11 +1,11 @@
-# robots.txt for shield-webapp
+# robots.txt for shieldintelligence.in
 User-agent: *
 Allow: /
 
 # Disallow crawling of sensitive or unnecessary directories
+# /android corresponds to Capacitor Android project folder (not served, defensive)
 Disallow: /android/
-Disallow: /test/
+# /login is a private authentication route
 Disallow: /login
 
-# Sitemap (add your sitemap URL if available)
 Sitemap: https://shieldintelligence.in/sitemap.xml

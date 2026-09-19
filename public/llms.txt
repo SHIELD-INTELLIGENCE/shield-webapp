@@ -1,0 +1,75 @@
+# SHIELD Intelligence
+
+> SHIELD Intelligence builds secure software, privacy-conscious digital systems, custom websites, authentication tools, and service workflows for India and international clients.
+
+## Identity
+
+- Name: SHIELD Intelligence
+- Expansion: Secure Hub of Intelligence, Elegance, Learning, and Development
+- Tagline: Securing Tomorrow with Strategic Intelligence
+- Founded: 2024
+- Website: https://shieldintelligence.in/
+- Canonical Domain: https://shieldintelligence.in
+- Service Area: Worldwide (India and international clients) — as described on the public site and confirmed for global service capability
+
+## About
+
+SHIELD Intelligence is a technology-focused organization engaged in the design and development of secure, dependable software systems. It creates modern web applications, internal tools, and digital products that prioritize reliability, controlled access, and responsible data handling. Its current scope includes secure websites, internal dashboards, role-based systems, and privacy-focused applications, alongside selective freelance and contract-based custom software development for individuals, small shops, and local businesses.
+
+## People
+
+Publicly documented on https://shieldintelligence.in/who-we-are:
+
+- Reyansh Raj Mishra — Founder | Chief Executive Officer
+- Akshit Pandey — Co-Founder | Chief Operations Officer
+- Shubham Kumar Upadhyay — Engineer | Co-Founder | Chief Growth Officer
+- Aditya Pandey — Chief Financial Officer | Co-Founder
+
+## Product
+
+- **SHIELD Authenticator** — A privacy-first, TOTP-based authenticator designed with end-to-end encryption and zero-knowledge architecture. Gives full control over authentication data. Features include 256-bit encryption, cross-platform encrypted sync, offline TOTP generation, QR code support, encrypted backup/export, and privacy controls. Available on Web (https://shield-auth.shieldintelligence.in) and Android (APK via https://download.shieldintelligence.in — SHIELD-Authenticator.apk, Android package com.shieldintelligence.authenticator v2.5 as documented in APPARCHIVE and shield-authenticator Android project).
+
+## Applications
+
+- **SHIELD** — Packaged Android application of the SHIELD Intelligence website (Capacitor appId com.shieldintelligence.in, appName SHIELD, Android project in `android/`). Download via https://download.shieldintelligence.in/SHIELD.apk (Android, v1.5 as listed in APPARCHIVE). Provides access to SHIELD services and content on Android devices. Website remains https://shieldintelligence.in/
+
+## Services
+
+Publicly described via https://shieldintelligence.in/our-work, https://shieldintelligence.in/request-service, and https://shieldintelligence.in/enterprise-consultation:
+
+- Secure Website Development — Custom websites and web applications built for real-world reliability and maintainability. Example: Green Lawns Public School bilingual website (https://www.glps.in).
+- Internal Tools & Dashboards — Role-based systems, admin panels, and internal tools prioritizing controlled access and data handling.
+- Privacy-Focused Applications — Security-oriented products such as authentication tools with source availability and end-to-end encryption.
+- Custom Software Development — Selective freelance/contract work for individuals, small shops, and businesses; requirements-defined, maintainable solutions. Documented under “Our current scope” on /about.
+- Enterprise Consultation — Strategic technology planning and custom architecture for organizations; handled via enterprise consultation request workflow.
+
+## Public Pages
+
+- [Home](https://shieldintelligence.in/) — Secure software for the real world; overview of products, services, and authenticator highlight.
+- [About](https://shieldintelligence.in/about) — What SHIELD Intelligence is, its mission, scope, and founding in 2024.
+- [Who We Are](https://shieldintelligence.in/who-we-are) — Team and founders with roles and statements.
+- [Our Work](https://shieldintelligence.in/our-work) — Portfolio, including Green Lawns Public School (glps.in) bilingual school website.
+- [Request a Service](https://shieldintelligence.in/request-service) — Service request workflow for custom software and digital solutions.
+- [Enterprise Consultation](https://shieldintelligence.in/enterprise-consultation) — Consultation request for organization-level technology planning.
+- [Join Us](https://shieldintelligence.in/join-us) — Application to join SHIELD Intelligence as a student or contributor.
+
+## Contact
+
+- Email: shield@shieldintelligence.in (publicly listed in site footer)
+- Site contact anchor: https://shieldintelligence.in/#contact-section
+
+## Social Profiles
+
+Organization profiles currently linked in the public footer:
+
+- X (Twitter): https://x.com/0_SHIELD_0
+- Instagram: https://instagram.com/shield_private
+- Facebook: https://www.facebook.com/people/Shield-Intelligence/pfbid0K5nsekxw2ifc2SSUmWPUMgniDb3CDuTs888UiRt2WSss1rARFkHYUFS9jMBBGMCrl/
+- LinkedIn: https://www.linkedin.com/company/shield-intelligence/
+
+## Notes
+
+- SHIELD Intelligence is an independent, technology-focused initiative; not described on the public site as a government, law-enforcement, military, or licensed intelligence agency.
+- No public claims about office street address, registration numbers, employee counts, revenue, awards, certifications, or rankings are included here because they are not established on the public site.
+- Service coverage is Worldwide, consistent with “India and international clients” phrasing on the public site and confirmed global service capability.
+- SHIELD Authenticator is available on Web and Android as verified via public web link, Android APK distribution at download.shieldintelligence.in, and Android project evidence (APPARCHIVE, Capacitor configs).

@@ -27,3 +27,47 @@
   Cache-Control: public, max-age=31536000, immutable
 /service-worker.js
   Cache-Control: public, max-age=0, must-revalidate
+
+/privacy
+  X-Robots-Tag: noindex, follow
+/terms
+  X-Robots-Tag: noindex, follow
+/join-us-terms
+  X-Robots-Tag: noindex, follow
+/login
+  X-Robots-Tag: noindex, nofollow
+/dashboard
+  X-Robots-Tag: noindex, nofollow
+/404.html
+  Cache-Control: public, max-age=0, must-revalidate
+  X-Robots-Tag: noindex, follow
+
+# Prerendered public pages — must revalidate after deploy, never stale
+/about
+  Cache-Control: public, max-age=0, must-revalidate
+/about/*
+  Cache-Control: public, max-age=0, must-revalidate
+/who-we-are
+  Cache-Control: public, max-age=0, must-revalidate
+/who-we-are/*
+  Cache-Control: public, max-age=0, must-revalidate
+/our-work
+  Cache-Control: public, max-age=0, must-revalidate
+/our-work/*
+  Cache-Control: public, max-age=0, must-revalidate
+/request-service
+  Cache-Control: public, max-age=0, must-revalidate
+/request-service/*
+  Cache-Control: public, max-age=0, must-revalidate
+/enterprise-consultation
+  Cache-Control: public, max-age=0, must-revalidate
+/enterprise-consultation/*
+  Cache-Control: public, max-age=0, must-revalidate
+/join-us
+  Cache-Control: public, max-age=0, must-revalidate
+/join-us/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/llms.txt
+  Cache-Control: public, max-age=0, must-revalidate
+  Content-Type: text/plain; charset=utf-8

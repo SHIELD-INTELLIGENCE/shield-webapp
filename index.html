@@ -9,39 +9,95 @@
     <meta property="og:title" content="SHIELD Intelligence | Secure Software, Privacy, and Digital Systems" />
     <meta property="og:description" content="Secure software, privacy-focused products, custom websites, and service workflows for India and international clients." />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SHIELD Intelligence" />
     <meta property="og:url" content="https://shieldintelligence.in/" />
     <meta property="og:image" content="https://shieldintelligence.in/logo512.png" />
+    <meta property="og:image:alt" content="SHIELD Intelligence logo" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="SHIELD Intelligence | Secure Software, Privacy, and Digital Systems" />
     <meta name="twitter:description" content="Secure software, privacy-focused products, custom websites, and service workflows for India and international clients." />
+    <meta name="twitter:image" content="https://shieldintelligence.in/logo512.png" />
 
     <link rel="icon" href="/favicon.ico" />
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#caa94c" />
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" as="style" onload="this.rel='stylesheet'">
 
-    <!-- Structured Data / JSON-LD -->
-    <script type="application/ld+json">
+    <!-- Structured Data / JSON-LD — replaced at runtime per route via src/utils/structuredData.js -->
+    <script type="application/ld+json" id="shield-jsonld">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "SHIELD Intelligence",
-      "url": "https://shieldintelligence.in/",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://shieldintelligence.in/logo512.png",
-        "width": 512,
-        "height": 512
-      },
-      "description": "SHIELD Intelligence builds secure software, privacy-conscious digital systems, custom websites, authentication tools, and service workflows for India and international clients.",
-      "foundingDate": "2024",
-      "areaServed": ["IN", "Worldwide"],
-      "sameAs": [
-        "https://shieldintelligence.in/",
-        "https://shieldintelligence.in/about",
-        "https://shieldintelligence.in/request-service",
-        "https://shieldintelligence.in/join-us",
-        "https://shieldintelligence.in/privacy"
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://shieldintelligence.in/#organization",
+          "name": "SHIELD Intelligence",
+          "url": "https://shieldintelligence.in/",
+          "slogan": "Securing Tomorrow with Strategic Intelligence",
+          "description": "SHIELD Intelligence builds secure software, privacy-conscious digital systems, custom websites, authentication tools, and service workflows for India and international clients.",
+          "alternateName": "SHIELD Intelligence — Secure Hub of Intelligence, Elegance, Learning, and Development",
+          "foundingDate": "2024",
+          "email": "shield@shieldintelligence.in",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://shieldintelligence.in/#logo",
+            "url": "https://shieldintelligence.in/logo512.png",
+            "width": 512,
+            "height": 512,
+            "caption": "SHIELD Intelligence logo"
+          },
+          "image": { "@id": "https://shieldintelligence.in/#logo" },
+          "sameAs": [
+            "https://x.com/0_SHIELD_0",
+            "https://instagram.com/shield_private",
+            "https://www.facebook.com/people/Shield-Intelligence/pfbid0K5nsekxw2ifc2SSUmWPUMgniDb3CDuTs888UiRt2WSss1rARFkHYUFS9jMBBGMCrl/",
+            "https://www.linkedin.com/company/shield-intelligence/"
+          ],
+          "areaServed": {
+            "@type": "Place",
+            "name": "Worldwide"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://shieldintelligence.in/#website",
+          "url": "https://shieldintelligence.in/",
+          "name": "SHIELD Intelligence",
+          "description": "SHIELD Intelligence builds secure software, privacy-conscious digital systems, custom websites, authentication tools, and service workflows for India and international clients.",
+          "publisher": { "@id": "https://shieldintelligence.in/#organization" },
+          "inLanguage": "en-IN"
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://shieldintelligence.in/#webpage",
+          "url": "https://shieldintelligence.in/",
+          "name": "SHIELD Intelligence | Secure Software & Digital Systems",
+          "description": "SHIELD Intelligence builds secure software, authentication tools, and privacy-focused digital products. Request services, explore our products, or join as a contributor.",
+          "isPartOf": { "@id": "https://shieldintelligence.in/#website" },
+          "about": { "@id": "https://shieldintelligence.in/#organization" },
+          "primaryImageOfPage": { "@id": "https://shieldintelligence.in/#logo" },
+          "inLanguage": "en-IN"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://shield-auth.shieldintelligence.in/#app",
+          "name": "SHIELD Authenticator",
+          "url": "https://shield-auth.shieldintelligence.in",
+          "applicationCategory": "SecurityApplication",
+          "operatingSystem": ["Web", "Android"],
+          "description": "A privacy-first, TOTP-based authentication tool designed to give you full control over your authentication data with end-to-end encryption and zero-knowledge architecture.",
+          "publisher": { "@id": "https://shieldintelligence.in/#organization" }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://shieldintelligence.in/#app",
+          "name": "SHIELD",
+          "url": "https://shieldintelligence.in/",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "Android",
+          "description": "SHIELD — packaged Android application of the SHIELD Intelligence website, providing access to SHIELD services and content on Android devices.",
+          "publisher": { "@id": "https://shieldintelligence.in/#organization" }
+        }
       ]
     }
     </script>

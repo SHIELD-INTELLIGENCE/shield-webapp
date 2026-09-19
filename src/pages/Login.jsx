@@ -10,7 +10,7 @@ import {
 import { auth, db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import { updateSEO } from "../utils/seoUtils";
+import { updateSEO, setRobotsNoIndex, removeCanonical } from "../utils/seoUtils";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -24,10 +24,18 @@ export default function Login() {
       "User Login | SHIELD Intelligence",
       "Secure login portal for SHIELD Intelligence authorized personnel.",
     );
+    setRobotsNoIndex('noindex, nofollow');
+    removeCanonical();
 
     onAuthStateChanged(auth, (user) => {
       if (user) navigate("/");
     });
+
+    return () => {
+      const tag = document.querySelector('meta[name="robots"]');
+      if (tag && tag.getAttribute('content') === 'noindex, nofollow' && !tag.id) tag.remove();
+      // canonical will be restored by next route's updateSEO
+    };
   }, [navigate]);
 
   const validateInputs = () => {

@@ -18,6 +18,7 @@ import NetworkStatus from "./components/NetworkStatus";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CookieConsent from "./components/CookieConsent";
+import { injectStructuredData } from "./utils/structuredData";
 import "./assets/errorStyles.css";
 
 const Home = React.lazy(() => import("./pages/Home"));
@@ -144,6 +145,11 @@ function AppContent() {
     });
     return () => unsub();
   }, [isLoggingOut]);
+
+  // Inject route-specific JSON-LD for every public route ( prerender captures DOM )
+  useEffect(() => {
+    injectStructuredData(location.pathname);
+  }, [location.pathname]);
 
   // Prevent scrolling during logout
   useEffect(() => {

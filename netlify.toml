@@ -2,7 +2,38 @@
   command = "npm run build"
   publish = "dist"
 
+# Valid SPA routes without prerendered files — serve index.html with 200 to preserve SPA navigation
 [[redirects]]
-  from = "/*"
+  from = "/login"
   to = "/index.html"
   status = 200
+[[redirects]]
+  from = "/login/*"
+  to = "/index.html"
+  status = 200
+[[redirects]]
+  from = "/privacy"
+  to = "/index.html"
+  status = 200
+[[redirects]]
+  from = "/terms"
+  to = "/index.html"
+  status = 200
+[[redirects]]
+  from = "/join-us-terms"
+  to = "/index.html"
+  status = 200
+[[redirects]]
+  from = "/dashboard"
+  to = "/index.html"
+  status = 200
+[[redirects]]
+  from = "/dashboard/*"
+  to = "/index.html"
+  status = 200
+
+# Fallback for genuinely unknown routes — serve 404.html with 404 status
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404

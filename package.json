@@ -3,7 +3,8 @@
   "license": "SHIELD Source-Available License (No Redistribution) v1.0",
   "scripts": {
     "dev": "vite --host",
-    "build": "vite build",
+    "build": "vite build && node scripts/prerender.mjs",
+    "build:only": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.x",
+    "puppeteer-core": "^22.15.0",
     "terser": "^5.43.1",
     "vite": "^4.5.14"
   }
