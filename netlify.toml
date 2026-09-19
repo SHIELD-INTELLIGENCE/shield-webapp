@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build"
+  command = "npx --yes puppeteer browsers install chrome@stable --install-dir /opt/buildhome/.cache/puppeteer && npm run build"
   publish = "dist"
 
 # Valid SPA routes without prerendered files — serve index.html with 200 to preserve SPA navigation

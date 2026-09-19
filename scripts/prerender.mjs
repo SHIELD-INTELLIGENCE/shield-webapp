@@ -29,6 +29,47 @@ const PREVIEW_HOST = '127.0.0.1';
 const PREVIEW_URL = `http://${PREVIEW_HOST}:${PREVIEW_PORT}`;
 const CHROME_PATH = '/usr/bin/google-chrome';
 
+// Resolve Chrome executable — try local, Netlify cache, and env override
+import fsSync from 'fs';
+import os from 'os';
+function resolveChromePath() {
+  const candidates = [
+    process.env.PUPPETEER_EXECUTABLE_PATH,
+    process.env.CHROME_PATH,
+    CHROME_PATH,
+    '/usr/bin/google-chrome-stable',
+    '/usr/bin/chromium-browser',
+    '/usr/bin/chromium',
+  ].filter(Boolean);
+  for (const p of candidates) {
+    try { if (fsSync.existsSync(p)) return p; } catch {}
+  }
+  // Check puppeteer cache (Netlify: /opt/buildhome/.cache/puppeteer)
+  const cacheRoots = [
+    '/opt/buildhome/.cache/puppeteer',
+    path.join(os.homedir(), '.cache', 'puppeteer'),
+  ];
+  for (const root of cacheRoots) {
+    try {
+      if (!fsSync.existsSync(root)) continue;
+      const entries = fsSync.readdirSync(root, { withFileTypes: true });
+      for (const e of entries) {
+        if (e.isDirectory() && e.name.startsWith('chrome')) {
+          const sub = path.join(root, e.name);
+          const subs = fsSync.readdirSync(sub, { withFileTypes: true });
+          for (const s of subs) {
+            const chromeBin = path.join(sub, s.name, 'chrome-linux64', 'chrome');
+            if (fsSync.existsSync(chromeBin)) return chromeBin;
+            const alt = path.join(sub, 'chrome-linux64', 'chrome');
+            if (fsSync.existsSync(alt)) return alt;
+          }
+        }
+      }
+    } catch {}
+  }
+  return null;
+}
+
 async function waitForServer(url, timeout = 30000) {
   const start = Date.now();
   while (Date.now() - start < timeout) {
@@ -65,8 +106,16 @@ async function prerender() {
   const previewProc = await startPreview();
   let browser;
   try {
+    const chromePath = resolveChromePath();
+    if (!chromePath) {
+      console.warn(`[prerender] Chrome not found at ${CHROME_PATH} or cache. Skipping prerender — build will remain shell-only. Install via 'npx puppeteer browsers install chrome' for full prerender.`);
+      console.warn(`[prerender] To enable on Netlify, ensure build command installs chrome (e.g., 'npx puppeteer browsers install chrome').`);
+      // Do not fail build — exit gracefully
+      return;
+    }
+    console.log(`[prerender] using Chrome at ${chromePath}`);
     browser = await puppeteer.launch({
-      executablePath: CHROME_PATH,
+      executablePath: chromePath,
       args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu', '--no-first-run', '--no-zygote'],
       headless: 'new',
     });
